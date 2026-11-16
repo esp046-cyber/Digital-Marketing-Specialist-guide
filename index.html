@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Digital Marketing Specialist Guide — Execution OS &amp; Field PWA</title>
+  <meta name="description" content="Complete Digital Marketing Specialist task matrix, campaign itinerary planner, DeviceOrientation Compass HUD, and offline-first PWA toolkit." />
+  <meta name="theme-color" id="dynamic-theme-color" content="#0B1120" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="DMS Guide" />
+  <meta name="application-name" content="Digital Marketing Specialist Guide" />
+  <meta name="msapplication-config" content="./browserconfig.xml" />
+
+  <!-- Canonical & OpenGraph Social Media Metadata -->
+  <link rel="canonical" href="https://esp046-cyber.github.io/Digital-Marketing-Specialist-guide/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Digital Marketing Specialist Guide PWA" />
+  <meta property="og:title" content="Digital Marketing Specialist Guide — Complete Execution OS &amp; Field HUD" />
+  <meta property="og:description" content="42+ specific Digital Marketing Specialist SOPs across 7 pillars, offline IndexedDB Background Sync, Fuzzy Search, Campaign Itinerary PDF exporter, and Low-Pass Compass HUD." />
+  <meta property="og:url" content="https://esp046-cyber.github.io/Digital-Marketing-Specialist-guide/" />
+  <meta property="og:image" content="https://esp046-cyber.github.io/Digital-Marketing-Specialist-guide/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Digital Marketing Specialist Guide PWA Preview" />
+
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Digital Marketing Specialist Guide — Complete Execution OS" />
+  <meta name="twitter:description" content="Complete Digital Marketing Specialist task list, campaign itinerary backup/print utility, and sensor HUD in an installable offline PWA." />
+  <meta name="twitter:image" content="https://esp046-cyber.github.io/Digital-Marketing-Specialist-guide/assets/og-image.png" />
+
+  <!-- Icons & Manifest -->
+  <link rel="icon" href="./favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+  <link rel="apple-touch-icon" href="./icon-192.png" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main workspace</a>
+
+  <!-- Runtime Error Boundary Alert Banner (Hidden unless exception occurs) -->
+  <aside id="error-boundary-banner" class="error-banner" role="alert" aria-live="assertive" hidden>
+    <div class="error-banner__content">
+      <span class="badge badge--danger">Runtime Exception Captured</span>
+      <p id="error-boundary-message">An unexpected error occurred and was logged locally.</p>
+    </div>
+    <div class="error-banner__actions">
+      <button type="button" id="btn-view-error-log" class="btn btn--sm btn--ghost">Inspect Log</button>
+      <button type="button" id="btn-dismiss-error" class="btn btn--sm btn--secondary">Dismiss</button>
+    </div>
+  </aside>
+
+  <!-- App Shell Header -->
+  <header class="app-header" role="banner">
+    <div class="app-header__brand">
+      <img src="./icon-192.png" alt="DMS Guide emblem" class="app-header__logo" width="40" height="40" />
+      <div>
+        <div class="app-header__eyebrow">
+          <span>EXECUTION OS v2.4</span>
+          <span id="network-status-pill" class="status-pill status-pill--online" aria-live="polite">Online</span>
+          <span id="battery-status-pill" class="status-pill" aria-live="polite" title="Battery &amp; Power Saver Monitor">Battery: 100%</span>
+        </div>
+        <h1 class="app-header__title">Digital Marketing Specialist Guide</h1>
+      </div>
+    </div>
+
+    <div class="app-header__controls">
+      <button type="button" id="btn-install-pwa" class="btn btn--primary btn--sm" hidden aria-label="Install App to Home Screen">
+        + Install App
+      </button>
+      <button type="button" id="btn-open-onboarding" class="btn btn--secondary btn--sm" aria-label="Open Interactive Guide Tour">
+        Tour &amp; HUD Guide
+      </button>
+      <button type="button" id="btn-copy-deeplink" class="btn btn--secondary btn--sm" aria-label="Copy current view deep link">
+        Copy Deep Link
+      </button>
+      <button type="button" id="btn-theme-toggle" class="btn btn--icon" aria-label="Cycle color theme (Dark / Light / High Contrast)" title="Switch Theme">
+        <span id="theme-icon-label" aria-hidden="true">Theme</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <!-- Primary 4-Tab Navigation (Bottom Bar on Mobile, Left Sidebar on Desktop) -->
+    <nav class="app-nav" role="navigation" aria-label="Primary Workspace Sections">
+      <button type="button" class="nav-tab is-active" data-tab="tasks" data-theme-color="#0B1120" role="tab" aria-selected="true" aria-controls="panel-tasks" id="tab-btn-tasks">
+        <span class="nav-tab__icon" aria-hidden="true">01</span>
+        <span class="nav-tab__label">Specialist Tasks</span>
+        <span class="nav-tab__badge" id="nav-badge-tasks">0/32</span>
+      </button>
+
+      <button type="button" class="nav-tab" data-tab="itinerary" data-theme-color="#1E1B4B" role="tab" aria-selected="false" aria-controls="panel-itinerary" id="tab-btn-itinerary">
+        <span class="nav-tab__icon" aria-hidden="true">02</span>
+        <span class="nav-tab__label">Campaign Itinerary</span>
+        <span class="nav-tab__badge" id="nav-badge-itinerary">8</span>
+      </button>
+
+      <button type="button" class="nav-tab" data-tab="hud" data-theme-color="#064E3B" role="tab" aria-selected="false" aria-controls="panel-hud" id="tab-btn-hud">
+        <span class="nav-tab__icon" aria-hidden="true">03</span>
+        <span class="nav-tab__label">Compass &amp; KPI HUD</span>
+        <span class="nav-tab__badge" id="nav-badge-hud">LIVE</span>
+      </button>
+
+      <button type="button" class="nav-tab" data-tab="system" data-theme-color="#3B0764" role="tab" aria-selected="false" aria-controls="panel-system" id="tab-btn-system">
+        <span class="nav-tab__icon" aria-hidden="true">04</span>
+        <span class="nav-tab__label">Sync &amp; PWA Audit</span>
+        <span class="nav-tab__badge" id="nav-badge-sync">0 Queued</span>
+      </button>
+    </nav>
+
+    <!-- Main Workspace Container -->
+    <main id="main-content" class="app-main" role="main">
+      <!-- KPI Overview Ribbon -->
+      <section class="kpi-ribbon" aria-label="Executive Progress Summary">
+        <article class="kpi-card">
+          <span class="kpi-card__label">Task Completion Rate</span>
+          <strong class="kpi-card__value" id="metric-completion-pct">0%</strong>
+          <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="metric-progressbar">
+            <div class="progress-bar__fill" id="metric-progress-fill" style="width: 0%"></div>
+          </div>
+        </article>
+        <article class="kpi-card">
+          <span class="kpi-card__label">Bookmarked SOPs &amp; Stops</span>
+          <strong class="kpi-card__value" id="metric-bookmarked-count">0</strong>
+          <span class="kpi-card__sub" id="metric-bookmarked-sub">Haptic-confirmed critical items</span>
+        </article>
+        <article class="kpi-card">
+          <span class="kpi-card__label">Offline Sync Queue</span>
+          <strong class="kpi-card__value" id="metric-sync-count">0 Pending</strong>
+          <span class="kpi-card__sub" id="metric-sync-sub">IndexedDB + Background Sync ready</span>
+        </article>
+        <article class="kpi-card">
+          <span class="kpi-card__label">Power &amp; Sensor Profile</span>
+          <strong class="kpi-card__value" id="metric-power-mode">Standard</strong>
+          <span class="kpi-card__sub" id="metric-power-sub">Full animations &amp; 60Hz HUD filter</span>
+        </article>
+      </section>
+
+      <!-- =================================================================
+           TAB 1: DIGITAL MARKETING SPECIALIST TASK MATRIX
+           ================================================================= -->
+      <section id="panel-tasks" class="tab-panel is-active" role="tabpanel" aria-labelledby="tab-btn-tasks">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">1. Digital Marketing Specialist Complete Task Matrix</h2>
+            <p class="panel-subtitle">
+              Actionable SOP checklist across SEO, Paid Media (PPC), Social &amp; Content, Email/CRM Automation, CRO, Analytics Attribution, and Local Field Marketing. Typo-tolerant fuzzy search included.
+            </p>
+          </div>
+          <div class="panel-actions">
+            <button type="button" id="btn-add-custom-task" class="btn btn--primary">+ Add Custom Task</button>
+            <button type="button" id="btn-print-tasks" class="btn btn--secondary">Print / PDF Summary</button>
+          </div>
+        </div>
+
+        <!-- Search & Fuzzy Filter Bar -->
+        <div class="filter-bar" role="search">
+          <div class="search-input-wrap">
+            <label for="task-search-input" class="sr-only">Fuzzy search tasks, tools, local hubs, or KPIs</label>
+            <input
+              type="search"
+              id="task-search-input"
+              class="input-control"
+              placeholder="Fuzzy search (try typos like 'gogle adwords', 'canoncal', 'tiktk', 'bgc manila')..."
+              autocomplete="off"
+            />
+            <span id="fuzzy-match-indicator" class="fuzzy-badge" hidden>Fuzzy Match Active</span>
+          </div>
+
+          <div class="filter-selects">
+            <label for="filter-pillar" class="sr-only">Filter by Marketing Pillar</label>
+            <select id="filter-pillar" class="select-control">
+              <option value="ALL">All 7 Marketing Pillars</option>
+              <option value="SEO & Organic Search">SEO &amp; Organic Search</option>
+              <option value="Paid Media & PPC">Paid Media &amp; PPC</option>
+              <option value="Content & Social Media">Content &amp; Social Media</option>
+              <option value="Email & CRM Lifecycle">Email &amp; CRM Lifecycle</option>
+              <option value="CRO & Landing Page UX">CRO &amp; Landing Page UX</option>
+              <option value="Analytics & Attribution">Analytics &amp; Attribution</option>
+              <option value="Local & Field Event Ops">Local &amp; Field Event Ops</option>
+            </select>
+
+            <label for="filter-cadence" class="sr-only">Filter by Cadence</label>
+            <select id="filter-cadence" class="select-control">
+              <option value="ALL">All Cadences</option>
+              <option value="Daily">Daily Ops</option>
+              <option value="Weekly">Weekly Sprint</option>
+              <option value="Monthly">Monthly Audit</option>
+              <option value="Campaign Launch">Campaign Launch</option>
+            </select>
+
+            <label for="filter-status" class="sr-only">Filter by Status</label>
+            <select id="filter-status" class="select-control">
+              <option value="ALL">All Statuses</option>
+              <option value="PENDING">Pending Only</option>
+              <option value="COMPLETED">Completed Only</option>
+              <option value="BOOKMARKED">Bookmarked Only</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Skeleton Loader shown briefly while IndexedDB hydrates -->
+        <div id="tasks-skeleton" class="skeleton-grid" aria-hidden="true" hidden>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+
+        <!-- Task Cards Grid -->
+        <div id="tasks-grid" class="cards-grid" aria-live="polite"></div>
+
+        <!-- Helpful Empty State -->
+        <div id="tasks-empty-state" class="empty-state" hidden>
+          <h3>No matching Digital Marketing tasks found</h3>
+          <p>Even with Levenshtein fuzzy matching enabled, no task matched your current filter combination.</p>
+          <button type="button" id="btn-reset-filters" class="btn btn--primary">Reset All Search Filters</button>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           TAB 2: CAMPAIGN SPRINT & FIELD ACTIVATION ITINERARY
+           ================================================================= -->
+      <section id="panel-itinerary" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-itinerary" hidden>
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">2. Campaign Sprint &amp; Field Marketing Itinerary</h2>
+            <p class="panel-subtitle">
+              Coordinate omnichannel launch windows, OOH billboard inspections, creator studio shoots, and tech summit activations with GPS coordinate copy, JSON manual backup export/import, and Print/PDF generation.
+            </p>
+          </div>
+          <div class="panel-actions">
+            <button type="button" id="btn-add-itinerary" class="btn btn--primary">+ Add Itinerary Slot</button>
+            <button type="button" id="btn-export-json" class="btn btn--secondary">Export JSON Backup</button>
+            <label for="input-import-json" class="btn btn--secondary file-label-btn" tabindex="0">
+              Import JSON
+              <input type="file" id="input-import-json" accept="application/json,.json" class="sr-only" />
+            </label>
+            <button type="button" id="btn-print-itinerary" class="btn btn--secondary">Print / Save PDF</button>
+          </div>
+        </div>
+
+        <div id="itinerary-list" class="itinerary-timeline" aria-live="polite"></div>
+      </section>
+
+      <!-- =================================================================
+           TAB 3: DEVICEORIENTATION COMPASS & CAMPAIGN VELOCITY HUD
+           ================================================================= -->
+      <section id="panel-hud" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-hud" hidden>
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">3. Field Marketing Compass &amp; Live Campaign HUD</h2>
+            <p class="panel-subtitle">
+              Uses the <code>DeviceOrientationEvent</code> API with a configurable first-order Low-Pass Filter (<code>alpha = 0.18</code>) to smooth out sensor jitter while navigating to local campaign activations, OOH sites, or event booths.
+            </p>
+          </div>
+          <div class="panel-actions">
+            <button type="button" id="btn-request-sensor" class="btn btn--primary">Activate Compass Sensor</button>
+            <button type="button" id="btn-simulate-bearing" class="btn btn--secondary">Simulate Sensor Sweep</button>
+            <button type="button" id="btn-copy-hud-coords" class="btn btn--secondary">Copy Active Waypoint GPS</button>
+          </div>
+        </div>
+
+        <div class="hud-dashboard">
+          <!-- Compass Dial Card -->
+          <div class="hud-card hud-card--compass">
+            <div class="compass-ring" id="compass-ring" aria-label="Low-Pass Filtered Digital Compass">
+              <div class="compass-ring__cardinal compass-ring__cardinal--n">N</div>
+              <div class="compass-ring__cardinal compass-ring__cardinal--e">E</div>
+              <div class="compass-ring__cardinal compass-ring__cardinal--s">S</div>
+              <div class="compass-ring__cardinal compass-ring__cardinal--w">W</div>
+              <div class="compass-needle" id="compass-needle"></div>
+              <div class="compass-center-readout">
+                <span class="compass-degrees" id="hud-bearing-filtered">042° NE</span>
+                <span class="compass-sub" id="hud-sensor-mode">Low-Pass α=0.18</span>
+              </div>
+            </div>
+
+            <div class="hud-controls-row">
+              <label for="lowpass-alpha-slider" class="hud-slider-label">
+                <span>Low-Pass Smoothing Factor (α): <strong id="lowpass-alpha-val">0.18</strong></span>
+                <input type="range" id="lowpass-alpha-slider" min="0.05" max="0.80" step="0.01" value="0.18" />
+              </label>
+
+              <label for="hud-waypoint-select" class="hud-slider-label">
+                <span>Target Campaign Waypoint:</span>
+                <select id="hud-waypoint-select" class="select-control">
+                  <option value="14.5547,121.0244|Makati CBD OOH Digital Billboard Hub">Makati CBD OOH Digital Billboard Hub (14.5547° N, 121.0244° E)</option>
+                  <option value="14.5507,121.0494|BGC High Street Brand Pop-Up Booth">BGC High Street Brand Pop-Up Booth (14.5507° N, 121.0494° E)</option>
+                  <option value="14.5869,121.0614|Ortigas Creator Studio & Podcast Stage">Ortigas Creator Studio &amp; Podcast Stage (14.5869° N, 121.0614° E)</option>
+                  <option value="14.5605,121.0103|iACADEMY Auditorium Tech Summit Booth">iACADEMY Auditorium Tech Summit Booth (14.5605° N, 121.0103° E)</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <!-- Telemetry & Live Campaign Metrics Card -->
+          <div class="hud-card hud-card--telemetry">
+            <h3>Sensor &amp; Campaign Telemetry Readout</h3>
+            <dl class="telemetry-grid">
+              <div class="telemetry-item">
+                <dt>Raw Sensor Bearing</dt>
+                <dd id="hud-bearing-raw">042.0°</dd>
+              </div>
+              <div class="telemetry-item">
+                <dt>Low-Pass Smoothed Bearing</dt>
+                <dd id="hud-bearing-smooth">042.0°</dd>
+              </div>
+              <div class="telemetry-item">
+                <dt>Jitter Attenuation Delta</dt>
+                <dd id="hud-jitter-delta">0.0° damped</dd>
+              </div>
+              <div class="telemetry-item">
+                <dt>Device Pitch (β) / Roll (γ)</dt>
+                <dd id="hud-pitch-roll">β: 12° | γ: -2°</dd>
+              </div>
+              <div class="telemetry-item">
+                <dt>Target Waypoint Bearing</dt>
+                <dd id="hud-target-bearing">068° ENE (1.8 km)</dd>
+              </div>
+              <div class="telemetry-item">
+                <dt>Active Campaign ROAS Velocity</dt>
+                <dd id="hud-roas-velocity">4.35x (+14% WoW)</dd>
+              </div>
+            </dl>
+
+            <div class="hud-eventbus-stream">
+              <div class="hud-stream-header">
+                <h4>Live EventBus Pub/Sub Stream</h4>
+                <button type="button" id="btn-clear-eventstream" class="btn btn--sm btn--ghost">Clear Stream</button>
+              </div>
+              <ul id="hud-eventbus-log" class="event-stream-list" aria-live="polite"></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           TAB 4: OFFLINE SYNC, ERROR BOUNDARY & PWA DESIGN AUDIT
+           ================================================================= -->
+      <section id="panel-system" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-system" hidden>
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">4. IndexedDB Sync Queue, Error Boundary &amp; 11-Point PWA Checklist</h2>
+            <p class="panel-subtitle">
+              Inspect queued offline actions, trigger Background Sync flush with optimistic UI confirmation, test battery eco-mode throttling, review runtime exceptions, and verify every item on the PWA Design &amp; Layout Checklist.
+            </p>
+          </div>
+          <div class="panel-actions">
+            <button type="button" id="btn-flush-sync" class="btn btn--primary">Flush Offline Queue Now</button>
+            <button type="button" id="btn-simulate-offline-action" class="btn btn--secondary">+ Queue Test Offline Mutation</button>
+            <button type="button" id="btn-toggle-low-battery" class="btn btn--secondary">Simulate Low Battery (≤20%)</button>
+            <button type="button" id="btn-trigger-test-error" class="btn btn--secondary">Test Error Boundary</button>
+          </div>
+        </div>
+
+        <div class="system-grid">
+          <!-- IndexedDB Offline Sync Queue Inspector -->
+          <article class="system-card">
+            <div class="system-card__header">
+              <h3>IndexedDB Offline Mutation Queue (<code>dms_offline_db</code>)</h3>
+              <span class="badge" id="sync-queue-status-badge">Synced</span>
+            </div>
+            <p class="system-card__desc">
+              Every task toggle, bookmark, or itinerary change updates the UI immediately (optimistic UI) and records a mutation entry in IndexedDB. When connectivity returns, the Service Worker <code>sync</code> event flushes all pending records.
+            </p>
+            <div id="sync-queue-list" class="queue-list" aria-live="polite"></div>
+          </article>
+
+          <!-- Local Error Boundary Log Viewer -->
+          <article class="system-card">
+            <div class="system-card__header">
+              <h3>Local Runtime Error Boundary Log</h3>
+              <button type="button" id="btn-clear-errors" class="btn btn--sm btn--ghost">Clear Logs</button>
+            </div>
+            <p class="system-card__desc">
+              Captures uncaught runtime errors, rejected promises, and wrapped component faults into local persistent storage so field marketers never lose state.
+            </p>
+            <div id="error-log-list" class="queue-list" aria-live="polite"></div>
+          </article>
+        </div>
+
+        <!-- Complete 11-Point PWA Design & Layout Checklist Scorecard -->
+        <article class="system-card checklist-audit-card">
+          <div class="system-card__header">
+            <h3>Complete 11-Point PWA Design &amp; Layout Verification Matrix</h3>
+            <span class="badge badge--success">11 / 11 Categories Verified</span>
+          </div>
+          <div id="pwa-audit-checklist" class="audit-grid"></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <!-- Interactive Onboarding Coachmark Overlay -->
+  <div id="onboarding-overlay" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="onboarding-title" hidden>
+    <div class="modal-card">
+      <div class="modal-card__header">
+        <span class="badge badge--accent" id="onboarding-step-indicator">Step 1 of 4</span>
+        <button type="button" id="btn-close-onboarding" class="btn btn--icon" aria-label="Close onboarding guide">✕</button>
+      </div>
+      <h2 id="onboarding-title" class="modal-card__title">Welcome to the Digital Marketing Specialist Execution OS</h2>
+      <p id="onboarding-body" class="modal-card__body">
+        This Progressive Web App works 100% offline, installs to your iPhone or Android home screen, and equips you with 42+ concrete marketing SOPs, a campaign itinerary planner, a sensor-smoothed Compass HUD, and automatic IndexedDB Background Sync.
+      </p>
+      <ul class="onboarding-highlights" id="onboarding-List">
+        <li><strong>Tab 1 (Specialist Tasks):</strong> Fuzzy-searchable SOPs across 7 marketing pillars with 1-tap deep-link &amp; checklist copy.</li>
+        <li><strong>Tab 2 (Campaign Itinerary):</strong> Field &amp; launch schedule with JSON manual backups and print/PDF export.</li>
+        <li><strong>Tab 3 (Compass &amp; KPI HUD):</strong> DeviceOrientation bearing calculator with a Low-Pass Filter (α=0.18) to eliminate sensor jitter.</li>
+        <li><strong>Tab 4 (Sync &amp; PWA Audit):</strong> Offline IndexedDB queue, Battery Saver listener, Vibration haptics, and 11-point design scorecard.</li>
+      </ul>
+      <div class="modal-card__footer">
+        <button type="button" id="btn-onboarding-prev" class="btn btn--secondary" disabled>Previous</button>
+        <div class="onboarding-dots" id="onboarding-dots" aria-hidden="true">
+          <span class="dot is-active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <button type="button" id="btn-onboarding-next" class="btn btn--primary">Next Tip</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Custom Task / Itinerary Modal -->
+  <div id="custom-item-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="custom-modal-title" hidden>
+    <div class="modal-card">
+      <div class="modal-card__header">
+        <h2 id="custom-modal-title" class="modal-card__title">Add New Digital Marketing Task</h2>
+        <button type="button" id="btn-close-custom-modal" class="btn btn--icon" aria-label="Close modal">✕</button>
+      </div>
+      <form id="custom-item-form" class="form-stack">
+        <label class="form-field">
+          <span>Title *</span>
+          <input type="text" id="custom-title" class="input-control" required placeholder="e.g., Audit Q4 Google Performance Max Asset Groups" />
+        </label>
+        <div class="form-row">
+          <label class="form-field">
+            <span>Marketing Pillar</span>
+            <select id="custom-pillar" class="select-control">
+              <option value="SEO & Organic Search">SEO &amp; Organic Search</option>
+              <option value="Paid Media & PPC">Paid Media &amp; PPC</option>
+              <option value="Content & Social Media">Content &amp; Social Media</option>
+              <option value="Email & CRM Lifecycle">Email &amp; CRM Lifecycle</option>
+              <option value="CRO & Landing Page UX">CRO &amp; Landing Page UX</option>
+              <option value="Analytics & Attribution">Analytics &amp; Attribution</option>
+              <option value="Local & Field Event Ops">Local &amp; Field Event Ops</option>
+            </select>
+          </label>
+          <label class="form-field">
+            <span>Cadence</span>
+            <select id="custom-cadence" class="select-control">
+              <option value="Daily">Daily</option>
+              <option value="Weekly">Weekly</option>
+              <option value="Monthly">Monthly</option>
+              <option value="Campaign Launch">Campaign Launch</option>
+            </select>
+          </label>
+        </div>
+        <div class="form-row">
+          <label class="form-field">
+            <span>Target KPI / Deliverable</span>
+            <input type="text" id="custom-kpi" class="input-control" placeholder="e.g., CPA < $18.50, CTR >= 3.2%" />
+          </label>
+          <label class="form-field">
+            <span>GPS Coordinates / Location (Optional)</span>
+            <input type="text" id="custom-coords" class="input-control" placeholder="14.5547° N, 121.0244° E" />
+          </label>
+        </div>
+        <label class="form-field">
+          <span>Step-by-Step SOP Checklist (comma-separated)</span>
+          <textarea id="custom-steps" class="input-control" rows="3" placeholder="Verify UTM parameters, Check negative keyword list, Export search term report"></textarea>
+        </label>
+        <div class="modal-card__footer">
+          <button type="button" id="btn-cancel-custom" class="btn btn--secondary">Cancel</button>
+          <button type="submit" class="btn btn--primary">Save &amp; Queue Sync</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Accessible Toast Notification Region -->
+  <div id="toast-container" class="toast-container" role="status" aria-live="polite"></div>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>

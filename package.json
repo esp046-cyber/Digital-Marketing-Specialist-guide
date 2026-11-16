@@ -1,0 +1,20 @@
+{
+  "name": "digital-marketing-specialist-guide-pwa",
+  "version": "2.4.0",
+  "description": "Zero-build offline-first PWA for Digital Marketing Specialists with 4 tabs, IndexedDB Background Sync, Fuzzy Search, and Low-Pass Compass HUD.",
+  "homepage": "https://esp046-cyber.github.io/Digital-Marketing-Specialist-guide/",
+  "scripts": {
+    "start": "npx serve . -l 3000",
+    "test": "node tests/pwa-audit.test.js"
+  },
+  "keywords": [
+    "pwa",
+    "digital-marketing",
+    "seo",
+    "ppc",
+    "offline-first",
+    "indexeddb"
+  ],
+  "author": "Christian Tosita Espinosa (esp046-cyber)",
+  "license": "MIT"
+}

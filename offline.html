@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Offline Mode — Digital Marketing Specialist Guide PWA</title>
+  <meta name="theme-color" content="#0B1120" />
+  <link rel="icon" href="./favicon.ico" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="app-main" style="max-width: 680px; margin-top: 3rem;">
+    <section class="system-card">
+      <span class="status-pill status-pill--offline">Offline Fallback Active</span>
+      <h1 style="margin-top: 1rem;">You're Currently Offline — Your Marketing Workspace Is Safe</h1>
+      <p style="color: var(--text-secondary);">
+        All Digital Marketing Specialist tasks, SOP checklists, and campaign itinerary changes are stored locally in <strong>IndexedDB</strong> and queued for automatic <strong>Background Sync</strong> as soon as connectivity returns.
+      </p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.5rem;">
+        <a href="./index.html" class="btn btn--primary">Return to Cached Workspace</a>
+        <button type="button" onclick="window.location.reload()" class="btn btn--secondary">Retry Connection</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
