@@ -1,0 +1,452 @@
+[
+  {
+    "id": "dms-seo-01",
+    "title": "Technical Core Web Vitals & INP Audit",
+    "pillar": "SEO & Organic Search",
+    "cadence": "Weekly",
+    "priority": "Critical",
+    "kpi": "LCP < 2.5s, INP < 200ms, CLS < 0.10",
+    "tools": "Google Search Console, PageSpeed Insights, Screaming Frog",
+    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
+    "locationName": "Makati CBD Digital Hub",
+    "steps": [
+      "Export URL groups failing LCP or INP thresholds in Search Console",
+      "Verify hero image fetchpriority=high and preload critical fonts",
+      "Audit third-party GTM tags blocking main-thread hydration"
+    ],
+    "completed": false,
+    "bookmarked": true
+  },
+  {
+    "id": "dms-seo-02",
+    "title": "Canonical Tag, Indexation & Sitemap Hygiene Check",
+    "pillar": "SEO & Organic Search",
+    "cadence": "Weekly",
+    "priority": "High",
+    "kpi": "0 unintended noindex or canonical conflicts",
+    "tools": "Screaming Frog, XML Sitemap Validator, GSC Indexing Report",
+    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
+    "locationName": "Makati CBD Digital Hub",
+    "steps": [
+      "Crawl top 500 organic landing pages for self-referencing rel=canonical",
+      "Validate sitemap.xml HTTP 200 responses and remove 301/404 URLs",
+      "Inspect robots.txt crawl directives and submit updated sitemap"
+    ],
+    "completed": false,
+    "bookmarked": false
+  },
+  {
+    "id": "dms-seo-03",
+    "title": "High-Intent Commercial Keyword Gap & Content Cluster Mapping",
+    "pillar": "SEO & Organic Search",
+    "cadence": "Monthly",
+    "priority": "High",
+    "kpi": "+18% non-branded organic clicks QoQ",
+    "tools": "Ahrefs, Semrush, Google Keyword Planner",
+    "coords": "14.5869\u00b0 N, 121.0614\u00b0 E",
+    "locationName": "Ortigas Content Studio",
+    "steps": [
+      "Extract competitor ranking URLs in positions 1-5 where brand ranks 8-20",
+      "Group keywords by search intent (Informational, Commercial, Transactional)",
+      "Assign internal anchor links from high-DR pillar guides to money pages"
+    ],
+    "completed": true,
+    "bookmarked": true
+  },
+  {
+    "id": "dms-seo-04",
+    "title": "JSON-LD Structured Data & Rich Snippet Validation",
+    "pillar": "SEO & Organic Search",
+    "cadence": "Monthly",
+    "priority": "Medium",
+    "kpi": "100% valid Product, FAQ, and Organization schema",
+    "tools": "Schema Markup Validator, Google Rich Results Test",
+    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
+    "locationName": "Makati CBD Digital Hub",
+    "steps": [
+      "Validate Organization, BreadcrumbList, and FAQPage JSON-LD payloads",
+      "Fix missing priceValidUntil or aggregateRating warnings",
+      "Monitor SERP CTR lift on rich-result enabled templates"
+    ],
+    "completed": false,
+    "bookmarked": false
+  },
+  {
+    "id": "dms-seo-05",
+    "title": "Google Business Profile & Local Pack Citation Optimization",
+    "pillar": "SEO & Organic Search",
+    "cadence": "Weekly",
+    "priority": "High",
+    "kpi": "Top-3 Local Map Pack visibility within 5km radius",
+    "tools": "Google Business Profile Manager, BrightLocal",
+    "coords": "14.5507\u00b0 N, 121.0494\u00b0 E",
+    "locationName": "BGC High Street Flagship",
+    "steps": [
+      "Audit NAP (Name, Address, Phone) consistency across local directories",
+      "Publish weekly geotagged update with UTM-tracked appointment link",
+      "Respond to all new customer reviews within 24 hours"
+    ],
+    "completed": false,
+    "bookmarked": false
+  },
+  {
+    "id": "dms-ppc-01",
+    "title": "Google Ads Search Term Mining & Negative Keyword Pruning",
+    "pillar": "Paid Media & PPC",
+    "cadence": "Daily",
+    "priority": "Critical",
+    "kpi": "Reduce wasted ad spend by >= 15%",
+    "tools": "Google Ads Editor, Search Terms Report",
+    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
+    "locationName": "Makati Performance Desk",
+    "steps": [
+      "Filter search terms with >25 clicks and 0 conversions over 14 days",
+      "Add irrelevant queries to shared Account-Level Negative Keyword lists",
+      "Promote converting long-tail queries into exact/phrase match ad groups"
+    ],
+    "completed": true,
+    "bookmarked": true
+  },
+  {
+    "id": "dms-ppc-02",
+    "title": "Performance Max (PMax) Asset Group & Feed Diagnostics",
+    "pillar": "Paid Media & PPC",
+    "cadence": "Weekly",
+    "priority": "High",
+    "kpi": "Blended ROAS >= 4.2x, Ad Strength 'Excellent'",
+    "tools": "Google Ads, Google Merchant Center",
+    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
+    "locationName": "Makati Performance Desk",
+    "steps": [
+      "Replace 'Low' performing headlines, descriptions, and portrait videos",
+      "Check Merchant Center for disapproved SKUs or price mismatches",
+      "Verify audience signal lists include high-LTV customer match segments"
+    ],
+    "completed": false,
+    "bookmarked": false
+  },
+  {
+    "id": "dms-ppc-03",
+    "title": "Meta & TikTok Paid Social Creative Fatigue & Thumbstop Audit",
+    "pillar": "Paid Media & PPC",
+    "cadence": "Weekly",
+    "priority": "Critical",
+    "kpi": "3-Second Thumbstop Rate >= 30%, Hold Rate >= 12%",
+    "tools": "Meta Ads Manager, TikTok Ads Manager, Motion Analytics",
+    "coords": "14.5869\u00b0 N, 121.0614\u00b0 E",
+    "locationName": "Ortigas Creator Studio",
+    "steps": [
+      "Flag ad sets where frequency > 3.2 and CPA rose >20% over 7 days",
+      "Swap first 3-second visual hooks on top-spending UGC video concepts",
+      "Verify Conversions API (CAPI) Event Match Quality score >= 8.0/10"
+    ],
+    "completed": false,
+    "bookmarked": true
+  },
+  {
+    "id": "dms-ppc-04",
+    "title": "Cross-Channel Budget Pacing & ROAS Guardrail Reallocation",
+    "pillar": "Paid Media & PPC",
+    "cadence": "Daily",
+    "priority": "Critical",
+    "kpi": "Monthly spend pacing within +/- 3% of target budget",
+    "tools": "Looker Studio Pacing Sheet, Google Ads, Meta Ads, LinkedIn Campaign Manager",
+    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
+    "locationName": "Makati Performance Desk",
+    "steps": [
+      "Compare month-to-date spend against linear and day-of-week weighted targets",
+      "Shift 10-15% daily budget from under-pacing high-CPA ad sets to top ROAS winners",
+      "Check automated bid strategy learning statuses and cap anomalies"
+    ],
+    "completed": true,
+    "bookmarked": false
+  },
+  {
+    "id": "dms-ppc-05",
+    "title": "Retargeting Audience Exclusion & Burn-Pixel Verification",
+    "pillar": "Paid Media & PPC",
+    "cadence": "Campaign Launch",
+    "priority": "High",
+    "kpi": "0% budget wasted on existing converted buyers",
+    "tools": "Google Tag Manager, Meta Audiences, LinkedIn Insight Tag",
+    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
+    "locationName": "Makati Performance Desk",
+    "steps": [
+      "Exclude 30-day and 180-day purchasers from prospecting ad sets",
+      "Segment cart abandoners (0-3 days, 4-14 days, 15-30 days) with tailored offers",
+      "Test checkout confirmation pixel firing in GTM Preview mode"
+    ],
+    "completed": false,
+    "bookmarked": false
+  },
+  {
+    "id": "dms-soc-01",
+    "title": "Short-Form Vertical Video (Reels / TikTok / Shorts) Hook Scripting",
+    "pillar": "Content & Social Media",
+    "cadence": "Weekly",
+    "priority": "High",
+    "kpi": "Average watch time >= 65% of video duration",
+    "tools": "CapCut Pro, Notion Editorial Board, Frame.io",
+    "coords": "14.5869\u00b0 N, 121.0614\u00b0 E",
+    "locationName": "Ortigas Creator Studio",
+    "steps": [
+      "Draft 3 visual + verbal hook variations for each core product pain point",
+      "Include burned-in accessible captions within safe-area margins",
+      "Attach pinned comment CTA with tracked short link"
+    ],
+    "completed": false,
+    "bookmarked": false
+  },
+  {
+    "id": "dms-soc-02",
+    "title": "Omnichannel Editorial Pillar Calendar & Asset repurposing",
+    "pillar": "Content & Social Media",
+    "cadence": "Weekly",
+    "priority": "Medium",
+    "kpi": "100% on-time publishing across LinkedIn, IG, TikTok, and YouTube",
+    "tools": "Buffer / Sprout Social, Figma Brand Kit",
+    "coords": "14.5869\u00b0 N, 121.0614\u00b0 E",
+    "locationName": "Ortigas Creator Studio",
+    "steps": [
+      "Atomize 1 long-form research webinar or whitepaper into 5 carousels and 4 reels",
+      "Verify OpenGraph preview cards and alt-text on all scheduled links",
+      "Align publishing slots with audience peak engagement heatmaps"
+    ],
+    "completed": false,
+    "bookmarked": false
+  },
+  {
+    "id": "dms-soc-03",
+    "title": "Creator / Influencer Whitelisting & Spark Ads Rights Briefing",
+    "pillar": "Content & Social Media",
+    "cadence": "Campaign Launch",
+    "priority": "High",
+    "kpi": "Creator content CPA 25% lower than studio brand ads",
+    "tools": "TikTok Spark Ads, Meta Branded Content Tool, Creator CRM",
+    "coords": "14.5507\u00b0 N, 121.0494\u00b0 E",
+    "locationName": "BGC High Street Studio",
+    "steps": [
+      "Deliver creative brief with mandatory FTC/DTI disclosure guidelines",
+      "Secure 90-day Spark Ads authorization codes and Paid Partnership permissions",
+      "Track individual creator promo codes and UTM landing page conversions"
+    ],
+    "completed": false,
+    "bookmarked": false
+  },
+  {
+    "id": "dms-soc-04",
+    "title": "Community Sentiment Triage & Social Listening Escalation",
+    "pillar": "Content & Social Media",
+    "cadence": "Daily",
+    "priority": "Medium",
+    "kpi": "Median response SLA < 45 minutes during business hours",
+    "tools": "Brandwatch, Sprout Social Inbox, Slack Escalation Webhook",
+    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
+    "locationName": "Makati CBD Digital Hub",
+    "steps": [
+      "Review brand mentions, untagged product keywords, and competitor outage threads",
+      "Hide spam/bot phishing comments on high-spend dark posts",
+      "Log recurring product questions into the SEO & FAQ content backlog"
+    ],
+    "completed": true,
+    "bookmarked": false
+  },
+  {
+    "id": "dms-crm-01",
+    "title": "Automated Welcome, Cart Abandonment & Win-Back Flow QA",
+    "pillar": "Email & CRM Lifecycle",
+    "cadence": "Weekly",
+    "priority": "Critical",
+    "kpi": "Lifecycle automated flows generating >= 28% of email revenue",
+    "tools": "Klaviyo / HubSpot, Litmus Email Preview",
+    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
+    "locationName": "Makati CRM Ops Desk",
+    "steps": [
+      "Test dynamic cart item liquid variables across mobile dark/light clients",
+      "Verify smart-sending window (16h) prevents overlapping newsletter blasts",
+      "A/B test plain-text founder note vs visual product card on step 2"
+    ],
+    "completed": false,
+    "bookmarked": true
+  },
+  {
+    "id": "dms-crm-02",
+    "title": "DMARC, DKIM, SPF & Postmaster Deliverability Health Check",
+    "pillar": "Email & CRM Lifecycle",
+    "cadence": "Monthly",
+    "priority": "Critical",
+    "kpi": "Spam complaint rate < 0.08%, bounce rate < 0.5%",
+    "tools": "Google Postmaster Tools, MXToolbox, Yahoo Sender Hub",
+    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
+    "locationName": "Makati CRM Ops Desk",
+    "steps": [
+      "Verify DMARC p=quarantine/reject alignment and one-click List-Unsubscribe headers",
+      "Sunset unengaged profiles (90+ days zero opens/clicks) into suppression segment",
+      "Monitor domain & IP reputation in Google Postmaster Tools"
+    ],
+    "completed": false,
+    "bookmarked": false
+  },
+  {
+    "id": "dms-crm-03",
+    "title": "RFM (Recency, Frequency, Monetary) VIP Cohort Segmentation",
+    "pillar": "Email & CRM Lifecycle",
+    "cadence": "Monthly",
+    "priority": "High",
+    "kpi": "+22% repeat purchase rate among VIP and At-Risk cohorts",
+    "tools": "Klaviyo / Braze, BigQuery Customer Warehouse",
+    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
+    "locationName": "Makati CRM Ops Desk",
+    "steps": [
+      "Sync top 10% LTV buyers to Meta & Google Ads for Lookalike/Similar seeding",
+      "Trigger early-access VIP product drop SMS/Email 24h before public launch",
+      "Launch 60-day replenishment reminder tied to average product consumption cycle"
+    ],
+    "completed": false,
+    "bookmarked": false
+  },
+  {
+    "id": "dms-cro-01",
+    "title": "Mobile Landing Page Above-the-Fold & Touch Target CRO Audit",
+    "pillar": "CRO & Landing Page UX",
+    "cadence": "Weekly",
+    "priority": "Critical",
+    "kpi": "Landing page conversion rate >= 4.8% on mobile devices",
+    "tools": "Microsoft Clarity, Hotjar, Chrome DevTools Device Mode",
+    "coords": "14.5507\u00b0 N, 121.0494\u00b0 E",
+    "locationName": "BGC UX Lab",
+    "steps": [
+      "Verify primary CTA button is >= 44x44px and visible without scrolling on 375px screens",
+      "Inspect rage-click and dead-click heatmaps on mobile sticky bars",
+      "Ensure message match between ad headline and landing page H1"
+    ],
+    "completed": true,
+    "bookmarked": true
+  },
+  {
+    "id": "dms-cro-02",
+    "title": "Checkout & Lead Form Field Friction Reduction Experiment",
+    "pillar": "CRO & Landing Page UX",
+    "cadence": "Monthly",
+    "priority": "High",
+    "kpi": "-18% form abandonment rate, statistical power >= 80%",
+    "tools": "VWO / GrowthBook, GA4 Funnel Exploration",
+    "coords": "14.5507\u00b0 N, 121.0494\u00b0 E",
+    "locationName": "BGC UX Lab",
+    "steps": [
+      "Enable autofill autocomplete attributes and numeric keypad on phone/ZIP inputs",
+      "Replace multi-field address entry with single-field autocomplete lookup",
+      "Measure step-to-step drop-off in GA4 checkout funnel report"
+    ],
+    "completed": false,
+    "bookmarked": false
+  },
+  {
+    "id": "dms-cro-03",
+    "title": "Social Proof, Trust Badge & Risk-Reversal Split Test",
+    "pillar": "CRO & Landing Page UX",
+    "cadence": "Campaign Launch",
+    "priority": "Medium",
+    "kpi": "+12% add-to-cart or demo booking rate",
+    "tools": "GrowthBook, Okendo / Trustpilot Widget",
+    "coords": "14.5507\u00b0 N, 121.0494\u00b0 E",
+    "locationName": "BGC UX Lab",
+    "steps": [
+      "Place verified customer review count and star rating directly beneath H1",
+      "Add clear shipping/refund guarantee microcopy adjacent to primary checkout CTA",
+      "Run test for minimum 2 business cycles before declaring significance"
+    ],
+    "completed": false,
+    "bookmarked": false
+  },
+  {
+    "id": "dms-ana-01",
+    "title": "GA4 + GTM Server-Side Event & Enhanced Conversions Verification",
+    "pillar": "Analytics & Attribution",
+    "cadence": "Weekly",
+    "priority": "Critical",
+    "kpi": "< 3% discrepancy between backend orders and GA4 purchase events",
+    "tools": "Google Tag Manager, GA4 DebugView, Stape Server GTM",
+    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
+    "locationName": "Makati Analytics Command",
+    "steps": [
+      "Audit transaction_id deduplication between browser pixel and server CAPI",
+      "Verify SHA-256 hashed email/phone payload on Enhanced Conversions",
+      "Check Consent Mode v2 (ad_storage, analytics_storage) regional signaling"
+    ],
+    "completed": false,
+    "bookmarked": true
+  },
+  {
+    "id": "dms-ana-02",
+    "title": "Strict UTM Taxonomy & Campaign Deep-Link Governance Audit",
+    "pillar": "Analytics & Attribution",
+    "cadence": "Weekly",
+    "priority": "High",
+    "kpi": "Unassigned / Direct traffic share < 8% of campaign sessions",
+    "tools": "UTM Governance Sheet, GA4 Traffic Acquisition Report",
+    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
+    "locationName": "Makati Analytics Command",
+    "steps": [
+      "Enforce lowercase snake_case across utm_source, utm_medium, and utm_campaign",
+      "Audit bio links, QR codes, and email footers for stripped query parameters",
+      "Copy and validate canonical deep links using the built-in Clipboard Utility"
+    ],
+    "completed": false,
+    "bookmarked": false
+  },
+  {
+    "id": "dms-ana-03",
+    "title": "Executive Looker Studio MER (Marketing Efficiency Ratio) Briefing",
+    "pillar": "Analytics & Attribution",
+    "cadence": "Weekly",
+    "priority": "High",
+    "kpi": "Blended MER >= 3.8x, New Customer CAC within target threshold",
+    "tools": "Looker Studio, BigQuery, Supermetrics",
+    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
+    "locationName": "Makati Analytics Command",
+    "steps": [
+      "Reconcile total net revenue against total paid media + agency/creator spend",
+      "Annotate algorithm updates, promo windows, and stockouts on trend charts",
+      "Export executive PDF summary and distribute to leadership"
+    ],
+    "completed": false,
+    "bookmarked": false
+  },
+  {
+    "id": "dms-loc-01",
+    "title": "OOH Digital Billboard & Transit QR Attribution Field Inspection",
+    "pillar": "Local & Field Event Ops",
+    "cadence": "Campaign Launch",
+    "priority": "High",
+    "kpi": "100% QR scan resolution & sightline verification at target bearing",
+    "tools": "PWA Compass HUD, Dynamic QR Shortener, GA4 Real-Time",
+    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
+    "locationName": "Makati Ayala Avenue OOH Site",
+    "steps": [
+      "Use Tab 3 Compass HUD (low-pass filtered bearing) to verify billboard orientation",
+      "Scan live QR code from 15m pedestrian sightline and confirm UTM firing",
+      "Capture timestamped field verification photo and copy GPS coordinates"
+    ],
+    "completed": false,
+    "bookmarked": true
+  },
+  {
+    "id": "dms-loc-02",
+    "title": "Tech Summit & Brand Pop-Up Lead Capture Offline Sync Drill",
+    "pillar": "Local & Field Event Ops",
+    "cadence": "Campaign Launch",
+    "priority": "Critical",
+    "kpi": "100% booth leads queued in IndexedDB & synced within 5m of Wi-Fi reconnect",
+    "tools": "PWA Offline Queue (IndexedDB), Background Sync API, HubSpot Webhook",
+    "coords": "14.5605\u00b0 N, 121.0103\u00b0 E",
+    "locationName": "iACADEMY Auditorium Tech Summit Booth",
+    "steps": [
+      "Test airplane-mode lead & task capture in congested convention hall",
+      "Enable Battery Saver mode if tablet/iPhone drops below 20% charge",
+      "Reconnect to network and verify automatic Background Sync flush"
+    ],
+    "completed": false,
+    "bookmarked": true
+  }
+]
