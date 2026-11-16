@@ -5,7 +5,7 @@
    - Background Sync ('sync-marketing-actions') to flush IndexedDB offline queue
    ========================================================================== */
 
-const CACHE_NAME = 'dms-guide-pwa-v2.4.0';
+const CACHE_NAME = 'dms-marketing-guide-v3.0.0';
 const CORE_ASSETS = [
   './',
   './index.html',
@@ -23,7 +23,10 @@ const CORE_ASSETS = [
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(CORE_ASSETS)).then(() => self.skipWaiting())
+    caches.open(CACHE_NAME).then(async (cache) => {
+      await Promise.allSettled(CORE_ASSETS.map((url) => cache.add(url)));
+      return self.skipWaiting();
+    })
   );
 });
 

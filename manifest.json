@@ -1,18 +1,17 @@
 {
-  "name": "Digital Marketing Specialist Guide \u2014 Execution OS",
-  "short_name": "DMS Guide",
-  "description": "Complete Digital Marketing Specialist task list, campaign itinerary planner, low-pass Compass HUD, and offline-first PWA.",
+  "name": "Digital Marketing Specialist Guide",
+  "short_name": "Marketing Guide",
+  "description": "Step-by-step Digital Marketing Specialist tasks, content planner, plain-English marketing glossary, and ROAS/ROI calculators.",
   "id": "/Digital-Marketing-Specialist-guide/",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#0B1120",
-  "theme_color": "#0B1120",
+  "background_color": "#0F172A",
+  "theme_color": "#0F172A",
   "categories": [
     "business",
     "productivity",
-    "utilities",
     "education"
   ],
   "icons": [
@@ -29,27 +28,9 @@
       "purpose": "any maskable"
     }
   ],
-  "screenshots": [
-    {
-      "src": "./screenshots/mobile-dashboard.png",
-      "sizes": "750x1334",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Digital Marketing Specialist Tasks & Mobile Bottom Navigation"
-    },
-    {
-      "src": "./screenshots/desktop-overview.png",
-      "sizes": "1280x800",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Desktop Campaign Execution OS & Sensor HUD"
-    }
-  ],
   "shortcuts": [
     {
-      "name": "1. Specialist Task List",
-      "short_name": "Tasks",
-      "description": "Open the 7-pillar Digital Marketing Specialist task checklist",
+      "name": "01. Daily Tasks",
       "url": "./index.html#tasks",
       "icons": [
         {
@@ -59,10 +40,8 @@
       ]
     },
     {
-      "name": "2. Campaign Itinerary",
-      "short_name": "Itinerary",
-      "description": "Open campaign launch & field marketing itinerary",
-      "url": "./index.html#itinerary",
+      "name": "02. Content Planner",
+      "url": "./index.html#planner",
       "icons": [
         {
           "src": "./icon-192.png",
@@ -71,10 +50,8 @@
       ]
     },
     {
-      "name": "3. Field Compass HUD",
-      "short_name": "HUD",
-      "description": "Open DeviceOrientation Compass & live KPI HUD",
-      "url": "./index.html#hud",
+      "name": "03. Marketing Terms",
+      "url": "./index.html#glossary",
       "icons": [
         {
           "src": "./icon-192.png",
@@ -83,10 +60,8 @@
       ]
     },
     {
-      "name": "4. Offline Sync & Audit",
-      "short_name": "Sync",
-      "description": "Inspect IndexedDB offline queue and PWA checklist",
-      "url": "./index.html#system",
+      "name": "04. Calculators",
+      "url": "./index.html#calculators",
       "icons": [
         {
           "src": "./icon-192.png",

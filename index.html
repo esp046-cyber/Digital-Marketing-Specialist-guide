@@ -1,33 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-active-tab="tasks">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Digital Marketing Specialist Guide — Execution OS &amp; Field PWA</title>
-  <meta name="description" content="Complete Digital Marketing Specialist task matrix, campaign itinerary planner, DeviceOrientation Compass HUD, and offline-first PWA toolkit." />
-  <meta name="theme-color" id="dynamic-theme-color" content="#0B1120" />
+  <title>Digital Marketing Specialist Guide — Tasks, Planner, Glossary &amp; Calculators</title>
+  <meta name="description" content="Complete Digital Marketing Specialist Guide with daily checklists, content calendar planner, plain-English marketing dictionary, and instant ROI/ROAS calculators." />
+  <meta name="theme-color" id="dynamic-theme-color" content="#0F172A" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="DMS Guide" />
+  <meta name="apple-mobile-web-app-title" content="Marketing Guide" />
   <meta name="application-name" content="Digital Marketing Specialist Guide" />
   <meta name="msapplication-config" content="./browserconfig.xml" />
 
   <!-- Canonical & OpenGraph Social Media Metadata -->
   <link rel="canonical" href="https://esp046-cyber.github.io/Digital-Marketing-Specialist-guide/" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Digital Marketing Specialist Guide PWA" />
-  <meta property="og:title" content="Digital Marketing Specialist Guide — Complete Execution OS &amp; Field HUD" />
-  <meta property="og:description" content="42+ specific Digital Marketing Specialist SOPs across 7 pillars, offline IndexedDB Background Sync, Fuzzy Search, Campaign Itinerary PDF exporter, and Low-Pass Compass HUD." />
+  <meta property="og:site_name" content="Digital Marketing Specialist Guide" />
+  <meta property="og:title" content="Digital Marketing Specialist Guide — Checklists, Glossary &amp; ROI Calculators" />
+  <meta property="og:description" content="Practical step-by-step digital marketing task checklists, weekly content planner, easy-to-understand marketing terms, and ad budget calculators." />
   <meta property="og:url" content="https://esp046-cyber.github.io/Digital-Marketing-Specialist-guide/" />
   <meta property="og:image" content="https://esp046-cyber.github.io/Digital-Marketing-Specialist-guide/assets/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Digital Marketing Specialist Guide PWA Preview" />
+  <meta property="og:image:alt" content="Digital Marketing Specialist Guide Preview" />
 
   <!-- Twitter Card Metadata -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Digital Marketing Specialist Guide — Complete Execution OS" />
-  <meta name="twitter:description" content="Complete Digital Marketing Specialist task list, campaign itinerary backup/print utility, and sensor HUD in an installable offline PWA." />
+  <meta name="twitter:title" content="Digital Marketing Specialist Guide" />
+  <meta name="twitter:description" content="Step-by-step digital marketing tasks, content planner, plain-English glossary, and ROAS/ROI calculators." />
   <meta name="twitter:image" content="https://esp046-cyber.github.io/Digital-Marketing-Specialist-guide/assets/og-image.png" />
 
   <!-- Icons & Manifest -->
@@ -38,204 +38,181 @@
   <link rel="stylesheet" href="./style.css" />
   <style>[hidden] { display: none !important; }</style>
 </head>
-<body>
-  <a href="#main-content" class="skip-link">Skip to main workspace</a>
+<body data-active-tab="tasks">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Runtime Error Boundary Alert Banner (Hidden unless exception occurs) -->
-  <aside id="error-boundary-banner" class="error-banner" role="alert" aria-live="assertive" hidden>
-    <div class="error-banner__content">
-      <span class="badge badge--danger">Runtime Exception Captured</span>
-      <p id="error-boundary-message">An unexpected error occurred and was logged locally.</p>
-    </div>
-    <div class="error-banner__actions">
-      <button type="button" id="btn-view-error-log" class="btn btn--sm btn--ghost">Inspect Log</button>
-      <button type="button" id="btn-dismiss-error" class="btn btn--sm btn--secondary">Dismiss</button>
-    </div>
-  </aside>
-
-  <!-- App Shell Header -->
+  <!-- App Header -->
   <header class="app-header" role="banner">
     <div class="app-header__brand">
-      <img src="./icon-192.png" alt="DMS Guide emblem" class="app-header__logo" width="40" height="40" />
+      <img src="./icon-192.png" alt="Marketing Guide logo" class="app-header__logo" width="40" height="40" />
       <div>
         <div class="app-header__eyebrow">
-          <span>EXECUTION OS v2.4</span>
-          <span id="network-status-pill" class="status-pill status-pill--online" aria-live="polite">Online</span>
-          <span id="battery-status-pill" class="status-pill" aria-live="polite" title="Battery &amp; Power Saver Monitor">Battery: 100%</span>
+          <span>DIGITAL MARKETING PLAYBOOK</span>
+          <span id="network-status-pill" class="status-pill status-pill--online" aria-live="polite">Saved on Device</span>
         </div>
         <h1 class="app-header__title">Digital Marketing Specialist Guide</h1>
       </div>
     </div>
 
     <div class="app-header__controls">
-      <button type="button" id="btn-install-pwa" class="btn btn--primary btn--sm" hidden aria-label="Install App to Home Screen">
+      <button type="button" id="btn-install-pwa" class="btn btn--primary btn--sm" hidden>
         + Install App
       </button>
-      <button type="button" id="btn-open-onboarding" class="btn btn--secondary btn--sm" aria-label="Open Interactive Guide Tour">
-        Tour &amp; HUD Guide
+      <button type="button" id="btn-open-onboarding" class="btn btn--secondary btn--sm">
+        Quick Start Guide
       </button>
-      <button type="button" id="btn-copy-deeplink" class="btn btn--secondary btn--sm" aria-label="Copy current view deep link">
-        Copy Deep Link
+      <button type="button" id="btn-copy-deeplink" class="btn btn--secondary btn--sm">
+        Share Link
       </button>
-      <button type="button" id="btn-theme-toggle" class="btn btn--icon" aria-label="Cycle color theme (Dark / Light / High Contrast)" title="Switch Theme">
-        <span id="theme-icon-label" aria-hidden="true">Theme</span>
+      <button type="button" id="btn-theme-toggle" class="btn btn--secondary btn--sm" aria-label="Switch color theme">
+        <span id="theme-icon-label">Theme: DARK</span>
       </button>
     </div>
   </header>
 
   <div class="app-layout">
-    <!-- Primary 4-Tab Navigation (Bottom Bar on Mobile, Left Sidebar on Desktop) -->
-    <nav class="app-nav" role="navigation" aria-label="Primary Workspace Sections">
-      <button type="button" class="nav-tab is-active" data-tab="tasks" data-theme-color="#0B1120" role="tab" aria-selected="true" aria-controls="panel-tasks" id="tab-btn-tasks">
+    <!-- 4 Pure Digital Marketing Navigation Tabs -->
+    <nav class="app-nav" role="navigation" aria-label="Marketing Guide Navigation">
+      <button type="button" class="nav-tab is-active" data-tab="tasks" role="tab" aria-selected="true" aria-controls="panel-tasks" id="tab-btn-tasks">
         <span class="nav-tab__icon" aria-hidden="true">01</span>
-        <span class="nav-tab__label">Specialist Tasks</span>
-        <span class="nav-tab__badge" id="nav-badge-tasks">0/32</span>
+        <span class="nav-tab__label">Daily Tasks</span>
+        <span class="nav-tab__badge" id="nav-badge-tasks">5/18</span>
       </button>
 
-      <button type="button" class="nav-tab" data-tab="itinerary" data-theme-color="#1E1B4B" role="tab" aria-selected="false" aria-controls="panel-itinerary" id="tab-btn-itinerary">
+      <button type="button" class="nav-tab" data-tab="planner" role="tab" aria-selected="false" aria-controls="panel-planner" id="tab-btn-planner">
         <span class="nav-tab__icon" aria-hidden="true">02</span>
-        <span class="nav-tab__label">Campaign Itinerary</span>
-        <span class="nav-tab__badge" id="nav-badge-itinerary">8</span>
+        <span class="nav-tab__label">Content Planner</span>
+        <span class="nav-tab__badge" id="nav-badge-planner">6 Days</span>
       </button>
 
-      <button type="button" class="nav-tab" data-tab="hud" data-theme-color="#064E3B" role="tab" aria-selected="false" aria-controls="panel-hud" id="tab-btn-hud">
+      <button type="button" class="nav-tab" data-tab="glossary" role="tab" aria-selected="false" aria-controls="panel-glossary" id="tab-btn-glossary">
         <span class="nav-tab__icon" aria-hidden="true">03</span>
-        <span class="nav-tab__label">Compass &amp; KPI HUD</span>
-        <span class="nav-tab__badge" id="nav-badge-hud">LIVE</span>
+        <span class="nav-tab__label">Marketing Terms</span>
+        <span class="nav-tab__badge" id="nav-badge-glossary">24 Terms</span>
       </button>
 
-      <button type="button" class="nav-tab" data-tab="system" data-theme-color="#3B0764" role="tab" aria-selected="false" aria-controls="panel-system" id="tab-btn-system">
+      <button type="button" class="nav-tab" data-tab="calculators" role="tab" aria-selected="false" aria-controls="panel-calculators" id="tab-btn-calculators">
         <span class="nav-tab__icon" aria-hidden="true">04</span>
-        <span class="nav-tab__label">Sync &amp; PWA Audit</span>
-        <span class="nav-tab__badge" id="nav-badge-sync">0 Queued</span>
+        <span class="nav-tab__label">Calculators</span>
+        <span class="nav-tab__badge" id="nav-badge-calculators">6 Tools</span>
       </button>
     </nav>
 
-    <!-- Main Workspace Container -->
+    <!-- Main Workspace -->
     <main id="main-content" class="app-main" role="main">
-      <!-- KPI Overview Ribbon -->
-      <section class="kpi-ribbon" aria-label="Executive Progress Summary">
+      <!-- Top Summary Bar (Shown on Tab 01 Tasks) -->
+      <section class="kpi-ribbon" id="summary-ribbon" aria-label="Marketing Progress Summary">
         <article class="kpi-card">
-          <span class="kpi-card__label">Task Completion Rate</span>
-          <strong class="kpi-card__value" id="metric-completion-pct">0%</strong>
-          <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="metric-progressbar">
-            <div class="progress-bar__fill" id="metric-progress-fill" style="width: 0%"></div>
+          <span class="kpi-card__label">Checklist Progress</span>
+          <strong class="kpi-card__value" id="metric-completion-pct">28% (5/18)</strong>
+          <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="28" id="metric-progressbar">
+            <div class="progress-bar__fill" id="metric-progress-fill" style="width: 28%"></div>
           </div>
         </article>
         <article class="kpi-card">
-          <span class="kpi-card__label">Bookmarked SOPs &amp; Stops</span>
-          <strong class="kpi-card__value" id="metric-bookmarked-count">0</strong>
-          <span class="kpi-card__sub" id="metric-bookmarked-sub">Haptic-confirmed critical items</span>
+          <span class="kpi-card__label">Saved Favorites</span>
+          <strong class="kpi-card__value" id="metric-bookmarked-count">11 Saved</strong>
+          <span class="kpi-card__sub">Starred tasks &amp; campaign days</span>
         </article>
         <article class="kpi-card">
-          <span class="kpi-card__label">Offline Sync Queue</span>
-          <strong class="kpi-card__value" id="metric-sync-count">0 Pending</strong>
-          <span class="kpi-card__sub" id="metric-sync-sub">IndexedDB + Background Sync ready</span>
+          <span class="kpi-card__label">Marketing Dictionary</span>
+          <strong class="kpi-card__value">24 Easy Terms</strong>
+          <span class="kpi-card__sub">Plain-English definitions &amp; examples</span>
         </article>
         <article class="kpi-card">
-          <span class="kpi-card__label">Power &amp; Sensor Profile</span>
-          <strong class="kpi-card__value" id="metric-power-mode">Standard</strong>
-          <span class="kpi-card__sub" id="metric-power-sub">Full animations &amp; 60Hz HUD filter</span>
+          <span class="kpi-card__label">Instant Calculators</span>
+          <strong class="kpi-card__value">ROAS, CPC &amp; ROI</strong>
+          <span class="kpi-card__sub">Tap Tab 04 to calculate numbers</span>
         </article>
       </section>
 
       <!-- =================================================================
-           TAB 1: DIGITAL MARKETING SPECIALIST TASK MATRIX
+           TAB 01: DIGITAL MARKETING SPECIALIST DAILY & WEEKLY TASKS
            ================================================================= -->
       <section id="panel-tasks" class="tab-panel is-active" role="tabpanel" aria-labelledby="tab-btn-tasks">
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">1. Digital Marketing Specialist Complete Task Matrix</h2>
+            <h2 class="panel-title">01. Digital Marketing Specialist Task Checklist</h2>
             <p class="panel-subtitle">
-              Actionable SOP checklist across SEO, Paid Media (PPC), Social &amp; Content, Email/CRM Automation, CRO, Analytics Attribution, and Local Field Marketing. Typo-tolerant fuzzy search included.
+              Step-by-step daily, weekly, and monthly marketing tasks written in plain, easy-to-follow language. Check off completed tasks or add your own custom checklist items.
             </p>
           </div>
           <div class="panel-actions">
-            <button type="button" id="btn-add-custom-task" class="btn btn--primary">+ Add Custom Task</button>
-            <button type="button" id="btn-print-tasks" class="btn btn--secondary">Print / PDF Summary</button>
+            <button type="button" id="btn-add-custom-task" class="btn btn--primary">+ Add New Task</button>
+            <button type="button" id="btn-print-tasks" class="btn btn--secondary">Print / Save PDF</button>
           </div>
         </div>
 
-        <!-- Search & Fuzzy Filter Bar -->
+        <!-- Search & Filter Bar -->
         <div class="filter-bar" role="search">
           <div class="search-input-wrap">
-            <label for="task-search-input" class="sr-only">Fuzzy search tasks, tools, local hubs, or KPIs</label>
+            <label for="task-search-input" class="sr-only">Search marketing tasks</label>
             <input
               type="search"
               id="task-search-input"
               class="input-control"
-              placeholder="Fuzzy search (try typos like 'gogle adwords', 'canoncal', 'tiktk', 'bgc manila')..."
+              placeholder="Search tasks (e.g., 'Google Ads', 'Reels', 'email', 'page speed')..."
               autocomplete="off"
             />
-            <span id="fuzzy-match-indicator" class="fuzzy-badge" hidden>Fuzzy Match Active</span>
+            <span id="fuzzy-match-indicator" class="fuzzy-badge" hidden>Typo-Smart Match</span>
           </div>
 
           <div class="filter-selects">
-            <label for="filter-pillar" class="sr-only">Filter by Marketing Pillar</label>
+            <label for="filter-pillar" class="sr-only">Filter by Marketing Area</label>
             <select id="filter-pillar" class="select-control">
-              <option value="ALL">All 7 Marketing Pillars</option>
-              <option value="SEO & Organic Search">SEO &amp; Organic Search</option>
-              <option value="Paid Media & PPC">Paid Media &amp; PPC</option>
-              <option value="Content & Social Media">Content &amp; Social Media</option>
-              <option value="Email & CRM Lifecycle">Email &amp; CRM Lifecycle</option>
-              <option value="CRO & Landing Page UX">CRO &amp; Landing Page UX</option>
-              <option value="Analytics & Attribution">Analytics &amp; Attribution</option>
-              <option value="Local & Field Event Ops">Local &amp; Field Event Ops</option>
+              <option value="ALL">All Marketing Areas (6)</option>
+              <option value="Website & SEO">Website &amp; SEO</option>
+              <option value="Paid Ads">Paid Ads (Google, Meta, TikTok)</option>
+              <option value="Social Media & Content">Social Media &amp; Content</option>
+              <option value="Email & Customer Follow-Up">Email &amp; Customer Follow-Up</option>
+              <option value="Sales Page & Conversion">Sales Page &amp; Conversion</option>
+              <option value="Tracking & Results">Tracking &amp; Results</option>
             </select>
 
-            <label for="filter-cadence" class="sr-only">Filter by Cadence</label>
+            <label for="filter-cadence" class="sr-only">Filter by Schedule</label>
             <select id="filter-cadence" class="select-control">
-              <option value="ALL">All Cadences</option>
-              <option value="Daily">Daily Ops</option>
-              <option value="Weekly">Weekly Sprint</option>
-              <option value="Monthly">Monthly Audit</option>
+              <option value="ALL">All Schedules</option>
+              <option value="Daily">Daily Tasks</option>
+              <option value="Weekly">Weekly Tasks</option>
+              <option value="Monthly">Monthly Tasks</option>
               <option value="Campaign Launch">Campaign Launch</option>
             </select>
 
             <label for="filter-status" class="sr-only">Filter by Status</label>
             <select id="filter-status" class="select-control">
-              <option value="ALL">All Statuses</option>
-              <option value="PENDING">Pending Only</option>
+              <option value="ALL">Show All Tasks</option>
+              <option value="PENDING">To-Do Only</option>
               <option value="COMPLETED">Completed Only</option>
-              <option value="BOOKMARKED">Bookmarked Only</option>
+              <option value="BOOKMARKED">Starred Favorites</option>
             </select>
           </div>
         </div>
 
-        <!-- Skeleton Loader shown briefly while IndexedDB hydrates -->
-        <div id="tasks-skeleton" class="skeleton-grid" aria-hidden="true" hidden>
-          <div class="skeleton-card"></div>
-          <div class="skeleton-card"></div>
-          <div class="skeleton-card"></div>
-        </div>
-
-        <!-- Task Cards Grid -->
         <div id="tasks-grid" class="cards-grid" aria-live="polite"></div>
 
-        <!-- Helpful Empty State -->
         <div id="tasks-empty-state" class="empty-state" hidden>
-          <h3>No matching Digital Marketing tasks found</h3>
-          <p>Even with Levenshtein fuzzy matching enabled, no task matched your current filter combination.</p>
-          <button type="button" id="btn-reset-filters" class="btn btn--primary">Reset All Search Filters</button>
+          <h3>No matching marketing tasks found</h3>
+          <p>Try clearing your search box or switching the category dropdown back to "All Marketing Areas".</p>
+          <button type="button" id="btn-reset-filters" class="btn btn--primary">Show All Tasks</button>
         </div>
       </section>
 
       <!-- =================================================================
-           TAB 2: CAMPAIGN SPRINT & FIELD ACTIVATION ITINERARY
+           TAB 02: WEEKLY CONTENT & CAMPAIGN PLANNER
            ================================================================= -->
-      <section id="panel-itinerary" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-itinerary" hidden>
+      <section id="panel-planner" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-planner" hidden>
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">2. Campaign Sprint &amp; Field Marketing Itinerary</h2>
+            <h2 class="panel-title">02. Weekly Content &amp; Campaign Planner</h2>
             <p class="panel-subtitle">
-              Coordinate omnichannel launch windows, OOH billboard inspections, creator studio shoots, and tech summit activations with GPS coordinate copy, JSON manual backup export/import, and Print/PDF generation.
+              A clear Monday-through-Friday routine for running ads, posting videos, sending emails, and reviewing results. You can also save a backup file of your plan or print it as a clean PDF handout.
             </p>
           </div>
           <div class="panel-actions">
-            <button type="button" id="btn-add-itinerary" class="btn btn--primary">+ Add Itinerary Slot</button>
-            <button type="button" id="btn-export-json" class="btn btn--secondary">Export JSON Backup</button>
+            <button type="button" id="btn-add-itinerary" class="btn btn--primary">+ Add Planner Item</button>
+            <button type="button" id="btn-export-json" class="btn btn--secondary">Download Backup</button>
             <label for="input-import-json" class="btn btn--secondary file-label-btn" tabindex="0">
-              Import JSON
+              Restore Backup
               <input type="file" id="input-import-json" accept="application/json,.json" class="sr-only" />
             </label>
             <button type="button" id="btn-print-itinerary" class="btn btn--secondary">Print / Save PDF</button>
@@ -246,211 +223,325 @@
       </section>
 
       <!-- =================================================================
-           TAB 3: DEVICEORIENTATION COMPASS & CAMPAIGN VELOCITY HUD
+           TAB 03: PLAIN-ENGLISH MARKETING TERMS & DEFINITIONS (GLOSSARY)
            ================================================================= -->
-      <section id="panel-hud" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-hud" hidden>
+      <section id="panel-glossary" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-glossary" hidden>
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">3. Field Marketing Compass &amp; Live Campaign HUD</h2>
+            <h2 class="panel-title">03. Easy Digital Marketing Dictionary (No Confusing Jargon)</h2>
             <p class="panel-subtitle">
-              Uses the <code>DeviceOrientationEvent</code> API with a configurable first-order Low-Pass Filter (<code>alpha = 0.18</code>) to smooth out sensor jitter while navigating to local campaign activations, OOH sites, or event booths.
+              Every important digital marketing word explained in plain, everyday English — with simple formulas and real-world examples you can copy or share with clients and teammates.
             </p>
           </div>
           <div class="panel-actions">
-            <button type="button" id="btn-request-sensor" class="btn btn--primary">Activate Compass Sensor</button>
-            <button type="button" id="btn-simulate-bearing" class="btn btn--secondary">Simulate Sensor Sweep</button>
-            <button type="button" id="btn-copy-hud-coords" class="btn btn--secondary">Copy Active Waypoint GPS</button>
+            <button type="button" id="btn-print-glossary" class="btn btn--secondary">Print Glossary PDF</button>
           </div>
         </div>
 
-        <div class="hud-dashboard">
-          <!-- Compass Dial Card -->
-          <div class="hud-card hud-card--compass">
-            <div class="compass-ring" id="compass-ring" aria-label="Low-Pass Filtered Digital Compass">
-              <div class="compass-ring__cardinal compass-ring__cardinal--n">N</div>
-              <div class="compass-ring__cardinal compass-ring__cardinal--e">E</div>
-              <div class="compass-ring__cardinal compass-ring__cardinal--s">S</div>
-              <div class="compass-ring__cardinal compass-ring__cardinal--w">W</div>
-              <div class="compass-needle" id="compass-needle"></div>
-              <div class="compass-center-readout">
-                <span class="compass-degrees" id="hud-bearing-filtered">042° NE</span>
-                <span class="compass-sub" id="hud-sensor-mode">Low-Pass α=0.18</span>
-              </div>
-            </div>
-
-            <div class="hud-controls-row">
-              <label for="lowpass-alpha-slider" class="hud-slider-label">
-                <span>Low-Pass Smoothing Factor (α): <strong id="lowpass-alpha-val">0.18</strong></span>
-                <input type="range" id="lowpass-alpha-slider" min="0.05" max="0.80" step="0.01" value="0.18" />
-              </label>
-
-              <label for="hud-waypoint-select" class="hud-slider-label">
-                <span>Target Campaign Waypoint:</span>
-                <select id="hud-waypoint-select" class="select-control">
-                  <option value="14.5547,121.0244|Makati CBD OOH Digital Billboard Hub">Makati CBD OOH Digital Billboard Hub (14.5547° N, 121.0244° E)</option>
-                  <option value="14.5507,121.0494|BGC High Street Brand Pop-Up Booth">BGC High Street Brand Pop-Up Booth (14.5507° N, 121.0494° E)</option>
-                  <option value="14.5869,121.0614|Ortigas Creator Studio & Podcast Stage">Ortigas Creator Studio &amp; Podcast Stage (14.5869° N, 121.0614° E)</option>
-                  <option value="14.5605,121.0103|iACADEMY Auditorium Tech Summit Booth">iACADEMY Auditorium Tech Summit Booth (14.5605° N, 121.0103° E)</option>
-                </select>
-              </label>
-            </div>
+        <div class="filter-bar" role="search">
+          <div class="search-input-wrap">
+            <label for="glossary-search-input" class="sr-only">Search marketing terms</label>
+            <input
+              type="search"
+              id="glossary-search-input"
+              class="input-control"
+              placeholder="Search any term (e.g., 'ROAS', 'CPC', 'funnel', 'SEO', 'conversion', 'retargeting')..."
+              autocomplete="off"
+            />
           </div>
-
-          <!-- Telemetry & Live Campaign Metrics Card -->
-          <div class="hud-card hud-card--telemetry">
-            <h3>Sensor &amp; Campaign Telemetry Readout</h3>
-            <dl class="telemetry-grid">
-              <div class="telemetry-item">
-                <dt>Raw Sensor Bearing</dt>
-                <dd id="hud-bearing-raw">042.0°</dd>
-              </div>
-              <div class="telemetry-item">
-                <dt>Low-Pass Smoothed Bearing</dt>
-                <dd id="hud-bearing-smooth">042.0°</dd>
-              </div>
-              <div class="telemetry-item">
-                <dt>Jitter Attenuation Delta</dt>
-                <dd id="hud-jitter-delta">0.0° damped</dd>
-              </div>
-              <div class="telemetry-item">
-                <dt>Device Pitch (β) / Roll (γ)</dt>
-                <dd id="hud-pitch-roll">β: 12° | γ: -2°</dd>
-              </div>
-              <div class="telemetry-item">
-                <dt>Target Waypoint Bearing</dt>
-                <dd id="hud-target-bearing">068° ENE (1.8 km)</dd>
-              </div>
-              <div class="telemetry-item">
-                <dt>Active Campaign ROAS Velocity</dt>
-                <dd id="hud-roas-velocity">4.35x (+14% WoW)</dd>
-              </div>
-            </dl>
-
-            <div class="hud-eventbus-stream">
-              <div class="hud-stream-header">
-                <h4>Live EventBus Pub/Sub Stream</h4>
-                <button type="button" id="btn-clear-eventstream" class="btn btn--sm btn--ghost">Clear Stream</button>
-              </div>
-              <ul id="hud-eventbus-log" class="event-stream-list" aria-live="polite"></ul>
-            </div>
+          <div class="filter-selects">
+            <label for="filter-glossary-cat" class="sr-only">Filter by Topic</label>
+            <select id="filter-glossary-cat" class="select-control">
+              <option value="ALL">All Topics (24 Terms)</option>
+              <option value="Paid Ads & Budget">Paid Ads &amp; Budget</option>
+              <option value="Website & Sales">Website &amp; Sales</option>
+              <option value="Search & Content">Search &amp; Content</option>
+              <option value="Email & Social">Email &amp; Social Media</option>
+            </select>
           </div>
         </div>
+
+        <div id="glossary-grid" class="cards-grid" aria-live="polite"></div>
       </section>
 
       <!-- =================================================================
-           TAB 4: OFFLINE SYNC, ERROR BOUNDARY & PWA DESIGN AUDIT
+           TAB 04: INTERACTIVE MARKETING BUDGET, ROAS & ROI CALCULATORS
            ================================================================= -->
-      <section id="panel-system" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-system" hidden>
+      <section id="panel-calculators" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-calculators" hidden>
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">4. IndexedDB Sync Queue, Error Boundary &amp; 11-Point PWA Checklist</h2>
+            <h2 class="panel-title">04. Instant Digital Marketing Calculators</h2>
             <p class="panel-subtitle">
-              Inspect queued offline actions, trigger Background Sync flush with optimistic UI confirmation, test battery eco-mode throttling, review runtime exceptions, and verify every item on the PWA Design &amp; Layout Checklist.
+              Type in your numbers below to immediately calculate your Return on Ad Spend (ROAS), Net Profit ROI, Cost Per Click (CPC), Cost Per Customer (CPA), Website Conversion Rate, and Social Engagement Rate.
             </p>
           </div>
           <div class="panel-actions">
-            <button type="button" id="btn-flush-sync" class="btn btn--primary">Flush Offline Queue Now</button>
-            <button type="button" id="btn-simulate-offline-action" class="btn btn--secondary">+ Queue Test Offline Mutation</button>
-            <button type="button" id="btn-toggle-low-battery" class="btn btn--secondary">Simulate Low Battery (≤20%)</button>
-            <button type="button" id="btn-trigger-test-error" class="btn btn--secondary">Test Error Boundary</button>
+            <button type="button" id="btn-reset-calculators" class="btn btn--secondary">Reset Sample Numbers</button>
           </div>
         </div>
 
-        <div class="system-grid">
-          <!-- IndexedDB Offline Sync Queue Inspector -->
-          <article class="system-card">
-            <div class="system-card__header">
-              <h3>IndexedDB Offline Mutation Queue (<code>dms_offline_db</code>)</h3>
-              <span class="badge" id="sync-queue-status-badge">Synced</span>
+        <div class="cards-grid">
+          <!-- Calculator 1: ROAS & Net Profit Calculator -->
+          <article class="task-card calc-card">
+            <div>
+              <span class="badge badge--accent">Calculator 1</span>
+              <h3 class="task-card__title">Ad Spend Return (ROAS) &amp; Profit</h3>
+              <p class="calc-desc">See how much sales revenue you earn back for every $1 or ₱1 spent on ads.</p>
+              <div class="form-stack">
+                <label class="form-field">
+                  <span>Total Ad Spend (Cost of Ads)</span>
+                  <input type="number" id="calc-roas-spend" class="input-control" value="5000" min="0" step="100" />
+                </label>
+                <label class="form-field">
+                  <span>Total Sales Revenue from Ads</span>
+                  <input type="number" id="calc-roas-revenue" class="input-control" value="22500" min="0" step="100" />
+                </label>
+                <label class="form-field">
+                  <span>Product / Fulfillment Cost (Optional)</span>
+                  <input type="number" id="calc-roas-cog" class="input-control" value="7500" min="0" step="100" />
+                </label>
+              </div>
             </div>
-            <p class="system-card__desc">
-              Every task toggle, bookmark, or itinerary change updates the UI immediately (optimistic UI) and records a mutation entry in IndexedDB. When connectivity returns, the Service Worker <code>sync</code> event flushes all pending records.
-            </p>
-            <div id="sync-queue-list" class="queue-list" aria-live="polite"></div>
+            <div class="calc-result-box" id="res-roas-box">
+              <div class="calc-result-row">
+                <span>Return on Ad Spend (ROAS):</span>
+                <strong id="out-roas-mult">4.50x</strong>
+              </div>
+              <div class="calc-result-row">
+                <span>Net Profit After Costs:</span>
+                <strong id="out-roas-profit">+10,000</strong>
+              </div>
+              <div class="calc-result-row">
+                <span>Net ROI Percentage:</span>
+                <strong id="out-roas-roi">+80.0%</strong>
+              </div>
+              <p class="calc-verdict" id="out-roas-verdict">Healthy Return (4.0x+ is strong for most stores)</p>
+            </div>
           </article>
 
-          <!-- Local Error Boundary Log Viewer -->
-          <article class="system-card">
-            <div class="system-card__header">
-              <h3>Local Runtime Error Boundary Log</h3>
-              <button type="button" id="btn-clear-errors" class="btn btn--sm btn--ghost">Clear Logs</button>
+          <!-- Calculator 2: CPC, CTR & CPM Ad Efficiency Calculator -->
+          <article class="task-card calc-card">
+            <div>
+              <span class="badge badge--accent">Calculator 2</span>
+              <h3 class="task-card__title">Click Cost (CPC) &amp; Click Rate (CTR)</h3>
+              <p class="calc-desc">Check how much each click costs and how many viewers tap your ad.</p>
+              <div class="form-stack">
+                <label class="form-field">
+                  <span>Amount Spent on Ad</span>
+                  <input type="number" id="calc-cpc-spend" class="input-control" value="2500" min="0" step="50" />
+                </label>
+                <label class="form-field">
+                  <span>Total Ad Views (Impressions)</span>
+                  <input type="number" id="calc-cpc-impressions" class="input-control" value="20000" min="1" step="500" />
+                </label>
+                <label class="form-field">
+                  <span>Total Link Clicks</span>
+                  <input type="number" id="calc-cpc-clicks" class="input-control" value="500" min="1" step="10" />
+                </label>
+              </div>
             </div>
-            <p class="system-card__desc">
-              Captures uncaught runtime errors, rejected promises, and wrapped component faults into local persistent storage so field marketers never lose state.
-            </p>
-            <div id="error-log-list" class="queue-list" aria-live="polite"></div>
+            <div class="calc-result-box">
+              <div class="calc-result-row">
+                <span>Cost Per Click (CPC):</span>
+                <strong id="out-cpc-val">5.00 per click</strong>
+              </div>
+              <div class="calc-result-row">
+                <span>Click-Through Rate (CTR):</span>
+                <strong id="out-ctr-val">2.50%</strong>
+              </div>
+              <div class="calc-result-row">
+                <span>Cost Per 1,000 Views (CPM):</span>
+                <strong id="out-cpm-val">125.00</strong>
+              </div>
+              <p class="calc-verdict" id="out-ctr-verdict">Strong Click Rate (Above 1.5% average)</p>
+            </div>
+          </article>
+
+          <!-- Calculator 3: Website Conversion Rate & Cost Per Customer (CPA) -->
+          <article class="task-card calc-card">
+            <div>
+              <span class="badge badge--accent">Calculator 3</span>
+              <h3 class="task-card__title">Conversion Rate &amp; Cost Per Sale</h3>
+              <p class="calc-desc">Find out what % of visitors buy and how much you pay to win 1 customer.</p>
+              <div class="form-stack">
+                <label class="form-field">
+                  <span>Total Website Visitors (Clicks)</span>
+                  <input type="number" id="calc-cvr-visitors" class="input-control" value="800" min="1" step="20" />
+                </label>
+                <label class="form-field">
+                  <span>Total Buyers or Leads (Conversions)</span>
+                  <input type="number" id="calc-cvr-orders" class="input-control" value="32" min="0" step="1" />
+                </label>
+                <label class="form-field">
+                  <span>Total Marketing Spend</span>
+                  <input type="number" id="calc-cvr-spend" class="input-control" value="6400" min="0" step="100" />
+                </label>
+              </div>
+            </div>
+            <div class="calc-result-box">
+              <div class="calc-result-row">
+                <span>Conversion Rate (CVR):</span>
+                <strong id="out-cvr-rate">4.00%</strong>
+              </div>
+              <div class="calc-result-row">
+                <span>Cost Per Customer / Lead (CPA):</span>
+                <strong id="out-cpa-cost">200.00 each</strong>
+              </div>
+              <p class="calc-verdict" id="out-cvr-verdict">Great Landing Page Conversion (3%+ is solid)</p>
+            </div>
+          </article>
+
+          <!-- Calculator 4: Monthly Sales Goal & Budget Planner -->
+          <article class="task-card calc-card">
+            <div>
+              <span class="badge badge--accent">Calculator 4</span>
+              <h3 class="task-card__title">Monthly Sales Goal Reverse Planner</h3>
+              <p class="calc-desc">Enter your monthly sales goal to see how many orders and visitors you need.</p>
+              <div class="form-stack">
+                <label class="form-field">
+                  <span>Monthly Revenue Goal</span>
+                  <input type="number" id="calc-goal-rev" class="input-control" value="100000" min="100" step="1000" />
+                </label>
+                <label class="form-field">
+                  <span>Average Order Price (AOV)</span>
+                  <input type="number" id="calc-goal-aov" class="input-control" value="1250" min="1" step="50" />
+                </label>
+                <label class="form-field">
+                  <span>Expected Page Conversion Rate (%)</span>
+                  <input type="number" id="calc-goal-cvr" class="input-control" value="2.5" min="0.1" step="0.1" />
+                </label>
+              </div>
+            </div>
+            <div class="calc-result-box">
+              <div class="calc-result-row">
+                <span>Orders Needed This Month:</span>
+                <strong id="out-goal-orders">80 orders (2.7 / day)</strong>
+              </div>
+              <div class="calc-result-row">
+                <span>Website Visitors Needed:</span>
+                <strong id="out-goal-visitors">3,200 visitors</strong>
+              </div>
+              <p class="calc-verdict">Tip: Raise your Average Order Price with bundles to hit your goal with fewer orders.</p>
+            </div>
+          </article>
+
+          <!-- Calculator 5: Social Media Engagement Rate Calculator -->
+          <article class="task-card calc-card">
+            <div>
+              <span class="badge badge--accent">Calculator 5</span>
+              <h3 class="task-card__title">Social Post Engagement Rate</h3>
+              <p class="calc-desc">Measure how well your Instagram, TikTok, or LinkedIn audience interacts with a post.</p>
+              <div class="form-stack">
+                <label class="form-field">
+                  <span>Total Post Views / Reach</span>
+                  <input type="number" id="calc-eng-reach" class="input-control" value="4500" min="1" step="100" />
+                </label>
+                <label class="form-field">
+                  <span>Likes + Comments + Shares + Saves</span>
+                  <input type="number" id="calc-eng-interactions" class="input-control" value="270" min="0" step="10" />
+                </label>
+              </div>
+            </div>
+            <div class="calc-result-box">
+              <div class="calc-result-row">
+                <span>Engagement Rate:</span>
+                <strong id="out-eng-rate">6.00%</strong>
+              </div>
+              <p class="calc-verdict" id="out-eng-verdict">High Engagement (Over 3.5% beats average benchmarks)</p>
+            </div>
+          </article>
+
+          <!-- Calculator 6: Email Campaign Open & Click Calculator -->
+          <article class="task-card calc-card">
+            <div>
+              <span class="badge badge--accent">Calculator 6</span>
+              <h3 class="task-card__title">Email Newsletter Open &amp; Click Rate</h3>
+              <p class="calc-desc">Check the health of your email subject lines and call-to-action buttons.</p>
+              <div class="form-stack">
+                <label class="form-field">
+                  <span>Total Emails Delivered</span>
+                  <input type="number" id="calc-email-sent" class="input-control" value="2000" min="1" step="100" />
+                </label>
+                <label class="form-field">
+                  <span>Unique Email Opens</span>
+                  <input type="number" id="calc-email-opens" class="input-control" value="680" min="0" step="10" />
+                </label>
+                <label class="form-field">
+                  <span>Unique Link Clicks</span>
+                  <input type="number" id="calc-email-clicks" class="input-control" value="84" min="0" step="5" />
+                </label>
+              </div>
+            </div>
+            <div class="calc-result-box">
+              <div class="calc-result-row">
+                <span>Email Open Rate:</span>
+                <strong id="out-email-open">34.0%</strong>
+              </div>
+              <div class="calc-result-row">
+                <span>Email Click Rate (CTR):</span>
+                <strong id="out-email-ctr">4.20%</strong>
+              </div>
+              <div class="calc-result-row">
+                <span>Click-to-Open Rate (CTOR):</span>
+                <strong id="out-email-ctor">12.4%</strong>
+              </div>
+              <p class="calc-verdict" id="out-email-verdict">Great Email Performance (30%+ Open Rate is strong)</p>
+            </div>
           </article>
         </div>
-
-        <!-- Complete 11-Point PWA Design & Layout Checklist Scorecard -->
-        <article class="system-card checklist-audit-card">
-          <div class="system-card__header">
-            <h3>Complete 11-Point PWA Design &amp; Layout Verification Matrix</h3>
-            <span class="badge badge--success">11 / 11 Categories Verified</span>
-          </div>
-          <div id="pwa-audit-checklist" class="audit-grid"></div>
-        </article>
       </section>
     </main>
   </div>
 
-  <!-- Interactive Onboarding Coachmark Overlay -->
+  <!-- Quick Start Guide Modal (Pure Marketing Guide) -->
   <div id="onboarding-overlay" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="onboarding-title" hidden>
     <div class="modal-card">
       <div class="modal-card__header">
-        <span class="badge badge--accent" id="onboarding-step-indicator">Step 1 of 4</span>
-        <button type="button" id="btn-close-onboarding" class="btn btn--icon" aria-label="Close onboarding guide">✕</button>
+        <span class="badge badge--accent" id="onboarding-step-indicator">Quick Guide</span>
+        <button type="button" id="btn-close-onboarding" class="btn btn--icon" aria-label="Close guide">✕</button>
       </div>
-      <h2 id="onboarding-title" class="modal-card__title">Welcome to the Digital Marketing Specialist Execution OS</h2>
+      <h2 id="onboarding-title" class="modal-card__title">Welcome to Your Digital Marketing Specialist Guide</h2>
       <p id="onboarding-body" class="modal-card__body">
-        This Progressive Web App works 100% offline, installs to your iPhone or Android home screen, and equips you with 42+ concrete marketing SOPs, a campaign itinerary planner, a sensor-smoothed Compass HUD, and automatic IndexedDB Background Sync.
+        Everything in this guide is built for practical everyday marketing — written in plain, easy-to-understand English with zero confusing jargon:
       </p>
-      <ul class="onboarding-highlights" id="onboarding-List">
-        <li><strong>Tab 1 (Specialist Tasks):</strong> Fuzzy-searchable SOPs across 7 marketing pillars with 1-tap deep-link &amp; checklist copy.</li>
-        <li><strong>Tab 2 (Campaign Itinerary):</strong> Field &amp; launch schedule with JSON manual backups and print/PDF export.</li>
-        <li><strong>Tab 3 (Compass &amp; KPI HUD):</strong> DeviceOrientation bearing calculator with a Low-Pass Filter (α=0.18) to eliminate sensor jitter.</li>
-        <li><strong>Tab 4 (Sync &amp; PWA Audit):</strong> Offline IndexedDB queue, Battery Saver listener, Vibration haptics, and 11-point design scorecard.</li>
+      <ul class="onboarding-highlights">
+        <li><strong>01. Daily Tasks:</strong> Step-by-step checklists for SEO, Paid Ads, Social Media Videos, Email Marketing, and Sales Pages.</li>
+        <li><strong>02. Content Planner:</strong> A Monday-to-Friday campaign schedule you can customize, print as a PDF, or back up anytime.</li>
+        <li><strong>03. Marketing Terms:</strong> 24 essential digital marketing words explained simply with real-world examples and formulas.</li>
+        <li><strong>04. Calculators:</strong> Instant calculators for Return on Ad Spend (ROAS), Cost Per Click (CPC), Conversion Rate, and Monthly Sales Goals.</li>
       </ul>
       <div class="modal-card__footer">
-        <button type="button" id="btn-onboarding-prev" class="btn btn--secondary" disabled>Previous</button>
-        <div class="onboarding-dots" id="onboarding-dots" aria-hidden="true">
-          <span class="dot is-active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
-        <button type="button" id="btn-onboarding-next" class="btn btn--primary">Next Tip</button>
+        <button type="button" id="btn-onboarding-next" class="btn btn--primary" style="width:100%;">Start Using the Guide</button>
       </div>
     </div>
   </div>
 
-  <!-- Add Custom Task / Itinerary Modal -->
+  <!-- Add New Marketing Task Modal -->
   <div id="custom-item-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="custom-modal-title" hidden>
     <div class="modal-card">
       <div class="modal-card__header">
-        <h2 id="custom-modal-title" class="modal-card__title">Add New Digital Marketing Task</h2>
+        <h2 id="custom-modal-title" class="modal-card__title">Add Custom Marketing Task</h2>
         <button type="button" id="btn-close-custom-modal" class="btn btn--icon" aria-label="Close modal">✕</button>
       </div>
       <form id="custom-item-form" class="form-stack">
         <label class="form-field">
-          <span>Title *</span>
-          <input type="text" id="custom-title" class="input-control" required placeholder="e.g., Audit Q4 Google Performance Max Asset Groups" />
+          <span>Task Name *</span>
+          <input type="text" id="custom-title" class="input-control" required placeholder="e.g., Film 3 TikTok product demo videos for weekend promo" />
         </label>
         <div class="form-row">
           <label class="form-field">
-            <span>Marketing Pillar</span>
+            <span>Marketing Area</span>
             <select id="custom-pillar" class="select-control">
-              <option value="SEO & Organic Search">SEO &amp; Organic Search</option>
-              <option value="Paid Media & PPC">Paid Media &amp; PPC</option>
-              <option value="Content & Social Media">Content &amp; Social Media</option>
-              <option value="Email & CRM Lifecycle">Email &amp; CRM Lifecycle</option>
-              <option value="CRO & Landing Page UX">CRO &amp; Landing Page UX</option>
-              <option value="Analytics & Attribution">Analytics &amp; Attribution</option>
-              <option value="Local & Field Event Ops">Local &amp; Field Event Ops</option>
+              <option value="Website & SEO">Website &amp; SEO</option>
+              <option value="Paid Ads">Paid Ads</option>
+              <option value="Social Media & Content">Social Media &amp; Content</option>
+              <option value="Email & Customer Follow-Up">Email &amp; Customer Follow-Up</option>
+              <option value="Sales Page & Conversion">Sales Page &amp; Conversion</option>
+              <option value="Tracking & Results">Tracking &amp; Results</option>
             </select>
           </label>
           <label class="form-field">
-            <span>Cadence</span>
+            <span>Schedule</span>
             <select id="custom-cadence" class="select-control">
               <option value="Daily">Daily</option>
               <option value="Weekly">Weekly</option>
@@ -459,29 +550,23 @@
             </select>
           </label>
         </div>
-        <div class="form-row">
-          <label class="form-field">
-            <span>Target KPI / Deliverable</span>
-            <input type="text" id="custom-kpi" class="input-control" placeholder="e.g., CPA < $18.50, CTR >= 3.2%" />
-          </label>
-          <label class="form-field">
-            <span>GPS Coordinates / Location (Optional)</span>
-            <input type="text" id="custom-coords" class="input-control" placeholder="14.5547° N, 121.0244° E" />
-          </label>
-        </div>
         <label class="form-field">
-          <span>Step-by-Step SOP Checklist (comma-separated)</span>
-          <textarea id="custom-steps" class="input-control" rows="3" placeholder="Verify UTM parameters, Check negative keyword list, Export search term report"></textarea>
+          <span>Target Goal / Result</span>
+          <input type="text" id="custom-kpi" class="input-control" placeholder="e.g., Get 50+ clicks to the promo page" />
+        </label>
+        <label class="form-field">
+          <span>Action Steps (separate steps with commas)</span>
+          <textarea id="custom-steps" class="input-control" rows="3" placeholder="Write script hook, Record 30-second video, Add captions and link in bio"></textarea>
         </label>
         <div class="modal-card__footer">
           <button type="button" id="btn-cancel-custom" class="btn btn--secondary">Cancel</button>
-          <button type="submit" class="btn btn--primary">Save &amp; Queue Sync</button>
+          <button type="submit" class="btn btn--primary">Save Marketing Task</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Accessible Toast Notification Region -->
+  <!-- Toast Notification -->
   <div id="toast-container" class="toast-container" role="status" aria-live="polite"></div>
 
   <script src="./script.js" defer></script>
