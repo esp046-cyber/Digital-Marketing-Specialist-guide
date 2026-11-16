@@ -1161,6 +1161,7 @@
 
     switchTab(tabId, pushHash = true) {
       this.activeTab = tabId;
+      document.body.setAttribute('data-active-tab', tabId);
       document.querySelectorAll('.nav-tab').forEach((btn) => {
         const active = btn.dataset.tab === tabId;
         btn.classList.toggle('is-active', active);
@@ -1211,10 +1212,8 @@
       }
     ],
     init() {
-      const seen = localStorage.getItem('dms_onboarding_seen_v2');
-      if (!seen) {
-        this.open();
-      }
+      const modal = document.getElementById('onboarding-overlay');
+      if (modal) modal.hidden = true;
     },
     open() {
       this.step = 0;
@@ -1841,7 +1840,7 @@
           navigator.serviceWorker
             .register('./service-worker.js')
             .then(() => bus.emit('sw:registered', { scope: './' }))
-            .catch((err) => ErrorBoundary.capture(err, 'ServiceWorker Registration'));
+            .catch((err) => bus.emit('sw:skipped', { reason: String(err && err.message ? err.message : err) }));
         });
         navigator.serviceWorker.addEventListener('message', (e) => {
           if (e.data && e.data.type === 'BACKGROUND_SYNC_FLUSHED') {
