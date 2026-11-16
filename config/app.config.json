@@ -1,0 +1,13 @@
+{
+  "appName": "Digital Marketing Specialist Guide",
+  "canonicalUrl": "https://esp046-cyber.github.io/Digital-Marketing-Specialist-guide/",
+  "tabs": [
+    "tasks",
+    "itinerary",
+    "hud",
+    "system"
+  ],
+  "lowPassFilterAlpha": 0.18,
+  "lowBatteryThreshold": 0.2,
+  "fuzzyMaxEditDistance": 2
+}
