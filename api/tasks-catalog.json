@@ -1,452 +1,518 @@
-[
-  {
-    "id": "dms-seo-01",
-    "title": "Technical Core Web Vitals & INP Audit",
-    "pillar": "SEO & Organic Search",
-    "cadence": "Weekly",
-    "priority": "Critical",
-    "kpi": "LCP < 2.5s, INP < 200ms, CLS < 0.10",
-    "tools": "Google Search Console, PageSpeed Insights, Screaming Frog",
-    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
-    "locationName": "Makati CBD Digital Hub",
-    "steps": [
-      "Export URL groups failing LCP or INP thresholds in Search Console",
-      "Verify hero image fetchpriority=high and preload critical fonts",
-      "Audit third-party GTM tags blocking main-thread hydration"
-    ],
-    "completed": false,
-    "bookmarked": true
-  },
-  {
-    "id": "dms-seo-02",
-    "title": "Canonical Tag, Indexation & Sitemap Hygiene Check",
-    "pillar": "SEO & Organic Search",
-    "cadence": "Weekly",
-    "priority": "High",
-    "kpi": "0 unintended noindex or canonical conflicts",
-    "tools": "Screaming Frog, XML Sitemap Validator, GSC Indexing Report",
-    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
-    "locationName": "Makati CBD Digital Hub",
-    "steps": [
-      "Crawl top 500 organic landing pages for self-referencing rel=canonical",
-      "Validate sitemap.xml HTTP 200 responses and remove 301/404 URLs",
-      "Inspect robots.txt crawl directives and submit updated sitemap"
-    ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "dms-seo-03",
-    "title": "High-Intent Commercial Keyword Gap & Content Cluster Mapping",
-    "pillar": "SEO & Organic Search",
-    "cadence": "Monthly",
-    "priority": "High",
-    "kpi": "+18% non-branded organic clicks QoQ",
-    "tools": "Ahrefs, Semrush, Google Keyword Planner",
-    "coords": "14.5869\u00b0 N, 121.0614\u00b0 E",
-    "locationName": "Ortigas Content Studio",
-    "steps": [
-      "Extract competitor ranking URLs in positions 1-5 where brand ranks 8-20",
-      "Group keywords by search intent (Informational, Commercial, Transactional)",
-      "Assign internal anchor links from high-DR pillar guides to money pages"
-    ],
-    "completed": true,
-    "bookmarked": true
-  },
-  {
-    "id": "dms-seo-04",
-    "title": "JSON-LD Structured Data & Rich Snippet Validation",
-    "pillar": "SEO & Organic Search",
-    "cadence": "Monthly",
-    "priority": "Medium",
-    "kpi": "100% valid Product, FAQ, and Organization schema",
-    "tools": "Schema Markup Validator, Google Rich Results Test",
-    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
-    "locationName": "Makati CBD Digital Hub",
-    "steps": [
-      "Validate Organization, BreadcrumbList, and FAQPage JSON-LD payloads",
-      "Fix missing priceValidUntil or aggregateRating warnings",
-      "Monitor SERP CTR lift on rich-result enabled templates"
-    ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "dms-seo-05",
-    "title": "Google Business Profile & Local Pack Citation Optimization",
-    "pillar": "SEO & Organic Search",
-    "cadence": "Weekly",
-    "priority": "High",
-    "kpi": "Top-3 Local Map Pack visibility within 5km radius",
-    "tools": "Google Business Profile Manager, BrightLocal",
-    "coords": "14.5507\u00b0 N, 121.0494\u00b0 E",
-    "locationName": "BGC High Street Flagship",
-    "steps": [
-      "Audit NAP (Name, Address, Phone) consistency across local directories",
-      "Publish weekly geotagged update with UTM-tracked appointment link",
-      "Respond to all new customer reviews within 24 hours"
-    ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "dms-ppc-01",
-    "title": "Google Ads Search Term Mining & Negative Keyword Pruning",
-    "pillar": "Paid Media & PPC",
-    "cadence": "Daily",
-    "priority": "Critical",
-    "kpi": "Reduce wasted ad spend by >= 15%",
-    "tools": "Google Ads Editor, Search Terms Report",
-    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
-    "locationName": "Makati Performance Desk",
-    "steps": [
-      "Filter search terms with >25 clicks and 0 conversions over 14 days",
-      "Add irrelevant queries to shared Account-Level Negative Keyword lists",
-      "Promote converting long-tail queries into exact/phrase match ad groups"
-    ],
-    "completed": true,
-    "bookmarked": true
-  },
-  {
-    "id": "dms-ppc-02",
-    "title": "Performance Max (PMax) Asset Group & Feed Diagnostics",
-    "pillar": "Paid Media & PPC",
-    "cadence": "Weekly",
-    "priority": "High",
-    "kpi": "Blended ROAS >= 4.2x, Ad Strength 'Excellent'",
-    "tools": "Google Ads, Google Merchant Center",
-    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
-    "locationName": "Makati Performance Desk",
-    "steps": [
-      "Replace 'Low' performing headlines, descriptions, and portrait videos",
-      "Check Merchant Center for disapproved SKUs or price mismatches",
-      "Verify audience signal lists include high-LTV customer match segments"
-    ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "dms-ppc-03",
-    "title": "Meta & TikTok Paid Social Creative Fatigue & Thumbstop Audit",
-    "pillar": "Paid Media & PPC",
-    "cadence": "Weekly",
-    "priority": "Critical",
-    "kpi": "3-Second Thumbstop Rate >= 30%, Hold Rate >= 12%",
-    "tools": "Meta Ads Manager, TikTok Ads Manager, Motion Analytics",
-    "coords": "14.5869\u00b0 N, 121.0614\u00b0 E",
-    "locationName": "Ortigas Creator Studio",
-    "steps": [
-      "Flag ad sets where frequency > 3.2 and CPA rose >20% over 7 days",
-      "Swap first 3-second visual hooks on top-spending UGC video concepts",
-      "Verify Conversions API (CAPI) Event Match Quality score >= 8.0/10"
-    ],
-    "completed": false,
-    "bookmarked": true
-  },
-  {
-    "id": "dms-ppc-04",
-    "title": "Cross-Channel Budget Pacing & ROAS Guardrail Reallocation",
-    "pillar": "Paid Media & PPC",
-    "cadence": "Daily",
-    "priority": "Critical",
-    "kpi": "Monthly spend pacing within +/- 3% of target budget",
-    "tools": "Looker Studio Pacing Sheet, Google Ads, Meta Ads, LinkedIn Campaign Manager",
-    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
-    "locationName": "Makati Performance Desk",
-    "steps": [
-      "Compare month-to-date spend against linear and day-of-week weighted targets",
-      "Shift 10-15% daily budget from under-pacing high-CPA ad sets to top ROAS winners",
-      "Check automated bid strategy learning statuses and cap anomalies"
-    ],
-    "completed": true,
-    "bookmarked": false
-  },
-  {
-    "id": "dms-ppc-05",
-    "title": "Retargeting Audience Exclusion & Burn-Pixel Verification",
-    "pillar": "Paid Media & PPC",
-    "cadence": "Campaign Launch",
-    "priority": "High",
-    "kpi": "0% budget wasted on existing converted buyers",
-    "tools": "Google Tag Manager, Meta Audiences, LinkedIn Insight Tag",
-    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
-    "locationName": "Makati Performance Desk",
-    "steps": [
-      "Exclude 30-day and 180-day purchasers from prospecting ad sets",
-      "Segment cart abandoners (0-3 days, 4-14 days, 15-30 days) with tailored offers",
-      "Test checkout confirmation pixel firing in GTM Preview mode"
-    ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "dms-soc-01",
-    "title": "Short-Form Vertical Video (Reels / TikTok / Shorts) Hook Scripting",
-    "pillar": "Content & Social Media",
-    "cadence": "Weekly",
-    "priority": "High",
-    "kpi": "Average watch time >= 65% of video duration",
-    "tools": "CapCut Pro, Notion Editorial Board, Frame.io",
-    "coords": "14.5869\u00b0 N, 121.0614\u00b0 E",
-    "locationName": "Ortigas Creator Studio",
-    "steps": [
-      "Draft 3 visual + verbal hook variations for each core product pain point",
-      "Include burned-in accessible captions within safe-area margins",
-      "Attach pinned comment CTA with tracked short link"
-    ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "dms-soc-02",
-    "title": "Omnichannel Editorial Pillar Calendar & Asset repurposing",
-    "pillar": "Content & Social Media",
-    "cadence": "Weekly",
-    "priority": "Medium",
-    "kpi": "100% on-time publishing across LinkedIn, IG, TikTok, and YouTube",
-    "tools": "Buffer / Sprout Social, Figma Brand Kit",
-    "coords": "14.5869\u00b0 N, 121.0614\u00b0 E",
-    "locationName": "Ortigas Creator Studio",
-    "steps": [
-      "Atomize 1 long-form research webinar or whitepaper into 5 carousels and 4 reels",
-      "Verify OpenGraph preview cards and alt-text on all scheduled links",
-      "Align publishing slots with audience peak engagement heatmaps"
-    ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "dms-soc-03",
-    "title": "Creator / Influencer Whitelisting & Spark Ads Rights Briefing",
-    "pillar": "Content & Social Media",
-    "cadence": "Campaign Launch",
-    "priority": "High",
-    "kpi": "Creator content CPA 25% lower than studio brand ads",
-    "tools": "TikTok Spark Ads, Meta Branded Content Tool, Creator CRM",
-    "coords": "14.5507\u00b0 N, 121.0494\u00b0 E",
-    "locationName": "BGC High Street Studio",
-    "steps": [
-      "Deliver creative brief with mandatory FTC/DTI disclosure guidelines",
-      "Secure 90-day Spark Ads authorization codes and Paid Partnership permissions",
-      "Track individual creator promo codes and UTM landing page conversions"
-    ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "dms-soc-04",
-    "title": "Community Sentiment Triage & Social Listening Escalation",
-    "pillar": "Content & Social Media",
-    "cadence": "Daily",
-    "priority": "Medium",
-    "kpi": "Median response SLA < 45 minutes during business hours",
-    "tools": "Brandwatch, Sprout Social Inbox, Slack Escalation Webhook",
-    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
-    "locationName": "Makati CBD Digital Hub",
-    "steps": [
-      "Review brand mentions, untagged product keywords, and competitor outage threads",
-      "Hide spam/bot phishing comments on high-spend dark posts",
-      "Log recurring product questions into the SEO & FAQ content backlog"
-    ],
-    "completed": true,
-    "bookmarked": false
-  },
-  {
-    "id": "dms-crm-01",
-    "title": "Automated Welcome, Cart Abandonment & Win-Back Flow QA",
-    "pillar": "Email & CRM Lifecycle",
-    "cadence": "Weekly",
-    "priority": "Critical",
-    "kpi": "Lifecycle automated flows generating >= 28% of email revenue",
-    "tools": "Klaviyo / HubSpot, Litmus Email Preview",
-    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
-    "locationName": "Makati CRM Ops Desk",
-    "steps": [
-      "Test dynamic cart item liquid variables across mobile dark/light clients",
-      "Verify smart-sending window (16h) prevents overlapping newsletter blasts",
-      "A/B test plain-text founder note vs visual product card on step 2"
-    ],
-    "completed": false,
-    "bookmarked": true
-  },
-  {
-    "id": "dms-crm-02",
-    "title": "DMARC, DKIM, SPF & Postmaster Deliverability Health Check",
-    "pillar": "Email & CRM Lifecycle",
-    "cadence": "Monthly",
-    "priority": "Critical",
-    "kpi": "Spam complaint rate < 0.08%, bounce rate < 0.5%",
-    "tools": "Google Postmaster Tools, MXToolbox, Yahoo Sender Hub",
-    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
-    "locationName": "Makati CRM Ops Desk",
-    "steps": [
-      "Verify DMARC p=quarantine/reject alignment and one-click List-Unsubscribe headers",
-      "Sunset unengaged profiles (90+ days zero opens/clicks) into suppression segment",
-      "Monitor domain & IP reputation in Google Postmaster Tools"
-    ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "dms-crm-03",
-    "title": "RFM (Recency, Frequency, Monetary) VIP Cohort Segmentation",
-    "pillar": "Email & CRM Lifecycle",
-    "cadence": "Monthly",
-    "priority": "High",
-    "kpi": "+22% repeat purchase rate among VIP and At-Risk cohorts",
-    "tools": "Klaviyo / Braze, BigQuery Customer Warehouse",
-    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
-    "locationName": "Makati CRM Ops Desk",
-    "steps": [
-      "Sync top 10% LTV buyers to Meta & Google Ads for Lookalike/Similar seeding",
-      "Trigger early-access VIP product drop SMS/Email 24h before public launch",
-      "Launch 60-day replenishment reminder tied to average product consumption cycle"
-    ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "dms-cro-01",
-    "title": "Mobile Landing Page Above-the-Fold & Touch Target CRO Audit",
-    "pillar": "CRO & Landing Page UX",
-    "cadence": "Weekly",
-    "priority": "Critical",
-    "kpi": "Landing page conversion rate >= 4.8% on mobile devices",
-    "tools": "Microsoft Clarity, Hotjar, Chrome DevTools Device Mode",
-    "coords": "14.5507\u00b0 N, 121.0494\u00b0 E",
-    "locationName": "BGC UX Lab",
-    "steps": [
-      "Verify primary CTA button is >= 44x44px and visible without scrolling on 375px screens",
-      "Inspect rage-click and dead-click heatmaps on mobile sticky bars",
-      "Ensure message match between ad headline and landing page H1"
-    ],
-    "completed": true,
-    "bookmarked": true
-  },
-  {
-    "id": "dms-cro-02",
-    "title": "Checkout & Lead Form Field Friction Reduction Experiment",
-    "pillar": "CRO & Landing Page UX",
-    "cadence": "Monthly",
-    "priority": "High",
-    "kpi": "-18% form abandonment rate, statistical power >= 80%",
-    "tools": "VWO / GrowthBook, GA4 Funnel Exploration",
-    "coords": "14.5507\u00b0 N, 121.0494\u00b0 E",
-    "locationName": "BGC UX Lab",
-    "steps": [
-      "Enable autofill autocomplete attributes and numeric keypad on phone/ZIP inputs",
-      "Replace multi-field address entry with single-field autocomplete lookup",
-      "Measure step-to-step drop-off in GA4 checkout funnel report"
-    ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "dms-cro-03",
-    "title": "Social Proof, Trust Badge & Risk-Reversal Split Test",
-    "pillar": "CRO & Landing Page UX",
-    "cadence": "Campaign Launch",
-    "priority": "Medium",
-    "kpi": "+12% add-to-cart or demo booking rate",
-    "tools": "GrowthBook, Okendo / Trustpilot Widget",
-    "coords": "14.5507\u00b0 N, 121.0494\u00b0 E",
-    "locationName": "BGC UX Lab",
-    "steps": [
-      "Place verified customer review count and star rating directly beneath H1",
-      "Add clear shipping/refund guarantee microcopy adjacent to primary checkout CTA",
-      "Run test for minimum 2 business cycles before declaring significance"
-    ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "dms-ana-01",
-    "title": "GA4 + GTM Server-Side Event & Enhanced Conversions Verification",
-    "pillar": "Analytics & Attribution",
-    "cadence": "Weekly",
-    "priority": "Critical",
-    "kpi": "< 3% discrepancy between backend orders and GA4 purchase events",
-    "tools": "Google Tag Manager, GA4 DebugView, Stape Server GTM",
-    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
-    "locationName": "Makati Analytics Command",
-    "steps": [
-      "Audit transaction_id deduplication between browser pixel and server CAPI",
-      "Verify SHA-256 hashed email/phone payload on Enhanced Conversions",
-      "Check Consent Mode v2 (ad_storage, analytics_storage) regional signaling"
-    ],
-    "completed": false,
-    "bookmarked": true
-  },
-  {
-    "id": "dms-ana-02",
-    "title": "Strict UTM Taxonomy & Campaign Deep-Link Governance Audit",
-    "pillar": "Analytics & Attribution",
-    "cadence": "Weekly",
-    "priority": "High",
-    "kpi": "Unassigned / Direct traffic share < 8% of campaign sessions",
-    "tools": "UTM Governance Sheet, GA4 Traffic Acquisition Report",
-    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
-    "locationName": "Makati Analytics Command",
-    "steps": [
-      "Enforce lowercase snake_case across utm_source, utm_medium, and utm_campaign",
-      "Audit bio links, QR codes, and email footers for stripped query parameters",
-      "Copy and validate canonical deep links using the built-in Clipboard Utility"
-    ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "dms-ana-03",
-    "title": "Executive Looker Studio MER (Marketing Efficiency Ratio) Briefing",
-    "pillar": "Analytics & Attribution",
-    "cadence": "Weekly",
-    "priority": "High",
-    "kpi": "Blended MER >= 3.8x, New Customer CAC within target threshold",
-    "tools": "Looker Studio, BigQuery, Supermetrics",
-    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
-    "locationName": "Makati Analytics Command",
-    "steps": [
-      "Reconcile total net revenue against total paid media + agency/creator spend",
-      "Annotate algorithm updates, promo windows, and stockouts on trend charts",
-      "Export executive PDF summary and distribute to leadership"
-    ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "dms-loc-01",
-    "title": "OOH Digital Billboard & Transit QR Attribution Field Inspection",
-    "pillar": "Local & Field Event Ops",
-    "cadence": "Campaign Launch",
-    "priority": "High",
-    "kpi": "100% QR scan resolution & sightline verification at target bearing",
-    "tools": "PWA Compass HUD, Dynamic QR Shortener, GA4 Real-Time",
-    "coords": "14.5547\u00b0 N, 121.0244\u00b0 E",
-    "locationName": "Makati Ayala Avenue OOH Site",
-    "steps": [
-      "Use Tab 3 Compass HUD (low-pass filtered bearing) to verify billboard orientation",
-      "Scan live QR code from 15m pedestrian sightline and confirm UTM firing",
-      "Capture timestamped field verification photo and copy GPS coordinates"
-    ],
-    "completed": false,
-    "bookmarked": true
-  },
-  {
-    "id": "dms-loc-02",
-    "title": "Tech Summit & Brand Pop-Up Lead Capture Offline Sync Drill",
-    "pillar": "Local & Field Event Ops",
-    "cadence": "Campaign Launch",
-    "priority": "Critical",
-    "kpi": "100% booth leads queued in IndexedDB & synced within 5m of Wi-Fi reconnect",
-    "tools": "PWA Offline Queue (IndexedDB), Background Sync API, HubSpot Webhook",
-    "coords": "14.5605\u00b0 N, 121.0103\u00b0 E",
-    "locationName": "iACADEMY Auditorium Tech Summit Booth",
-    "steps": [
-      "Test airplane-mode lead & task capture in congested convention hall",
-      "Enable Battery Saver mode if tablet/iPhone drops below 20% charge",
-      "Reconnect to network and verify automatic Background Sync flush"
-    ],
-    "completed": false,
-    "bookmarked": true
-  }
-]
+{
+  "tasks": [
+    {
+      "id": "task-seo-1",
+      "title": "Check Website Page Speed & Mobile Loading",
+      "category": "Website & SEO",
+      "frequency": "Weekly",
+      "priority": "High Priority",
+      "goal": "Pages load in under 3 seconds on mobile phones",
+      "tools": "Google PageSpeed Insights",
+      "steps": [
+        "Test your top 5 most visited pages on a mobile phone",
+        "Compress large photos so they load quickly without losing quality",
+        "Make sure buttons and text are easy to read without zooming in"
+      ],
+      "completed": false,
+      "bookmarked": true
+    },
+    {
+      "id": "task-seo-2",
+      "title": "Write Clear Page Titles & Search Descriptions",
+      "category": "Website & SEO",
+      "frequency": "Weekly",
+      "priority": "High Priority",
+      "goal": "Get more people to click your website link on Google",
+      "tools": "Google Search Console",
+      "steps": [
+        "Include the main topic phrase naturally in your page title (under 60 characters)",
+        "Write a clear 1-2 sentence summary (under 155 characters) explaining how the page helps",
+        "Make sure every page on your site has its own unique title"
+      ],
+      "completed": true,
+      "bookmarked": true
+    },
+    {
+      "id": "task-seo-3",
+      "title": "Fix Broken Website Links (404 Pages)",
+      "category": "Website & SEO",
+      "frequency": "Monthly",
+      "priority": "Medium Priority",
+      "goal": "Zero dead links that frustrate visitors",
+      "tools": "Google Search Console, Broken Link Checker",
+      "steps": [
+        "Check for any links that lead to a 'Page Not Found' screen",
+        "Update old links so they point to the right live page",
+        "Add helpful links between related blog posts and product pages"
+      ],
+      "completed": false,
+      "bookmarked": false
+    },
+    {
+      "id": "task-seo-4",
+      "title": "Update Google Business Profile for Local Customers",
+      "category": "Website & SEO",
+      "frequency": "Weekly",
+      "priority": "High Priority",
+      "goal": "Rank in the top 3 local results on Google Maps",
+      "tools": "Google Business Profile",
+      "steps": [
+        "Confirm your business hours, phone number, and address are accurate",
+        "Upload 2-3 fresh photos of your products, team, or store",
+        "Reply warmly to every new customer review within 24 hours"
+      ],
+      "completed": false,
+      "bookmarked": false
+    },
+    {
+      "id": "task-seo-5",
+      "title": "Research Questions Customers Are Searching For",
+      "category": "Website & SEO",
+      "frequency": "Monthly",
+      "priority": "Medium Priority",
+      "goal": "Create 4 new helpful blog articles or FAQ guides each month",
+      "tools": "Google Search 'People Also Ask', Google Trends, AnswerThePublic",
+      "steps": [
+        "List the top 10 questions customers ask before buying your product",
+        "Look up those questions on Google to see what pages currently show up",
+        "Write a clearer, more helpful answer with step-by-step examples"
+      ],
+      "completed": true,
+      "bookmarked": false
+    },
+    {
+      "id": "task-ads-1",
+      "title": "Review Daily Ad Spend & Pause Non-Performing Ads",
+      "category": "Paid Ads",
+      "frequency": "Daily",
+      "priority": "High Priority",
+      "goal": "Keep ad spending on budget and stop wasting money on weak ads",
+      "tools": "Google Ads, Meta Ads Manager, TikTok Ads",
+      "steps": [
+        "Check how much money was spent yesterday vs your daily budget target",
+        "Pause any ad that has spent 2x your target cost per sale without getting results",
+        "Move budget toward the ads bringing in the most sales or leads"
+      ],
+      "completed": true,
+      "bookmarked": true
+    },
+    {
+      "id": "task-ads-2",
+      "title": "Remove Irrelevant Search Words from Google Ads",
+      "category": "Paid Ads",
+      "frequency": "Weekly",
+      "priority": "High Priority",
+      "goal": "Save 15%+ of your ad budget by blocking wrong searches",
+      "tools": "Google Ads Search Terms Report",
+      "steps": [
+        "Open the list of actual words people typed before clicking your ad",
+        "Add unrelated words (like 'free', 'jobs', or 'cheap DIY') to your block list",
+        "Put your best-performing search phrases into their own focused ad group"
+      ],
+      "completed": false,
+      "bookmarked": true
+    },
+    {
+      "id": "task-ads-3",
+      "title": "Refresh Ad Videos & Headlines When People Get Tired of Them",
+      "category": "Paid Ads",
+      "frequency": "Weekly",
+      "priority": "High Priority",
+      "goal": "Keep click rates above 1.5% on social media ads",
+      "tools": "Canva, CapCut, Meta Ads Manager",
+      "steps": [
+        "Check if the same audience has seen your ad more than 3-4 times",
+        "Create 3 new opening hooks (the first 3 seconds of your video)",
+        "Test a customer testimonial photo against a clean product demonstration"
+      ],
+      "completed": false,
+      "bookmarked": false
+    },
+    {
+      "id": "task-ads-4",
+      "title": "Set Up Follow-Up Ads (Retargeting) for Window Shoppers",
+      "category": "Paid Ads",
+      "frequency": "Campaign Launch",
+      "priority": "High Priority",
+      "goal": "Bring back visitors who viewed a product or cart but didn't buy",
+      "tools": "Meta Ads, Google Ads Audience Manager",
+      "steps": [
+        "Show a helpful reminder ad to people who visited in the last 14 days",
+        "Exclude people who already bought so you don't waste money showing them the same ad",
+        "Include customer reviews or a small first-order bonus to answer doubts"
+      ],
+      "completed": false,
+      "bookmarked": false
+    },
+    {
+      "id": "task-social-1",
+      "title": "Film & Edit Short Vertical Videos (Reels, TikTok & Shorts)",
+      "category": "Social Media & Content",
+      "frequency": "Weekly",
+      "priority": "High Priority",
+      "goal": "Keep viewers watching past the first 3 seconds",
+      "tools": "CapCut, Instagram Reels, TikTok, YouTube Shorts",
+      "steps": [
+        "Start with a strong question or visual result in the very first 2 seconds",
+        "Add clear on-screen captions so people can watch with their sound off",
+        "End with one simple instruction (e.g., 'Comment GUIDE' or 'Tap link in bio')"
+      ],
+      "completed": false,
+      "bookmarked": true
+    },
+    {
+      "id": "task-social-2",
+      "title": "Turn One Big Topic into a Full Week of Social Posts",
+      "category": "Social Media & Content",
+      "frequency": "Weekly",
+      "priority": "Medium Priority",
+      "goal": "Publish consistently across 3-4 platforms without burnout",
+      "tools": "Canva, Notion, Meta Business Suite",
+      "steps": [
+        "Take 1 helpful guide or customer story as your main weekly theme",
+        "Turn the key points into a 5-slide swipeable carousel post",
+        "Record a 30-second talking-head video summarizing the #1 takeaway"
+      ],
+      "completed": true,
+      "bookmarked": false
+    },
+    {
+      "id": "task-social-3",
+      "title": "Reply to Comments, Direct Messages & Brand Mentions",
+      "category": "Social Media & Content",
+      "frequency": "Daily",
+      "priority": "Medium Priority",
+      "goal": "Reply to potential customers within 1 hour during work hours",
+      "tools": "Instagram, TikTok, Facebook, LinkedIn Inbox",
+      "steps": [
+        "Answer questions on your posts and Ads with friendly, helpful replies",
+        "Send direct links to people who asked about pricing or availability in DMs",
+        "Write down common customer questions to use as future post ideas"
+      ],
+      "completed": true,
+      "bookmarked": false
+    },
+    {
+      "id": "task-email-1",
+      "title": "Check Automated Welcome & Abandoned Cart Emails",
+      "category": "Email & Customer Follow-Up",
+      "frequency": "Weekly",
+      "priority": "High Priority",
+      "goal": "Convert new email signups and recover unfinished shopping carts",
+      "tools": "Mailchimp, Klaviyo, or HubSpot",
+      "steps": [
+        "Sign up with a test email to make sure the Welcome Email arrives immediately",
+        "Check that all buttons and discount codes inside the email work on mobile",
+        "Test two different subject lines to see which one gets more opens"
+      ],
+      "completed": false,
+      "bookmarked": true
+    },
+    {
+      "id": "task-email-2",
+      "title": "Send Weekly Value Newsletter to Email Subscribers",
+      "category": "Email & Customer Follow-Up",
+      "frequency": "Weekly",
+      "priority": "Medium Priority",
+      "goal": "Achieve 30%+ open rate and steady clicks to your website",
+      "tools": "Email Marketing Platform",
+      "steps": [
+        "Share 1 useful tip or story alongside 1 clear product or service offer",
+        "Keep paragraphs short (1-2 sentences) with a single clear call-to-action button",
+        "Preview the email in both Light Mode and Dark Mode before sending"
+      ],
+      "completed": false,
+      "bookmarked": false
+    },
+    {
+      "id": "task-email-3",
+      "title": "Clean Out Inactive Email Addresses to Protect Deliverability",
+      "category": "Email & Customer Follow-Up",
+      "frequency": "Monthly",
+      "priority": "Medium Priority",
+      "goal": "Keep your emails landing in the main Inbox instead of the Spam folder",
+      "tools": "Email List Cleaning / Segment Tool",
+      "steps": [
+        "Find subscribers who haven't opened a single email in the last 90 days",
+        "Send one short 'Still want to hear from us?' check-in email",
+        "Remove addresses that bounce or never respond so email providers trust your sender name"
+      ],
+      "completed": false,
+      "bookmarked": false
+    },
+    {
+      "id": "task-cro-1",
+      "title": "Simplify Your Landing Page & Checkout Steps",
+      "category": "Sales Page & Conversion",
+      "frequency": "Monthly",
+      "priority": "High Priority",
+      "goal": "Increase the percentage of visitors who buy or sign up",
+      "tools": "Microsoft Clarity (Free Heatmaps), Mobile Browser",
+      "steps": [
+        "Make sure the main headline clearly states what you offer and who it helps",
+        "Place customer reviews and star ratings near the 'Buy' or 'Book Now' button",
+        "Remove unnecessary form fields so customers can check out in under 60 seconds"
+      ],
+      "completed": false,
+      "bookmarked": true
+    },
+    {
+      "id": "task-ana-1",
+      "title": "Add Tracking Links (UTM Tags) to Every Campaign Link",
+      "category": "Tracking & Results",
+      "frequency": "Campaign Launch",
+      "priority": "High Priority",
+      "goal": "Know exactly which post, email, or ad brought in each sale",
+      "tools": "Campaign URL Builder, Google Analytics",
+      "steps": [
+        "Tag every shared link with its source (e.g., instagram, newsletter, google_ads)",
+        "Test the link on your phone to make sure it opens the right page quickly",
+        "Keep a simple list of your campaign links so your team uses consistent names"
+      ],
+      "completed": false,
+      "bookmarked": false
+    },
+    {
+      "id": "task-ana-2",
+      "title": "Review Weekly Marketing Results & Best-Performing Channels",
+      "category": "Tracking & Results",
+      "frequency": "Weekly",
+      "priority": "High Priority",
+      "goal": "Double down on what works and stop doing what doesn't",
+      "tools": "Google Analytics, Tab 04 ROI Calculators",
+      "steps": [
+        "Compare total marketing money spent against total sales revenue earned",
+        "Identify the #1 social post, #1 email, and #1 ad from the past 7 days",
+        "Write down 3 clear action steps for next week's marketing plan"
+      ],
+      "completed": false,
+      "bookmarked": true
+    }
+  ],
+  "contentPlanner": [
+    {
+      "id": "plan-mon",
+      "day": "Monday \u2014 Strategy & Ad Check",
+      "title": "Weekly Performance Review & Ad Budget Check",
+      "channel": "Google Ads + Meta Ads + Analytics",
+      "format": "Weekly Metrics & Budget Adjustment",
+      "notes": "Review last week's total sales, check Cost Per Lead in the Calculator tab, and shift budget to your top-performing ads.",
+      "bookmarked": true
+    },
+    {
+      "id": "plan-tue",
+      "day": "Tuesday \u2014 Search & Website Content",
+      "title": "Publish 1 Helpful Guide or Answer a Customer FAQ",
+      "channel": "Website Blog + Google Business Profile",
+      "format": "Article + Google Business Update",
+      "notes": "Write a clear article answering a common customer question and share a short summary on your Google Business Profile.",
+      "bookmarked": false
+    },
+    {
+      "id": "plan-wed",
+      "day": "Wednesday \u2014 Short-Form Video",
+      "title": "Post Educational Reel / TikTok / YouTube Short",
+      "channel": "Instagram Reels + TikTok + Shorts",
+      "format": "30-45 sec Vertical Video with Captions",
+      "notes": "Hook viewers in the first 3 seconds, demonstrate how your product solves a problem, and invite viewers to click the link in your bio.",
+      "bookmarked": true
+    },
+    {
+      "id": "plan-thu",
+      "day": "Thursday \u2014 Email Marketing",
+      "title": "Send Weekly Value Newsletter & Promotional Offer",
+      "channel": "Email List Subscribers",
+      "format": "1 Quick Tip + 1 Featured Offer",
+      "notes": "Write a curiosity-driven subject line, keep paragraphs brief for mobile readers, and include one bold button linking to your offer.",
+      "bookmarked": true
+    },
+    {
+      "id": "plan-fri",
+      "day": "Friday \u2014 Social Proof & Community",
+      "title": "Share Customer Review Carousel & Reply to All DMs",
+      "channel": "Instagram + Facebook + LinkedIn",
+      "format": "Customer Story / Before-and-After Carousel",
+      "notes": "Highlight real customer results, follow up with anyone who asked questions in your comments or messages this week, and schedule weekend posts.",
+      "bookmarked": false
+    },
+    {
+      "id": "plan-launch",
+      "day": "Monthly Campaign Launch Day",
+      "title": "New Promo Launch Checklist & Retargeting Setup",
+      "channel": "All Channels (Ads, Email, Social, Website)",
+      "format": "Full Campaign Rollout",
+      "notes": "Double-check all checkout buttons on mobile, test promo codes, turn on retargeting ads for window shoppers, and calculate target ROAS.",
+      "bookmarked": true
+    }
+  ],
+  "glossary": [
+    {
+      "term": "ROAS (Return on Ad Spend)",
+      "category": "Paid Ads & Budget",
+      "simple": "How many dollars (or pesos) you earn back for every $1 or \u20b11 you spend on ads.",
+      "formula": "ROAS = Revenue from Ads \u00f7 Ad Spend",
+      "example": "If you spend \u20b15,000 on Facebook Ads and get \u20b120,000 in sales, your ROAS is 4.0x (you earned 4 times what you spent)."
+    },
+    {
+      "term": "ROI (Return on Investment)",
+      "category": "Paid Ads & Budget",
+      "simple": "Your actual net profit percentage after subtracting both your product costs and marketing costs.",
+      "formula": "ROI (%) = ((Net Profit \u00f7 Total Cost) \u00d7 100)",
+      "example": "If a campaign costs \u20b110,000 total and brings in \u20b115,000 in profit after product costs, your ROI is +50%."
+    },
+    {
+      "term": "CPC (Cost Per Click)",
+      "category": "Paid Ads & Budget",
+      "simple": "The average amount you pay each time someone clicks on your ad.",
+      "formula": "CPC = Total Ad Spend \u00f7 Total Clicks",
+      "example": "Spending \u20b11,000 on an ad that gets 200 clicks means your Cost Per Click is \u20b15.00."
+    },
+    {
+      "term": "CTR (Click-Through Rate)",
+      "category": "Paid Ads & Budget",
+      "simple": "Out of every 100 people who see your ad, email, or link, how many actually click it.",
+      "formula": "CTR (%) = (Total Clicks \u00f7 Total Views) \u00d7 100",
+      "example": "If 1,000 people see your post and 25 click your link, your CTR is 2.5%."
+    },
+    {
+      "term": "CPA / CAC (Cost Per Acquisition / Customer)",
+      "category": "Paid Ads & Budget",
+      "simple": "How much marketing money it costs you to win 1 paying customer.",
+      "formula": "CPA = Total Ad Spend \u00f7 Number of New Customers",
+      "example": "If you spend \u20b13,000 on ads and get 10 buyers, your Cost Per Customer is \u20b1300."
+    },
+    {
+      "term": "CPL (Cost Per Lead)",
+      "category": "Paid Ads & Budget",
+      "simple": "How much you pay to get 1 interested person's contact info (like their email or phone number).",
+      "formula": "CPL = Total Ad Spend \u00f7 Total Leads Collected",
+      "example": "Spending \u20b12,000 to get 40 people to sign up for a free quote gives you a \u20b150 Cost Per Lead."
+    },
+    {
+      "term": "CPM (Cost Per 1,000 Views)",
+      "category": "Paid Ads & Budget",
+      "simple": "The price an ad platform charges to show your ad 1,000 times.",
+      "formula": "CPM = (Ad Spend \u00f7 Impressions) \u00d7 1,000",
+      "example": "If you spend \u20b1500 and your ad is shown 10,000 times, your CPM is \u20b150."
+    },
+    {
+      "term": "Conversion Rate (CVR)",
+      "category": "Website & Sales",
+      "simple": "The percentage of website visitors who take action (buy a product, book a call, or sign up).",
+      "formula": "Conversion Rate (%) = (Conversions \u00f7 Total Visitors) \u00d7 100",
+      "example": "If 500 people visit your product page and 15 buy, your Conversion Rate is 3.0%."
+    },
+    {
+      "term": "Landing Page",
+      "category": "Website & Sales",
+      "simple": "A focused web page designed for one specific goal \u2014 such as getting a visitor to buy one product or sign up for a free guide.",
+      "formula": "1 Clear Headline + Benefits + Social Proof + 1 Action Button",
+      "example": "Sending ad clicks to a dedicated offer page instead of a busy homepage usually doubles your sales."
+    },
+    {
+      "term": "CTA (Call to Action)",
+      "category": "Website & Sales",
+      "simple": "The specific button or instruction telling people what step to take next.",
+      "formula": "Action Verb + Clear Benefit",
+      "example": "'Get My Free Price Quote', 'Shop the Summer Sale', or 'Comment GUIDE below'."
+    },
+    {
+      "term": "AOV (Average Order Value)",
+      "category": "Website & Sales",
+      "simple": "The average amount a customer spends each time they place an order with you.",
+      "formula": "AOV = Total Revenue \u00f7 Total Orders",
+      "example": "If 10 orders bring in \u20b112,000 total, your Average Order Value is \u20b11,200."
+    },
+    {
+      "term": "CLV / LTV (Customer Lifetime Value)",
+      "category": "Website & Sales",
+      "simple": "The total amount of money a typical customer spends with your business over the entire time they buy from you.",
+      "formula": "LTV = Average Order Value \u00d7 Repeat Purchases Per Year \u00d7 Years",
+      "example": "A coffee shop customer who spends \u20b1200 twice a week is worth over \u20b120,000 per year."
+    },
+    {
+      "term": "SEO (Search Engine Optimization)",
+      "category": "Search & Content",
+      "simple": "Improving your website so it shows up higher for free when people search on Google.",
+      "formula": "Helpful Content + Fast Mobile Site + Clear Keywords",
+      "example": "Writing a detailed page titled 'Best Wedding Photographer in Manila' so couples find you on Google without paid ads."
+    },
+    {
+      "term": "Keywords (Search Phrases)",
+      "category": "Search & Content",
+      "simple": "The exact words and questions people type into Google, YouTube, or TikTok when looking for something.",
+      "formula": "Topic + Customer Intent (e.g., 'buy', 'best', 'how to')",
+      "example": "'Affordable dental clinic Pasig' is a high-intent keyword because the searcher is ready to book."
+    },
+    {
+      "term": "Organic Traffic vs. Paid Traffic",
+      "category": "Search & Content",
+      "simple": "Organic traffic comes to your site naturally for free (from search or regular posts); Paid traffic comes from ads you pay for.",
+      "formula": "Total Traffic = Organic Visitors + Paid Ad Visitors",
+      "example": "A viral TikTok video brings free organic traffic; a boosted Facebook post brings paid traffic."
+    },
+    {
+      "term": "Retargeting (Remarketing)",
+      "category": "Paid Ads & Budget",
+      "simple": "Showing follow-up ads to warm prospects who already visited your website or watched your videos.",
+      "formula": "Past Visitors \u2192 Reminder Ad \u2192 Completed Purchase",
+      "example": "When you look at a pair of shoes online and see an ad for those exact shoes on Instagram 10 minutes later."
+    },
+    {
+      "term": "Sales Funnel",
+      "category": "Website & Sales",
+      "simple": "The journey a stranger takes from first discovering your brand to becoming a loyal paying customer.",
+      "formula": "1. Awareness (Discover) \u2192 2. Consideration (Trust) \u2192 3. Conversion (Buy)",
+      "example": "Someone watches your helpful Reel (Awareness), downloads your price guide (Consideration), and books a package (Conversion)."
+    },
+    {
+      "term": "Lead Magnet",
+      "category": "Email & Social",
+      "simple": "A free, useful resource you give away in exchange for a visitor's email address or phone number.",
+      "formula": "Free Checklist / Discount / Sample = New Email Subscriber",
+      "example": "'Enter your email to get 10% off your first order' or 'Download our free 7-day meal planner'."
+    },
+    {
+      "term": "Open Rate & Click Rate (Email)",
+      "category": "Email & Social",
+      "simple": "Open Rate is the % of subscribers who open your email; Click Rate is the % who tap a link inside it.",
+      "formula": "Open Rate = (Opens \u00f7 Delivered) \u00d7 100",
+      "example": "Out of 1,000 subscribers, 350 open the email (35% Open Rate) and 40 click the product link (4% Click Rate)."
+    },
+    {
+      "term": "Engagement Rate (Social Media)",
+      "category": "Email & Social",
+      "simple": "How actively people interact with your post through likes, comments, shares, and saves.",
+      "formula": "Engagement Rate (%) = ((Likes + Comments + Shares + Saves) \u00f7 Reach) \u00d7 100",
+      "example": "A post seen by 1,000 people that gets 60 likes, comments, and saves has a strong 6.0% Engagement Rate."
+    },
+    {
+      "term": "A/B Split Testing",
+      "category": "Website & Sales",
+      "simple": "Showing two versions of an ad, email subject line, or page (Version A vs. Version B) to see which one performs better.",
+      "formula": "Change 1 Thing at a Time \u2192 Measure Winner",
+      "example": "Testing a red 'Buy Now' button against a green 'Claim Offer' button to see which gets more clicks."
+    },
+    {
+      "term": "UTM Tracking Link",
+      "category": "Search & Content",
+      "simple": "Small labels added to the end of a web link so Google Analytics can tell you exactly which post or ad brought the visitor.",
+      "formula": "website.com/?utm_source=instagram&utm_medium=bio",
+      "example": "Helps you prove whether your sales came from your Instagram bio link, your Thursday email, or your Facebook ad."
+    },
+    {
+      "term": "Bounce Rate",
+      "category": "Website & Sales",
+      "simple": "The percentage of visitors who open your page and leave right away without clicking anything or taking action.",
+      "formula": "Single-Page Exits \u00f7 Total Visits \u00d7 100",
+      "example": "If a page takes 10 seconds to load or looks confusing on mobile, visitors leave immediately (high bounce rate)."
+    },
+    {
+      "term": "UGC (User-Generated Content)",
+      "category": "Email & Social",
+      "simple": "Authentic photos, unboxing videos, or reviews filmed by real customers or creators rather than polished studio commercials.",
+      "formula": "Real Person + Honest Product Demo = High Trust",
+      "example": "A smartphone video of a happy customer showing how they use your skincare routine at home."
+    }
+  ]
+}
