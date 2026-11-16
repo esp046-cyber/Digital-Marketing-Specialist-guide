@@ -5,7 +5,7 @@
    - Background Sync ('sync-marketing-actions') to flush IndexedDB offline queue
    ========================================================================== */
 
-const CACHE_NAME = 'dms-marketing-guide-v3.0.0';
+const CACHE_NAME = 'dms-workstation-v4.0.0';
 const CORE_ASSETS = [
   './',
   './index.html',

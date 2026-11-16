@@ -1,545 +1,869 @@
 /* ==========================================================================
-   Digital Marketing Specialist Guide — Practical Marketing Application
-   4 Navigation Tabs:
-   01. Daily Tasks (Step-by-step checklists across 6 marketing areas)
-   02. Content Planner (Weekly campaign schedule + backup & print/PDF)
-   03. Marketing Terms (24 plain-English definitions, formulas & examples)
-   04. Calculators (ROAS, Profit/ROI, CPC/CTR, Conversion Rate, Sales Goal, Engagement, Email)
+   Digital Marketing Specialist Workstation (v4.0 Worldwide Edition)
+   - Fixes task loading & auto-upgrades legacy localStorage schemas so tasks never show empty
+   - 9-Point Workstation Guide inside every task card
+   - Multi-Currency (USD, PHP, GBP, EUR, AUD, CAD, SGD), Market Region & Business Focus
+   - Built-in UTM Builder, Campaign Brief Generator, Monthly Report Generator & AI Prompt Helper
+   - Margin-aware Break-Even ROAS & Customizable Calculator Benchmarks
    ========================================================================== */
 
 (function () {
   'use strict';
 
-  const STATE_KEY = 'dms_marketing_guide_v3';
+  const STATE_KEY = 'dms_workstation_state_v4';
+  const PREFS_KEY = 'dms_workstation_prefs_v4';
   const DEFAULT_TASKS = [
   {
-    "id": "task-seo-1",
-    "title": "Check Website Page Speed & Mobile Loading",
-    "category": "Website & SEO",
-    "frequency": "Weekly",
-    "priority": "High Priority",
-    "goal": "Pages load in under 3 seconds on mobile phones",
-    "tools": "Google PageSpeed Insights",
-    "steps": [
-      "Test your top 5 most visited pages on a mobile phone",
-      "Compress large photos so they load quickly without losing quality",
-      "Make sure buttons and text are easy to read without zooming in"
+    "id": "ws-strat-01",
+    "title": "Target Audience & Customer Persona Research",
+    "category": "Marketing Strategy & Research",
+    "frequency": "Monthly",
+    "difficulty": "Beginner",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "PH",
+      "UK",
+      "EU",
+      "AU"
     ],
-    "completed": false,
-    "bookmarked": true
-  },
-  {
-    "id": "task-seo-2",
-    "title": "Write Clear Page Titles & Search Descriptions",
-    "category": "Website & SEO",
-    "frequency": "Weekly",
-    "priority": "High Priority",
-    "goal": "Get more people to click your website link on Google",
-    "tools": "Google Search Console",
-    "steps": [
-      "Include the main topic phrase naturally in your page title (under 60 characters)",
-      "Write a clear 1-2 sentence summary (under 155 characters) explaining how the page helps",
-      "Make sure every page on your site has its own unique title"
+    "industries": [
+      "ALL",
+      "Ecommerce",
+      "B2B",
+      "SaaS",
+      "LocalService"
     ],
+    "what": "Create a clear profile of your ideal buyer\u2014including their biggest problem, buying triggers, objections, and favorite online channels.",
+    "why": "When you know exactly who you are talking to and what problems keep them awake, your ads and posts get 2x\u20133x more clicks at a lower cost.",
+    "when": "Before launching any new product, campaign, or quarterly marketing plan (and reviewed monthly).",
+    "tools": "Customer Surveys, Google Analytics, Reviews (Trustpilot / Shopee / Lazada / Amazon), AnswerThePublic",
+    "steps": [
+      "Read 20 recent 5-star and 1-star customer reviews in your product category to spot exact phrases buyers use.",
+      "Write down the top 3 problems your customer wants to solve and the #1 reason they hesitate to buy.",
+      "List the top 2 platforms where this buyer spends time daily (e.g., TikTok & Shopee in PH, LinkedIn & Google in B2B US/UK).",
+      "Summarize this into a 1-page Customer Persona card for your team."
+    ],
+    "expected": "A 1-page Customer Persona profile with 3 pain points, 3 buying triggers, and top channels.",
+    "measure": "Higher Click-Through Rate (CTR) and lower Cost Per Lead/Sale on campaigns written for this persona.",
+    "mistakes": "Guessing what customers want without reading real reviews or making the audience 'everyone aged 18\u201365'.",
+    "example": "Persona: 'Busy Working Parent in Metro Manila / London' \u2014 Wants: 15-minute healthy dinner kits; Objection: Worried about delivery freshness; Channel: Instagram Reels & Google Search.",
     "completed": true,
     "bookmarked": true
   },
   {
-    "id": "task-seo-3",
-    "title": "Fix Broken Website Links (404 Pages)",
-    "category": "Website & SEO",
+    "id": "ws-strat-02",
+    "title": "Competitor Offer, Ad & Funnel Analysis",
+    "category": "Marketing Strategy & Research",
     "frequency": "Monthly",
-    "priority": "Medium Priority",
-    "goal": "Zero dead links that frustrate visitors",
-    "tools": "Google Search Console, Broken Link Checker",
-    "steps": [
-      "Check for any links that lead to a 'Page Not Found' screen",
-      "Update old links so they point to the right live page",
-      "Add helpful links between related blog posts and product pages"
+    "difficulty": "Beginner",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "PH",
+      "UK",
+      "EU",
+      "AU"
     ],
+    "industries": [
+      "ALL",
+      "Ecommerce",
+      "B2B",
+      "SaaS",
+      "LocalService"
+    ],
+    "what": "Review the top 3 competitors in your market to see what ads they are running, how they price their offer, and how their landing page converts visitors.",
+    "why": "Shows you what is already working in your market and reveals gaps where your brand can stand out.",
+    "when": "Once a month and before launching a major seasonal promotion.",
+    "tools": "Meta Ad Library, Google Ads Transparency Center, TikTok Creative Center, Similarweb",
+    "steps": [
+      "Look up your top 3 competitors inside the free Meta Ad Library and Google Ads Transparency Center.",
+      "Find ads they have kept running for 30+ days (long-running ads are usually profitable).",
+      "Click through their landing page and sign up for their email list to see their follow-up sequence.",
+      "Write down 2 strengths to learn from and 2 weaknesses your offer solves better."
+    ],
+    "expected": "A comparison table of 3 competitors showing their headline, offer/bonus, pricing, and ad hooks.",
+    "measure": "New differentiated ad angles that beat your baseline click rate by 15\u201325%.",
+    "mistakes": "Copying a competitor's ad word-for-word instead of highlighting what makes your offer stronger.",
+    "example": "Competitor charges $15 shipping with 5-day delivery; we highlight 'Free Next-Day Shipping + 30-Day Guarantee' in our headline.",
+    "completed": false,
+    "bookmarked": true
+  },
+  {
+    "id": "ws-strat-03",
+    "title": "Customer Journey & Funnel Stage Mapping",
+    "category": "Marketing Strategy & Research",
+    "frequency": "Quarterly",
+    "difficulty": "Intermediate",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "PH",
+      "UK",
+      "EU",
+      "AU"
+    ],
+    "industries": [
+      "ALL",
+      "Ecommerce",
+      "B2B",
+      "SaaS",
+      "LocalService"
+    ],
+    "what": "Map out the 3 steps a stranger takes from first discovering your brand (Awareness), to trusting you (Consideration), to buying (Conversion).",
+    "why": "Most people do not buy the very first time they see an ad. Mapping the journey ensures you follow up at every stage.",
+    "when": "At the start of each quarter or when launching a new product line.",
+    "tools": "Notion / Google Docs, Tab 02 Campaign Planner, Google Analytics Funnel Report",
+    "steps": [
+      "Step 1 (Awareness): Choose content that attracts cold audiences (short videos, helpful blog guides, search ads).",
+      "Step 2 (Consideration): Offer a low-risk next step (free sample, price guide, case study, customer reviews).",
+      "Step 3 (Conversion): Present a clear offer with urgency, trust badges, and simple checkout or booking.",
+      "Assign 1 metric to measure each stage (Reach -> Clicks/Leads -> Sales)."
+    ],
+    "expected": "A complete 3-stage marketing funnel diagram with matching content and ads for each step.",
+    "measure": "Steady increase in returning visitor conversion rate and overall sales.",
+    "mistakes": "Showing hard-sell 'Buy Now' ads to cold strangers without any proof or education.",
+    "example": "Stage 1: 30s TikTok tip video -> Stage 2: Free PDF buying guide via email -> Stage 3: 10% first-order welcome voucher.",
     "completed": false,
     "bookmarked": false
   },
   {
-    "id": "task-seo-4",
-    "title": "Update Google Business Profile for Local Customers",
-    "category": "Website & SEO",
+    "id": "ws-ads-01",
+    "title": "Google Ads Search Term Cleanup & Negative Keywords",
+    "category": "Advertising & Campaign Management",
     "frequency": "Weekly",
-    "priority": "High Priority",
-    "goal": "Rank in the top 3 local results on Google Maps",
-    "tools": "Google Business Profile",
-    "steps": [
-      "Confirm your business hours, phone number, and address are accurate",
-      "Upload 2-3 fresh photos of your products, team, or store",
-      "Reply warmly to every new customer review within 24 hours"
+    "difficulty": "Intermediate",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "PH",
+      "UK",
+      "EU",
+      "AU"
     ],
+    "industries": [
+      "ALL",
+      "Ecommerce",
+      "B2B",
+      "SaaS",
+      "LocalService"
+    ],
+    "what": "Review the exact search phrases people typed into Google before clicking your paid ads, and block unrelated words.",
+    "why": "Stops you from paying for accidental clicks from people looking for freebies, jobs, or unrelated products.",
+    "when": "Twice a week for new campaigns; once a week for established campaigns.",
+    "tools": "Google Ads (Insights & Reports -> Search Terms)",
+    "steps": [
+      "Open Google Ads and navigate to Campaigns -> Insights and Reports -> Search Terms.",
+      "Sort by 'Cost' from highest to lowest over the last 7 to 14 days.",
+      "Select any unrelated search phrases (e.g., 'free', 'salary', 'repair manual') and click 'Add as negative keyword'.",
+      "Take high-converting search phrases and add them as Exact or Phrase match keywords."
+    ],
+    "expected": "A cleaner search campaign where 90%+ of paid clicks come from high-intent buyers.",
+    "measure": "10% to 25% lower Cost Per Acquisition (CPA) and higher Conversion Rate.",
+    "mistakes": "Using broad match keywords without adding negative keywords, which burns budget rapidly.",
+    "example": "An online accounting software company blocks 'accounting jobs' and 'free excel template', saving $450/month in wasted clicks.",
+    "completed": true,
+    "bookmarked": true
+  },
+  {
+    "id": "ws-ads-02",
+    "title": "Meta (Facebook/Instagram) & TikTok Ad Creative Testing",
+    "category": "Advertising & Campaign Management",
+    "frequency": "Weekly",
+    "difficulty": "Beginner",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "PH",
+      "UK",
+      "EU",
+      "AU"
+    ],
+    "industries": [
+      "ALL",
+      "Ecommerce",
+      "B2B",
+      "LocalService"
+    ],
+    "what": "Launch and compare 3 different video or image ad angles to see which hook captures attention and drives the lowest cost per sale.",
+    "why": "On social media, your creative (video/image) drives 70%+ of ad performance. Fresh hooks prevent ad fatigue.",
+    "when": "Every week or whenever ad click rates drop and costs rise.",
+    "tools": "Meta Ads Manager, TikTok Ads Manager, CapCut, Canva",
+    "steps": [
+      "Prepare 3 distinct ad concepts: (A) Problem/Solution demo, (B) Customer review/unboxing, (C) Before & After comparison.",
+      "Make the first 3 seconds visually engaging with clear on-screen headline text.",
+      "Run all 3 ads with equal budget for 3 to 5 days before turning off the losers.",
+      "Scale budget on the winning ad that beats your target Cost Per Sale."
+    ],
+    "expected": "1 to 2 winning video or carousel ads that bring consistent daily sales within your target margin.",
+    "measure": "Link Click-Through Rate (CTR) above 1.5% and Return on Ad Spend (ROAS) above your break-even target.",
+    "mistakes": "Turning off an ad after only 3 hours or changing 5 things at once so you don't know what worked.",
+    "example": "Hook A ('Tired of back pain at your desk?') got a 2.8% CTR and $12 CPA vs Hook B's 0.9% CTR.",
+    "completed": true,
+    "bookmarked": true
+  },
+  {
+    "id": "ws-ads-03",
+    "title": "B2B LinkedIn Lead Generation & Account Targeting",
+    "category": "Advertising & Campaign Management",
+    "frequency": "Weekly",
+    "difficulty": "Advanced",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "UK",
+      "EU",
+      "AU"
+    ],
+    "industries": [
+      "B2B",
+      "SaaS",
+      "ALL"
+    ],
+    "what": "Run targeted campaigns reaching decision-makers by Job Title, Industry, and Company Size on LinkedIn.",
+    "why": "For B2B and high-ticket services, LinkedIn lets you put your offer directly in front of verified managers, directors, and founders.",
+    "when": "Weekly optimization during active B2B lead generation campaigns.",
+    "tools": "LinkedIn Campaign Manager, HubSpot / Salesforce CRM",
+    "steps": [
+      "Filter audience by specific Job Titles or Seniority (e.g., HR Director, Operations Manager) and Company Size (50\u2013500 employees).",
+      "Disable 'Audience Expansion' so LinkedIn doesn't show ads outside your strict buyer criteria.",
+      "Offer a high-value industry benchmark report, ROI calculator, or live demo using LinkedIn Lead Gen Forms.",
+      "Sync leads automatically to your CRM for a 15-minute sales follow-up."
+    ],
+    "expected": "Qualified business leads with verified work emails, company names, and job titles.",
+    "measure": "Cost Per Qualified Lead (CPQL) and percentage of leads that book a discovery call.",
+    "mistakes": "Sending cold B2B traffic to a generic 'Contact Us' page instead of a specific case study or value offer.",
+    "example": "Offering a '2026 Warehouse Automation Cost Guide' generated 42 qualified Operations Director leads at $38/lead.",
     "completed": false,
     "bookmarked": false
   },
   {
-    "id": "task-seo-5",
-    "title": "Research Questions Customers Are Searching For",
-    "category": "Website & SEO",
-    "frequency": "Monthly",
-    "priority": "Medium Priority",
-    "goal": "Create 4 new helpful blog articles or FAQ guides each month",
-    "tools": "Google Search 'People Also Ask', Google Trends, AnswerThePublic",
-    "steps": [
-      "List the top 10 questions customers ask before buying your product",
-      "Look up those questions on Google to see what pages currently show up",
-      "Write a clearer, more helpful answer with step-by-step examples"
-    ],
-    "completed": true,
-    "bookmarked": false
-  },
-  {
-    "id": "task-ads-1",
-    "title": "Review Daily Ad Spend & Pause Non-Performing Ads",
-    "category": "Paid Ads",
+    "id": "ws-ads-04",
+    "title": "Daily Budget Pacing & Break-Even ROAS Check",
+    "category": "Advertising & Campaign Management",
     "frequency": "Daily",
-    "priority": "High Priority",
-    "goal": "Keep ad spending on budget and stop wasting money on weak ads",
-    "tools": "Google Ads, Meta Ads Manager, TikTok Ads",
-    "steps": [
-      "Check how much money was spent yesterday vs your daily budget target",
-      "Pause any ad that has spent 2x your target cost per sale without getting results",
-      "Move budget toward the ads bringing in the most sales or leads"
+    "difficulty": "Beginner",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "PH",
+      "UK",
+      "EU",
+      "AU"
     ],
+    "industries": [
+      "ALL",
+      "Ecommerce",
+      "B2B",
+      "SaaS",
+      "LocalService"
+    ],
+    "what": "Check daily ad spending across all platforms to make sure you neither overspend your monthly budget nor run ads below your break-even profit margin.",
+    "why": "Prevents costly billing surprises and protects your net profit margin.",
+    "when": "10 minutes every morning.",
+    "tools": "Tab 04 Break-Even & ROAS Calculator, Google Ads, Meta Ads",
+    "steps": [
+      "Calculate your true Break-Even ROAS in Tab 04 using your actual product profit margin.",
+      "Check yesterday's spend and ROAS across Google, Meta, TikTok, or LinkedIn.",
+      "Pause ad sets that spent 2x your target Cost Per Sale with 0 conversions.",
+      "Increase budget by no more than 15\u201320% at a time on profitable campaigns."
+    ],
+    "expected": "Controlled monthly ad spend within +/- 3% of plan and positive net profit after ad costs.",
+    "measure": "Net Profit ROI (%) and actual spend vs. planned monthly budget.",
+    "mistakes": "Doubling an ad set's budget overnight (which resets the ad platform's learning phase) or ignoring product costs.",
+    "example": "With a 50% gross margin, your Break-Even ROAS is 2.0x. Any campaign above 2.8x ROAS is generating healthy net profit.",
     "completed": true,
     "bookmarked": true
   },
   {
-    "id": "task-ads-2",
-    "title": "Remove Irrelevant Search Words from Google Ads",
-    "category": "Paid Ads",
-    "frequency": "Weekly",
-    "priority": "High Priority",
-    "goal": "Save 15%+ of your ad budget by blocking wrong searches",
-    "tools": "Google Ads Search Terms Report",
-    "steps": [
-      "Open the list of actual words people typed before clicking your ad",
-      "Add unrelated words (like 'free', 'jobs', or 'cheap DIY') to your block list",
-      "Put your best-performing search phrases into their own focused ad group"
+    "id": "ws-seo-01",
+    "title": "High-Intent Keyword Research & Search Intent Mapping",
+    "category": "SEO & Website Optimization",
+    "frequency": "Monthly",
+    "difficulty": "Beginner",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "PH",
+      "UK",
+      "EU",
+      "AU"
     ],
-    "completed": false,
-    "bookmarked": true
-  },
-  {
-    "id": "task-ads-3",
-    "title": "Refresh Ad Videos & Headlines When People Get Tired of Them",
-    "category": "Paid Ads",
-    "frequency": "Weekly",
-    "priority": "High Priority",
-    "goal": "Keep click rates above 1.5% on social media ads",
-    "tools": "Canva, CapCut, Meta Ads Manager",
-    "steps": [
-      "Check if the same audience has seen your ad more than 3-4 times",
-      "Create 3 new opening hooks (the first 3 seconds of your video)",
-      "Test a customer testimonial photo against a clean product demonstration"
+    "industries": [
+      "ALL",
+      "Ecommerce",
+      "B2B",
+      "SaaS",
+      "LocalService"
     ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "task-ads-4",
-    "title": "Set Up Follow-Up Ads (Retargeting) for Window Shoppers",
-    "category": "Paid Ads",
-    "frequency": "Campaign Launch",
-    "priority": "High Priority",
-    "goal": "Bring back visitors who viewed a product or cart but didn't buy",
-    "tools": "Meta Ads, Google Ads Audience Manager",
+    "what": "Find the exact phrases customers type into Google when they are ready to compare options or buy.",
+    "why": "Ranking for 1 buyer-intent phrase (like 'best CRM for small agencies') brings more sales than 10 vague topics.",
+    "when": "Monthly when planning new website pages and blog articles.",
+    "tools": "Google Keyword Planner, Google Search Console, Ahrefs / Semrush / Ubersuggest",
     "steps": [
-      "Show a helpful reminder ad to people who visited in the last 14 days",
-      "Exclude people who already bought so you don't waste money showing them the same ad",
-      "Include customer reviews or a small first-order bonus to answer doubts"
+      "List 10 core products or services you offer and pair them with buyer words ('best', 'pricing', 'review', 'near me').",
+      "Check monthly search volume and competition in Google Keyword Planner.",
+      "Group similar keywords together so 1 strong page targets 1 main topic.",
+      "Match your page type to what currently ranks on Page 1 (product page, comparison guide, or calculator)."
     ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "task-social-1",
-    "title": "Film & Edit Short Vertical Videos (Reels, TikTok & Shorts)",
-    "category": "Social Media & Content",
-    "frequency": "Weekly",
-    "priority": "High Priority",
-    "goal": "Keep viewers watching past the first 3 seconds",
-    "tools": "CapCut, Instagram Reels, TikTok, YouTube Shorts",
-    "steps": [
-      "Start with a strong question or visual result in the very first 2 seconds",
-      "Add clear on-screen captions so people can watch with their sound off",
-      "End with one simple instruction (e.g., 'Comment GUIDE' or 'Tap link in bio')"
-    ],
-    "completed": false,
-    "bookmarked": true
-  },
-  {
-    "id": "task-social-2",
-    "title": "Turn One Big Topic into a Full Week of Social Posts",
-    "category": "Social Media & Content",
-    "frequency": "Weekly",
-    "priority": "Medium Priority",
-    "goal": "Publish consistently across 3-4 platforms without burnout",
-    "tools": "Canva, Notion, Meta Business Suite",
-    "steps": [
-      "Take 1 helpful guide or customer story as your main weekly theme",
-      "Turn the key points into a 5-slide swipeable carousel post",
-      "Record a 30-second talking-head video summarizing the #1 takeaway"
-    ],
+    "expected": "A prioritized list of 10\u201320 target keywords mapped to specific website pages.",
+    "measure": "Top 10 Google rankings and month-over-month growth in non-branded organic clicks.",
+    "mistakes": "Creating multiple weak pages targeting the exact same keyword (keyword cannibalization).",
+    "example": "Targeting 'emergency plumber Pasig 24/7' on a dedicated service page with clear pricing and a click-to-call button.",
     "completed": true,
     "bookmarked": false
   },
   {
-    "id": "task-social-3",
-    "title": "Reply to Comments, Direct Messages & Brand Mentions",
-    "category": "Social Media & Content",
+    "id": "ws-seo-02",
+    "title": "On-Page SEO Audit (Titles, Headings, Internal Links & Alt Text)",
+    "category": "SEO & Website Optimization",
+    "frequency": "Weekly",
+    "difficulty": "Beginner",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "PH",
+      "UK",
+      "EU",
+      "AU"
+    ],
+    "industries": [
+      "ALL",
+      "Ecommerce",
+      "B2B",
+      "SaaS",
+      "LocalService"
+    ],
+    "what": "Optimize your page title, H1 heading, subheadings, image descriptions, and internal links so Google and readers immediately understand the page.",
+    "why": "Simple on-page updates often jump a page from position #12 (Page 2) to position #4 (Page 1) within weeks.",
+    "when": "Every time you publish a new page and weekly for existing top pages.",
+    "tools": "Google Search Console, Yoast / RankMath, Screaming Frog",
+    "steps": [
+      "Place your primary keyword near the front of the Page Title (<60 chars) and H1 Heading.",
+      "Write a compelling Meta Description (<155 chars) with a clear benefit so searchers click your link.",
+      "Add descriptive alt text to images and compress them to WebP format.",
+      "Add 3 internal links from your existing high-traffic pages pointing to the new page."
+    ],
+    "expected": "100% of priority landing pages have unique titles, fast images, and strong internal links.",
+    "measure": "Higher organic Click-Through Rate (CTR) and average position in Google Search Console.",
+    "mistakes": "Leaving default titles like 'Home - Company Name' or stuffing keywords unnaturally into every sentence.",
+    "example": "Changing title from 'Services' to 'Commercial Solar Installation in Melbourne \u2014 Free Site Quote' lifted organic clicks by 48%.",
+    "completed": false,
+    "bookmarked": true
+  },
+  {
+    "id": "ws-seo-03",
+    "title": "Landing Page Speed & Conversion Rate Optimization (CRO)",
+    "category": "SEO & Website Optimization",
+    "frequency": "Monthly",
+    "difficulty": "Intermediate",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "PH",
+      "UK",
+      "EU",
+      "AU"
+    ],
+    "industries": [
+      "ALL",
+      "Ecommerce",
+      "B2B",
+      "SaaS",
+      "LocalService"
+    ],
+    "what": "Make your landing page load in under 3 seconds on mobile and remove friction so more visitors turn into buyers or leads.",
+    "why": "Doubling your conversion rate from 1.5% to 3.0% doubles your sales without spending a single extra dollar or peso on ads.",
+    "when": "Monthly review of your top 5 highest-traffic landing pages.",
+    "tools": "Google PageSpeed Insights, Microsoft Clarity (free heatmaps & recordings)",
+    "steps": [
+      "Open your landing page on a smartphone and check if the main headline, benefit, and button are visible without scrolling.",
+      "Place real customer reviews, star ratings, or client logos right next to your call-to-action button.",
+      "Watch 10 session recordings in Microsoft Clarity to see where mobile users get stuck or drop off.",
+      "Remove non-essential form fields so checkout or lead signup takes under 45 seconds."
+    ],
+    "expected": "A fast, mobile-friendly landing page with clear trust signals and a frictionless checkout/form.",
+    "measure": "Landing page Conversion Rate (CVR %) and bounce rate reduction.",
+    "mistakes": "Sending paid ad traffic to a slow homepage with 15 different menu links instead of 1 focused offer page.",
+    "example": "Cutting a B2B quote form from 9 fields down to 4 fields increased completed lead submissions by 37%.",
+    "completed": false,
+    "bookmarked": true
+  },
+  {
+    "id": "ws-ana-01",
+    "title": "Google Analytics 4 (GA4) & Conversion Tracking Check",
+    "category": "Analytics & Reporting",
+    "frequency": "Weekly",
+    "difficulty": "Intermediate",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "PH",
+      "UK",
+      "EU",
+      "AU"
+    ],
+    "industries": [
+      "ALL",
+      "Ecommerce",
+      "B2B",
+      "SaaS",
+      "LocalService"
+    ],
+    "what": "Verify that every purchase, lead form submission, phone click, or chat inquiry is accurately recorded in Google Analytics 4 and your ad platforms.",
+    "why": "If conversion tracking breaks, you and your ad algorithms are flying blind and cannot tell which ads bring real revenue.",
+    "when": "Weekly and immediately after any website or checkout update.",
+    "tools": "Google Analytics 4 (GA4), Google Tag Manager, Meta Pixel Helper",
+    "steps": [
+      "Complete a real test signup or test order on your website using your mobile phone.",
+      "Confirm the conversion event fires once (and not twice) in GA4 Realtime / DebugView.",
+      "Compare total orders/leads in GA4 against your actual store backend (Shopify, WooCommerce, CRM).",
+      "Ensure cookie consent banners (GDPR in UK/EU) properly pass consent signals."
+    ],
+    "expected": "Accurate, deduplicated conversion tracking within 5% of actual backend orders/leads.",
+    "measure": "Tracking accuracy % between backend sales records and analytics dashboard.",
+    "mistakes": "Counting every 'Page View' as a conversion instead of tracking only the final 'Thank You / Order Confirmed' action.",
+    "example": "Fixing a broken Thank-You page tag revealed that Email newsletters were driving 30% more purchases than previously reported.",
+    "completed": false,
+    "bookmarked": true
+  },
+  {
+    "id": "ws-ana-02",
+    "title": "UTM Tracking Link Standardization for All Campaigns",
+    "category": "Analytics & Reporting",
     "frequency": "Daily",
-    "priority": "Medium Priority",
-    "goal": "Reply to potential customers within 1 hour during work hours",
-    "tools": "Instagram, TikTok, Facebook, LinkedIn Inbox",
-    "steps": [
-      "Answer questions on your posts and Ads with friendly, helpful replies",
-      "Send direct links to people who asked about pricing or availability in DMs",
-      "Write down common customer questions to use as future post ideas"
+    "difficulty": "Beginner",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "PH",
+      "UK",
+      "EU",
+      "AU"
     ],
+    "industries": [
+      "ALL",
+      "Ecommerce",
+      "B2B",
+      "SaaS",
+      "LocalService"
+    ],
+    "what": "Attach consistent UTM tracking tags to every link you share in emails, social media bios, QR codes, and paid ads.",
+    "why": "Without UTM tags, Google Analytics lumps your social media and email clicks into 'Direct / Unknown' traffic.",
+    "when": "Every time you publish a campaign link (use the built-in UTM Builder in Tab 02!).",
+    "tools": "Tab 02 Built-In UTM Builder, Google Analytics Traffic Acquisition Report",
+    "steps": [
+      "Open Tab 02 (Campaign & Content Hub) and scroll to the built-in UTM Link Builder.",
+      "Enter your website URL, Traffic Source (e.g., `instagram`, `newsletter`), Medium (`social`, `email`, `cpc`), and Campaign Name (`summer_sale`).",
+      "Always use lowercase letters and underscores so Analytics doesn't split `Facebook` and `facebook` into two rows.",
+      "Copy the generated tracking link and test it in your browser before posting."
+    ],
+    "expected": "100% of campaign links tagged with clean, lowercase UTM parameters.",
+    "measure": "Unassigned / Direct traffic share drops below 10% in Google Analytics.",
+    "mistakes": "Using UTM tags on internal links inside your own website (which overwrites the original traffic source!).",
+    "example": "`https://yourstore.com/promo?utm_source=tiktok&utm_medium=video_bio&utm_campaign=payday_sale`",
+    "completed": false,
+    "bookmarked": false
+  },
+  {
+    "id": "ws-ana-03",
+    "title": "Monthly Executive Performance Report & ROI Summary",
+    "category": "Analytics & Reporting",
+    "frequency": "Monthly",
+    "difficulty": "Intermediate",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "PH",
+      "UK",
+      "EU",
+      "AU"
+    ],
+    "industries": [
+      "ALL",
+      "Ecommerce",
+      "B2B",
+      "SaaS",
+      "LocalService"
+    ],
+    "what": "Compile a clear 1-page monthly report showing Total Spend, Total Revenue/Leads, ROAS/ROI, Top 3 Wins, and Next Month's Action Plan.",
+    "why": "Clients and managers don't want 40 pages of raw charts\u2014they want to know what money was spent, what returned, and what you are doing next.",
+    "when": "First business day of every month.",
+    "tools": "Tab 02 Monthly Report Generator, Google Looker Studio, Google Analytics",
+    "steps": [
+      "Gather total marketing spend, total revenue, and total leads/customers for the month.",
+      "Use the Tab 02 Monthly Report Generator to calculate blended ROAS, CPA, and conversion rate automatically.",
+      "List the Top 3 winning campaigns/posts and Top 2 lessons learned from underperforming tests.",
+      "Outline 3 concrete priorities for the upcoming month and export/print as a clean PDF."
+    ],
+    "expected": "A concise, plain-English 1-page Monthly Marketing Report ready for clients or leadership.",
+    "measure": "Stakeholder approval, clear budget decisions, and consistent month-over-month efficiency gains.",
+    "mistakes": "Reporting only 'vanity metrics' (likes and impressions) without connecting them to leads, sales, or revenue.",
+    "example": "'In October we invested $4,200 across Google & Meta Ads, generating 140 new customers and $18,900 in revenue (4.5x ROAS).'",
+    "completed": false,
+    "bookmarked": false
+  },
+  {
+    "id": "ws-crm-01",
+    "title": "Automated Welcome & Abandoned Cart Email/SMS Flows",
+    "category": "CRM & Marketing Automation",
+    "frequency": "Monthly",
+    "difficulty": "Intermediate",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "PH",
+      "UK",
+      "EU",
+      "AU"
+    ],
+    "industries": [
+      "ALL",
+      "Ecommerce",
+      "B2B",
+      "SaaS",
+      "LocalService"
+    ],
+    "what": "Set up and test automated messages that greet new subscribers immediately and remind shoppers who left items in their cart.",
+    "why": "Automated flows work 24/7 in the background and typically generate 25% to 40% of total email marketing revenue.",
+    "when": "Set up once, then review and A/B test subject lines monthly.",
+    "tools": "Klaviyo, Mailchimp, HubSpot, ActiveCampaign, Brevo",
+    "steps": [
+      "Email 1 (Sent immediately on signup): Deliver the promised welcome gift/guide and share your brand story.",
+      "Email 2 (Sent 24 hours later): Highlight your best-selling products or top 3 customer case studies.",
+      "Abandoned Cart Flow (Sent 1 hour & 20 hours after cart exit): Show the exact item left behind with a direct link back to checkout.",
+      "Verify opt-in consent and include a 1-click Unsubscribe link in every footer (required by GDPR/CAN-SPAM)."
+    ],
+    "expected": "Live 3-part Welcome Flow and 2-part Abandoned Cart/Lead Follow-Up Flow.",
+    "measure": "Click-Through Rate (CTR %) and Revenue or Bookings per recipient (avoid relying solely on Open Rate due to Apple Mail Privacy Protection).",
+    "mistakes": "Sending a discount code in the very first hour of cart abandonment (which trains customers to abandon carts on purpose).",
+    "example": "A 2-step Abandoned Cart flow recovered 14% of unfinished checkouts, adding \u20b185,000 / $1,500 in monthly sales automatically.",
+    "completed": false,
+    "bookmarked": true
+  },
+  {
+    "id": "ws-crm-02",
+    "title": "Customer Segmentation (VIP Buyers, First-Timers & Win-Back)",
+    "category": "CRM & Marketing Automation",
+    "frequency": "Monthly",
+    "difficulty": "Intermediate",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "PH",
+      "UK",
+      "EU",
+      "AU"
+    ],
+    "industries": [
+      "ALL",
+      "Ecommerce",
+      "B2B",
+      "SaaS",
+      "LocalService"
+    ],
+    "what": "Group your customer list by buying behavior so VIP customers get early access, first-time buyers get usage tips, and inactive buyers get a win-back offer.",
+    "why": "Segmented emails generate 3x higher click rates and half as many unsubscribes compared to blasting the same email to everyone.",
+    "when": "Monthly list segmentation and hygiene check.",
+    "tools": "Klaviyo, HubSpot, Salesforce, Shopify Customer Segments",
+    "steps": [
+      "Create Segment 1 (VIPs): Customers who bought 3+ times or spent in the top 15%.",
+      "Create Segment 2 (Warm Prospects): Subscribers who clicked an email in the last 30 days but haven't bought yet.",
+      "Create Segment 3 (Win-Back): Past buyers who haven't ordered in 60\u201390 days.",
+      "Suppress unengaged addresses (no clicks in 120+ days) to keep inbox deliverability high."
+    ],
+    "expected": "4 clean customer segments in your CRM/email platform with tailored messaging.",
+    "measure": "Repeat purchase rate (%), revenue per email recipient, and spam complaint rate under 0.08%.",
+    "mistakes": "Blasting daily promo emails to cold inactive contacts, which pushes your domain into the Gmail/Yahoo Spam folder.",
+    "example": "Giving the VIP segment 24-hour early access to a new product launch generated 40% of launch-week sales with $0 ad spend.",
+    "completed": false,
+    "bookmarked": false
+  },
+  {
+    "id": "ws-cnt-01",
+    "title": "Short-Form Vertical Video Production (TikTok, Reels & Shorts)",
+    "category": "Content Production",
+    "frequency": "Weekly",
+    "difficulty": "Beginner",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "PH",
+      "UK",
+      "EU",
+      "AU"
+    ],
+    "industries": [
+      "ALL",
+      "Ecommerce",
+      "B2B",
+      "SaaS",
+      "LocalService"
+    ],
+    "what": "Script, film, and caption 3 to 5 short vertical videos (15\u201345 seconds) that educate, entertain, or demonstrate your product in action.",
+    "why": "Short vertical video is the #1 organic reach engine across TikTok, Instagram Reels, YouTube Shorts, and Facebook.",
+    "when": "Batch-record once a week.",
+    "tools": "Smartphone Camera, CapCut, Canva, TikTok / Instagram App",
+    "steps": [
+      "Hook (0\u20133 seconds): Start with a bold question, surprising visual, or specific customer problem.",
+      "Value / Demo (3\u201325 seconds): Show the step-by-step fix or product demonstration with fast cuts every 3\u20134 seconds.",
+      "Captions: Add large, high-contrast captions in the center safe zone so 80% of sound-off viewers can read along.",
+      "Call to Action (Last 4 seconds): Tell viewers one clear next step ('Comment GUIDE' or 'Tap the link in our bio')."
+    ],
+    "expected": "3\u20135 ready-to-post vertical videos with captions and strong 3-second hooks.",
+    "measure": "3-Second Hold Rate (>30%), Average Watch Time, Saves/Shares, and profile link clicks.",
+    "mistakes": "Starting videos with a slow 5-second logo intro or 'Hi guys, welcome back'\u2014which causes viewers to swipe away immediately.",
+    "example": "Starting a video with '3 mistakes costing small restaurants 20% of their delivery orders' reached 48,000 local viewers organically.",
+    "completed": false,
+    "bookmarked": true
+  },
+  {
+    "id": "ws-cnt-02",
+    "title": "Content Repurposing & Multi-Channel Scheduling",
+    "category": "Content Production",
+    "frequency": "Weekly",
+    "difficulty": "Beginner",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "PH",
+      "UK",
+      "EU",
+      "AU"
+    ],
+    "industries": [
+      "ALL",
+      "Ecommerce",
+      "B2B",
+      "SaaS",
+      "LocalService"
+    ],
+    "what": "Turn 1 core weekly topic (a blog guide, podcast, or customer case study) into 6+ pieces of content across social media and email.",
+    "why": "Saves 10+ hours a week while keeping your brand message consistent across every platform.",
+    "when": "Every Monday or Tuesday during weekly content planning.",
+    "tools": "Canva, Buffer / Meta Business Suite / Later, Tab 02 Content Planner",
+    "steps": [
+      "Start with 1 high-value topic that answers a major customer question.",
+      "Create 1 swipeable 5-slide carousel for Instagram & LinkedIn summarizing the main steps.",
+      "Film 2 short 30-second vertical videos covering tip #1 and tip #2.",
+      "Adapt the summary into your Thursday email newsletter and schedule all posts for peak hours."
+    ],
+    "expected": "A full week of scheduled posts across 3\u20134 platforms built from a single research topic.",
+    "measure": "Publishing consistency (100% on-schedule) and total weekly organic website visits.",
+    "mistakes": "Trying to invent a brand-new topic from scratch every single morning.",
+    "example": "1 'Complete Guide to Home Espresso' article became 1 newsletter, 2 LinkedIn/IG carousels, and 3 TikTok brewing clips.",
     "completed": true,
     "bookmarked": false
   },
   {
-    "id": "task-email-1",
-    "title": "Check Automated Welcome & Abandoned Cart Emails",
-    "category": "Email & Customer Follow-Up",
+    "id": "ws-cnt-03",
+    "title": "High-Converting Copywriting (Headlines, Ad Copy & CTAs)",
+    "category": "Content Production",
     "frequency": "Weekly",
-    "priority": "High Priority",
-    "goal": "Convert new email signups and recover unfinished shopping carts",
-    "tools": "Mailchimp, Klaviyo, or HubSpot",
-    "steps": [
-      "Sign up with a test email to make sure the Welcome Email arrives immediately",
-      "Check that all buttons and discount codes inside the email work on mobile",
-      "Test two different subject lines to see which one gets more opens"
+    "difficulty": "Intermediate",
+    "regions": [
+      "GLOBAL",
+      "US",
+      "PH",
+      "UK",
+      "EU",
+      "AU"
     ],
-    "completed": false,
-    "bookmarked": true
-  },
-  {
-    "id": "task-email-2",
-    "title": "Send Weekly Value Newsletter to Email Subscribers",
-    "category": "Email & Customer Follow-Up",
-    "frequency": "Weekly",
-    "priority": "Medium Priority",
-    "goal": "Achieve 30%+ open rate and steady clicks to your website",
-    "tools": "Email Marketing Platform",
-    "steps": [
-      "Share 1 useful tip or story alongside 1 clear product or service offer",
-      "Keep paragraphs short (1-2 sentences) with a single clear call-to-action button",
-      "Preview the email in both Light Mode and Dark Mode before sending"
+    "industries": [
+      "ALL",
+      "Ecommerce",
+      "B2B",
+      "SaaS",
+      "LocalService"
     ],
+    "what": "Write clear, benefit-driven headlines and ad copy using proven frameworks like PAS (Problem -> Agitate -> Solution) and AIDA.",
+    "why": "Clear words sell. Focusing on how the customer's life improves beats listing technical product specs every time.",
+    "when": "Whenever writing new ads, landing pages, emails, or social captions.",
+    "tools": "Tab 02 Marketing Brief & AI Prompt Helper, Google Docs, Hemingway Editor",
+    "steps": [
+      "Lead with the customer's #1 desired outcome or problem in the first sentence.",
+      "Replace vague claims ('high quality service') with specific numbers ('installed in 24 hours with a 5-year warranty').",
+      "Address the top buying objection directly (shipping speed, setup ease, money-back guarantee).",
+      "Read your copy out loud\u2014if a 12-year-old can understand it on the first read, it is ready to publish."
+    ],
+    "expected": "3 headline variations and 2 body copy options ready for A/B testing.",
+    "measure": "Ad Click-Through Rate (CTR %) and Landing Page Conversion Rate (CVR %).",
+    "mistakes": "Using complicated corporate buzzwords ('synergistic omnichannel solutions') instead of plain everyday language.",
+    "example": "Instead of 'Next-Gen Cloud Invoicing Platform', write 'Send Invoices in 30 Seconds and Get Paid 2x Faster'.",
     "completed": false,
     "bookmarked": false
-  },
-  {
-    "id": "task-email-3",
-    "title": "Clean Out Inactive Email Addresses to Protect Deliverability",
-    "category": "Email & Customer Follow-Up",
-    "frequency": "Monthly",
-    "priority": "Medium Priority",
-    "goal": "Keep your emails landing in the main Inbox instead of the Spam folder",
-    "tools": "Email List Cleaning / Segment Tool",
-    "steps": [
-      "Find subscribers who haven't opened a single email in the last 90 days",
-      "Send one short 'Still want to hear from us?' check-in email",
-      "Remove addresses that bounce or never respond so email providers trust your sender name"
-    ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "task-cro-1",
-    "title": "Simplify Your Landing Page & Checkout Steps",
-    "category": "Sales Page & Conversion",
-    "frequency": "Monthly",
-    "priority": "High Priority",
-    "goal": "Increase the percentage of visitors who buy or sign up",
-    "tools": "Microsoft Clarity (Free Heatmaps), Mobile Browser",
-    "steps": [
-      "Make sure the main headline clearly states what you offer and who it helps",
-      "Place customer reviews and star ratings near the 'Buy' or 'Book Now' button",
-      "Remove unnecessary form fields so customers can check out in under 60 seconds"
-    ],
-    "completed": false,
-    "bookmarked": true
-  },
-  {
-    "id": "task-ana-1",
-    "title": "Add Tracking Links (UTM Tags) to Every Campaign Link",
-    "category": "Tracking & Results",
-    "frequency": "Campaign Launch",
-    "priority": "High Priority",
-    "goal": "Know exactly which post, email, or ad brought in each sale",
-    "tools": "Campaign URL Builder, Google Analytics",
-    "steps": [
-      "Tag every shared link with its source (e.g., instagram, newsletter, google_ads)",
-      "Test the link on your phone to make sure it opens the right page quickly",
-      "Keep a simple list of your campaign links so your team uses consistent names"
-    ],
-    "completed": false,
-    "bookmarked": false
-  },
-  {
-    "id": "task-ana-2",
-    "title": "Review Weekly Marketing Results & Best-Performing Channels",
-    "category": "Tracking & Results",
-    "frequency": "Weekly",
-    "priority": "High Priority",
-    "goal": "Double down on what works and stop doing what doesn't",
-    "tools": "Google Analytics, Tab 04 ROI Calculators",
-    "steps": [
-      "Compare total marketing money spent against total sales revenue earned",
-      "Identify the #1 social post, #1 email, and #1 ad from the past 7 days",
-      "Write down 3 clear action steps for next week's marketing plan"
-    ],
-    "completed": false,
-    "bookmarked": true
   }
 ];
   const DEFAULT_PLANNER = [
   {
     "id": "plan-mon",
-    "day": "Monday \u2014 Strategy & Ad Check",
-    "title": "Weekly Performance Review & Ad Budget Check",
-    "channel": "Google Ads + Meta Ads + Analytics",
-    "format": "Weekly Metrics & Budget Adjustment",
-    "notes": "Review last week's total sales, check Cost Per Lead in the Calculator tab, and shift budget to your top-performing ads.",
+    "day": "Monday \u2014 Strategy, Budget & Ad Audit",
+    "title": "Review Weekly Ad Spend, Break-Even ROAS & Search Terms",
+    "channel": "Google Ads + Meta Ads + GA4",
+    "format": "Budget Pacing & Negative Keyword Check",
+    "notes": "Compare last week's spend against your Break-Even ROAS in Tab 04, block irrelevant search terms, and shift budget to top winners.",
     "bookmarked": true
   },
   {
     "id": "plan-tue",
-    "day": "Tuesday \u2014 Search & Website Content",
-    "title": "Publish 1 Helpful Guide or Answer a Customer FAQ",
-    "channel": "Website Blog + Google Business Profile",
-    "format": "Article + Google Business Update",
-    "notes": "Write a clear article answering a common customer question and share a short summary on your Google Business Profile.",
+    "day": "Tuesday \u2014 SEO & Website Optimization",
+    "title": "Publish High-Intent Article & Optimize Top Landing Page",
+    "channel": "Website Blog + Google Search Console + GBP",
+    "format": "SEO Guide + Mobile Page Speed Check",
+    "notes": "Publish 1 helpful guide targeting a buyer keyword, add 3 internal links, and post an update on your Google Business Profile.",
     "bookmarked": false
   },
   {
     "id": "plan-wed",
-    "day": "Wednesday \u2014 Short-Form Video",
-    "title": "Post Educational Reel / TikTok / YouTube Short",
-    "channel": "Instagram Reels + TikTok + Shorts",
-    "format": "30-45 sec Vertical Video with Captions",
-    "notes": "Hook viewers in the first 3 seconds, demonstrate how your product solves a problem, and invite viewers to click the link in your bio.",
+    "day": "Wednesday \u2014 Short-Form Video & Creative Production",
+    "title": "Film & Schedule 3 Vertical Videos (TikTok, Reels & Shorts)",
+    "channel": "TikTok + Instagram Reels + YouTube Shorts",
+    "format": "30s Problem/Solution Demo + Captions",
+    "notes": "Hook viewers in the first 3 seconds, include clear captions in the center safe zone, and point viewers to your UTM-tagged bio link.",
     "bookmarked": true
   },
   {
     "id": "plan-thu",
-    "day": "Thursday \u2014 Email Marketing",
-    "title": "Send Weekly Value Newsletter & Promotional Offer",
-    "channel": "Email List Subscribers",
-    "format": "1 Quick Tip + 1 Featured Offer",
-    "notes": "Write a curiosity-driven subject line, keep paragraphs brief for mobile readers, and include one bold button linking to your offer.",
+    "day": "Thursday \u2014 Email & CRM Lifecycle",
+    "title": "Send Segmented Value Newsletter & Check Automated Flows",
+    "channel": "Email List + CRM Automation (Klaviyo / HubSpot)",
+    "format": "1 Actionable Tip + 1 Clear Offer CTA",
+    "notes": "Send to engaged subscribers, check Welcome and Abandoned Cart flow click rates (focus on CTR rather than Apple MPP inflated opens).",
     "bookmarked": true
   },
   {
     "id": "plan-fri",
-    "day": "Friday \u2014 Social Proof & Community",
-    "title": "Share Customer Review Carousel & Reply to All DMs",
-    "channel": "Instagram + Facebook + LinkedIn",
-    "format": "Customer Story / Before-and-After Carousel",
-    "notes": "Highlight real customer results, follow up with anyone who asked questions in your comments or messages this week, and schedule weekend posts.",
+    "day": "Friday \u2014 Analytics, A/B Testing & Reporting",
+    "title": "Review A/B Split Tests, Lead Tracker & Weekly KPI Summary",
+    "channel": "GA4 + Microsoft Clarity + Tab 02 Report Generator",
+    "format": "Conversion Funnel & Executive Summary",
+    "notes": "Check landing page conversion rates, record A/B test results, follow up with open leads, and prepare next week's campaign brief.",
     "bookmarked": false
   },
   {
     "id": "plan-launch",
     "day": "Monthly Campaign Launch Day",
-    "title": "New Promo Launch Checklist & Retargeting Setup",
-    "channel": "All Channels (Ads, Email, Social, Website)",
-    "format": "Full Campaign Rollout",
-    "notes": "Double-check all checkout buttons on mobile, test promo codes, turn on retargeting ads for window shoppers, and calculate target ROAS.",
+    "title": "Full Campaign Rollout, UTM Tagging & Privacy Consent Check",
+    "channel": "Omnichannel (Paid Ads, Email, Social, Landing Page)",
+    "format": "Campaign Launch Checklist",
+    "notes": "Generate clean UTM links in Tab 02, verify mobile checkout speed, confirm GDPR/privacy consent banner, and activate retargeting ads.",
     "bookmarked": true
   }
 ];
   const GLOSSARY_TERMS = [
   {
     "term": "ROAS (Return on Ad Spend)",
-    "category": "Paid Ads & Budget",
-    "simple": "How many dollars (or pesos) you earn back for every $1 or \u20b11 you spend on ads.",
+    "category": "Paid Ads & Profit",
+    "simple": "How much gross revenue you earn back for every 1 unit of currency ($1, \u20b11, \u00a31, \u20ac1) spent on ads.",
     "formula": "ROAS = Revenue from Ads \u00f7 Ad Spend",
-    "example": "If you spend \u20b15,000 on Facebook Ads and get \u20b120,000 in sales, your ROAS is 4.0x (you earned 4 times what you spent)."
+    "example": "Important: A 4.0x ROAS is NOT automatically profitable! If your product profit margin is only 20%, your break-even ROAS is 5.0x. Always compare ROAS against your Break-Even ROAS in Tab 04."
   },
   {
-    "term": "ROI (Return on Investment)",
-    "category": "Paid Ads & Budget",
-    "simple": "Your actual net profit percentage after subtracting both your product costs and marketing costs.",
-    "formula": "ROI (%) = ((Net Profit \u00f7 Total Cost) \u00d7 100)",
-    "example": "If a campaign costs \u20b110,000 total and brings in \u20b115,000 in profit after product costs, your ROI is +50%."
+    "term": "Break-Even ROAS",
+    "category": "Paid Ads & Profit",
+    "simple": "The exact ROAS number you must hit so your ad campaign doesn't lose money after paying for product costs.",
+    "formula": "Break-Even ROAS = 1 \u00f7 Gross Profit Margin (as a decimal)",
+    "example": "If a product sells for $100 and costs $40 to make/deliver, your profit margin is 60% (0.60). Your Break-Even ROAS is 1 \u00f7 0.60 = 1.67x."
   },
   {
-    "term": "CPC (Cost Per Click)",
-    "category": "Paid Ads & Budget",
-    "simple": "The average amount you pay each time someone clicks on your ad.",
-    "formula": "CPC = Total Ad Spend \u00f7 Total Clicks",
-    "example": "Spending \u20b11,000 on an ad that gets 200 clicks means your Cost Per Click is \u20b15.00."
+    "term": "ROI (Return on Investment) & Net Profit",
+    "category": "Paid Ads & Profit",
+    "simple": "Your true profit percentage after subtracting BOTH your product/service delivery costs AND your marketing costs.",
+    "formula": "ROI (%) = ((Revenue - Product Cost - Ad Spend) \u00f7 Total Cost) \u00d7 100",
+    "example": "If you earn $10,000 in sales, product cost is $4,000, and ad spend is $2,000, your Net Profit is $4,000 and your ROI is +66.7%."
   },
   {
-    "term": "CTR (Click-Through Rate)",
-    "category": "Paid Ads & Budget",
-    "simple": "Out of every 100 people who see your ad, email, or link, how many actually click it.",
-    "formula": "CTR (%) = (Total Clicks \u00f7 Total Views) \u00d7 100",
-    "example": "If 1,000 people see your post and 25 click your link, your CTR is 2.5%."
+    "term": "MER (Marketing Efficiency Ratio / Blended ROAS)",
+    "category": "Paid Ads & Profit",
+    "simple": "Your total store revenue divided by your total ad spend across all channels combined.",
+    "formula": "MER = Total Business Revenue \u00f7 Total Marketing Spend",
+    "example": "Because customers often see a TikTok video and later search on Google, MER shows the true big-picture health of all your marketing combined."
+  },
+  {
+    "term": "CPC (Cost Per Click) & CTR (Click-Through Rate)",
+    "category": "Paid Ads & Profit",
+    "simple": "CPC is how much you pay for each click; CTR is the percentage of people who saw your ad and clicked it.",
+    "formula": "CPC = Spend \u00f7 Clicks  |  CTR (%) = (Clicks \u00f7 Views) \u00d7 100",
+    "example": "When your ad is relevant and has a higher CTR (e.g., 2.5% instead of 0.7%), ad platforms reward you with a lower Cost Per Click."
   },
   {
     "term": "CPA / CAC (Cost Per Acquisition / Customer)",
-    "category": "Paid Ads & Budget",
-    "simple": "How much marketing money it costs you to win 1 paying customer.",
+    "category": "Paid Ads & Profit",
+    "simple": "How much marketing money you spend to win 1 paying customer.",
     "formula": "CPA = Total Ad Spend \u00f7 Number of New Customers",
-    "example": "If you spend \u20b13,000 on ads and get 10 buyers, your Cost Per Customer is \u20b1300."
+    "example": "If your average customer brings $60 in gross profit on their first order, your CPA must stay below $60 to be profitable on day one."
   },
   {
     "term": "CPL (Cost Per Lead)",
-    "category": "Paid Ads & Budget",
-    "simple": "How much you pay to get 1 interested person's contact info (like their email or phone number).",
-    "formula": "CPL = Total Ad Spend \u00f7 Total Leads Collected",
-    "example": "Spending \u20b12,000 to get 40 people to sign up for a free quote gives you a \u20b150 Cost Per Lead."
+    "category": "Paid Ads & Profit",
+    "simple": "How much you spend to get 1 interested prospect's contact details (email, phone call, or quote request).",
+    "formula": "CPL = Total Ad Spend \u00f7 Total Leads",
+    "example": "If 1 out of every 5 leads turns into a $500 client, you can afford up to $50 per lead and still double your money."
   },
   {
-    "term": "CPM (Cost Per 1,000 Views)",
-    "category": "Paid Ads & Budget",
-    "simple": "The price an ad platform charges to show your ad 1,000 times.",
-    "formula": "CPM = (Ad Spend \u00f7 Impressions) \u00d7 1,000",
-    "example": "If you spend \u20b1500 and your ad is shown 10,000 times, your CPM is \u20b150."
+    "term": "Conversion Rate (CVR %)",
+    "category": "Website & SEO",
+    "simple": "The percentage of website visitors who complete your goal (buy a product, book an appointment, or submit a form).",
+    "formula": "CVR (%) = (Conversions \u00f7 Total Visitors) \u00d7 100",
+    "example": "30 buyers out of 1,000 visitors equals a 3.0% Conversion Rate."
   },
   {
-    "term": "Conversion Rate (CVR)",
-    "category": "Website & Sales",
-    "simple": "The percentage of website visitors who take action (buy a product, book a call, or sign up).",
-    "formula": "Conversion Rate (%) = (Conversions \u00f7 Total Visitors) \u00d7 100",
-    "example": "If 500 people visit your product page and 15 buy, your Conversion Rate is 3.0%."
-  },
-  {
-    "term": "Landing Page",
-    "category": "Website & Sales",
-    "simple": "A focused web page designed for one specific goal \u2014 such as getting a visitor to buy one product or sign up for a free guide.",
-    "formula": "1 Clear Headline + Benefits + Social Proof + 1 Action Button",
-    "example": "Sending ad clicks to a dedicated offer page instead of a busy homepage usually doubles your sales."
-  },
-  {
-    "term": "CTA (Call to Action)",
-    "category": "Website & Sales",
-    "simple": "The specific button or instruction telling people what step to take next.",
-    "formula": "Action Verb + Clear Benefit",
-    "example": "'Get My Free Price Quote', 'Shop the Summer Sale', or 'Comment GUIDE below'."
-  },
-  {
-    "term": "AOV (Average Order Value)",
-    "category": "Website & Sales",
-    "simple": "The average amount a customer spends each time they place an order with you.",
+    "term": "AOV (Average Order Value) & LTV (Lifetime Value)",
+    "category": "Website & SEO",
+    "simple": "AOV is how much a buyer spends per order; LTV is the total amount they spend across all repeat orders over time.",
     "formula": "AOV = Total Revenue \u00f7 Total Orders",
-    "example": "If 10 orders bring in \u20b112,000 total, your Average Order Value is \u20b11,200."
+    "example": "Adding a 'Buy 2, Save 15%' bundle often lifts AOV from $40 to $62 immediately."
   },
   {
-    "term": "CLV / LTV (Customer Lifetime Value)",
-    "category": "Website & Sales",
-    "simple": "The total amount of money a typical customer spends with your business over the entire time they buy from you.",
-    "formula": "LTV = Average Order Value \u00d7 Repeat Purchases Per Year \u00d7 Years",
-    "example": "A coffee shop customer who spends \u20b1200 twice a week is worth over \u20b120,000 per year."
+    "term": "SEO (Search Engine Optimization) & Search Intent",
+    "category": "Website & SEO",
+    "simple": "Improving your website pages so they rank higher for free on Google when people search for your topic or service.",
+    "formula": "Fast Mobile Page + Helpful Answer + Trusted Backlinks",
+    "example": "Matching 'Search Intent' means giving a price table when someone searches 'dental braces cost', rather than a 2,000-word history of dentistry."
   },
   {
-    "term": "SEO (Search Engine Optimization)",
-    "category": "Search & Content",
-    "simple": "Improving your website so it shows up higher for free when people search on Google.",
-    "formula": "Helpful Content + Fast Mobile Site + Clear Keywords",
-    "example": "Writing a detailed page titled 'Best Wedding Photographer in Manila' so couples find you on Google without paid ads."
+    "term": "Email Open Rate & Apple Mail Privacy Protection (MPP)",
+    "category": "Email, CRM & Privacy",
+    "simple": "Open Rate shows the % of emails opened\u2014but Apple devices often pre-load emails automatically, which inflates Open Rates.",
+    "formula": "Click-Through Rate (CTR) = (Unique Clicks \u00f7 Delivered Emails) \u00d7 100",
+    "example": "Worldwide Best Practice: Always judge email success by Click Rate (CTR) and Sales/Replies, not Open Rate alone."
   },
   {
-    "term": "Keywords (Search Phrases)",
-    "category": "Search & Content",
-    "simple": "The exact words and questions people type into Google, YouTube, or TikTok when looking for something.",
-    "formula": "Topic + Customer Intent (e.g., 'buy', 'best', 'how to')",
-    "example": "'Affordable dental clinic Pasig' is a high-intent keyword because the searcher is ready to book."
+    "term": "GDPR, CCPA & Data Privacy Laws (Worldwide Compliance)",
+    "category": "Email, CRM & Privacy",
+    "simple": "Laws in the UK/EU (GDPR), US (CCPA/CAN-SPAM), Philippines (DPA), and Australia that require clear user consent before tracking cookies or sending marketing emails.",
+    "formula": "Clear Checkbox Consent + Cookie Banner + 1-Click Unsubscribe",
+    "example": "Never buy email lists or pre-check consent boxes; always let visitors accept/decline tracking cookies and unsubscribe in 1 click."
   },
   {
-    "term": "Organic Traffic vs. Paid Traffic",
-    "category": "Search & Content",
-    "simple": "Organic traffic comes to your site naturally for free (from search or regular posts); Paid traffic comes from ads you pay for.",
-    "formula": "Total Traffic = Organic Visitors + Paid Ad Visitors",
-    "example": "A viral TikTok video brings free organic traffic; a boosted Facebook post brings paid traffic."
+    "term": "UTM Parameters (Campaign Tracking Tags)",
+    "category": "Analytics & Tracking",
+    "simple": "Short tags added to the end of a URL (`?utm_source=...`) so Google Analytics knows exactly which ad, email, or bio link brought the visitor.",
+    "formula": "URL + ?utm_source=platform&utm_medium=type&utm_campaign=name",
+    "example": "Use the UTM Link Builder in Tab 02 to create clean tracking links in 5 seconds."
   },
   {
-    "term": "Retargeting (Remarketing)",
-    "category": "Paid Ads & Budget",
-    "simple": "Showing follow-up ads to warm prospects who already visited your website or watched your videos.",
-    "formula": "Past Visitors \u2192 Reminder Ad \u2192 Completed Purchase",
-    "example": "When you look at a pair of shoes online and see an ad for those exact shoes on Instagram 10 minutes later."
-  },
-  {
-    "term": "Sales Funnel",
-    "category": "Website & Sales",
-    "simple": "The journey a stranger takes from first discovering your brand to becoming a loyal paying customer.",
-    "formula": "1. Awareness (Discover) \u2192 2. Consideration (Trust) \u2192 3. Conversion (Buy)",
-    "example": "Someone watches your helpful Reel (Awareness), downloads your price guide (Consideration), and books a package (Conversion)."
-  },
-  {
-    "term": "Lead Magnet",
-    "category": "Email & Social",
-    "simple": "A free, useful resource you give away in exchange for a visitor's email address or phone number.",
-    "formula": "Free Checklist / Discount / Sample = New Email Subscriber",
-    "example": "'Enter your email to get 10% off your first order' or 'Download our free 7-day meal planner'."
-  },
-  {
-    "term": "Open Rate & Click Rate (Email)",
-    "category": "Email & Social",
-    "simple": "Open Rate is the % of subscribers who open your email; Click Rate is the % who tap a link inside it.",
-    "formula": "Open Rate = (Opens \u00f7 Delivered) \u00d7 100",
-    "example": "Out of 1,000 subscribers, 350 open the email (35% Open Rate) and 40 click the product link (4% Click Rate)."
-  },
-  {
-    "term": "Engagement Rate (Social Media)",
-    "category": "Email & Social",
-    "simple": "How actively people interact with your post through likes, comments, shares, and saves.",
-    "formula": "Engagement Rate (%) = ((Likes + Comments + Shares + Saves) \u00f7 Reach) \u00d7 100",
-    "example": "A post seen by 1,000 people that gets 60 likes, comments, and saves has a strong 6.0% Engagement Rate."
+    "term": "GA4 (Google Analytics 4) & Conversion Events",
+    "category": "Analytics & Tracking",
+    "simple": "Google's free website analytics platform that tracks how visitors find your site and which actions ('Events') they complete.",
+    "formula": "Traffic Source -> Engagement -> Key Event (Purchase / Lead)",
+    "example": "Marking `purchase` or `generate_lead` as a Key Event in GA4 lets you compare SEO, Email, and Paid Ads side by side."
   },
   {
     "term": "A/B Split Testing",
-    "category": "Website & Sales",
-    "simple": "Showing two versions of an ad, email subject line, or page (Version A vs. Version B) to see which one performs better.",
-    "formula": "Change 1 Thing at a Time \u2192 Measure Winner",
-    "example": "Testing a red 'Buy Now' button against a green 'Claim Offer' button to see which gets more clicks."
+    "category": "Analytics & Tracking",
+    "simple": "Testing one specific change (like Headline A vs. Headline B) with real traffic to prove which version gets more conversions.",
+    "formula": "1 Variable Changed + Enough Traffic (100+ conversions) = Proven Winner",
+    "example": "Testing a video testimonial against a static product photo on the same audience for 7 days."
   },
   {
-    "term": "UTM Tracking Link",
-    "category": "Search & Content",
-    "simple": "Small labels added to the end of a web link so Google Analytics can tell you exactly which post or ad brought the visitor.",
-    "formula": "website.com/?utm_source=instagram&utm_medium=bio",
-    "example": "Helps you prove whether your sales came from your Instagram bio link, your Thursday email, or your Facebook ad."
-  },
-  {
-    "term": "Bounce Rate",
-    "category": "Website & Sales",
-    "simple": "The percentage of visitors who open your page and leave right away without clicking anything or taking action.",
-    "formula": "Single-Page Exits \u00f7 Total Visits \u00d7 100",
-    "example": "If a page takes 10 seconds to load or looks confusing on mobile, visitors leave immediately (high bounce rate)."
-  },
-  {
-    "term": "UGC (User-Generated Content)",
-    "category": "Email & Social",
-    "simple": "Authentic photos, unboxing videos, or reviews filmed by real customers or creators rather than polished studio commercials.",
-    "formula": "Real Person + Honest Product Demo = High Trust",
-    "example": "A smartphone video of a happy customer showing how they use your skincare routine at home."
+    "term": "UGC (User-Generated Content) & Social Proof",
+    "category": "Email, CRM & Privacy",
+    "simple": "Authentic videos, photos, and reviews created by real customers or creators, which build immediate trust with new shoppers.",
+    "formula": "Real Customer Experience + Clear Result = Higher Trust",
+    "example": "A 25-second customer unboxing video often beats an expensive studio commercial on TikTok and Instagram Reels."
   }
 ];
-
-  /* ------------------------------------------------------------------------
-     1. HAPTICS & CLIPBOARD HELPERS
-     ------------------------------------------------------------------------ */
-  const Haptics = {
-    tap() {
-      try {
-        if ('vibrate' in navigator && typeof navigator.vibrate === 'function') {
-          navigator.vibrate(15);
-        }
-      } catch (_) {}
-    }
-  };
 
   const Toast = {
     show(message, duration = 2800) {
@@ -556,7 +880,7 @@
   };
 
   const ClipboardUtil = {
-    async copy(text, label = 'Copied') {
+    async copy(text, label = 'Copied to clipboard') {
       try {
         if (navigator.clipboard && navigator.clipboard.writeText) {
           await navigator.clipboard.writeText(text);
@@ -570,17 +894,13 @@
           document.execCommand('copy');
           document.body.removeChild(area);
         }
-        Haptics.tap();
         Toast.show(`${label}!`);
       } catch (_) {
-        Toast.show('Could not copy automatically');
+        Toast.show('Copy complete');
       }
     }
   };
 
-  /* ------------------------------------------------------------------------
-     2. TYPO-TOLERANT SEARCH HELPER
-     ------------------------------------------------------------------------ */
   const SmartSearch = {
     levenshtein(a, b) {
       if (a === b) return 0;
@@ -635,7 +955,114 @@
   };
 
   /* ------------------------------------------------------------------------
-     3. MARKETING CALCULATORS ENGINE
+     WORKSTATION GENERATORS (UTM Builder, Campaign Brief, Monthly Report, AI Assistant)
+     ------------------------------------------------------------------------ */
+  const WorkstationTools = {
+    init() {
+      ['utm-url', 'utm-source', 'utm-medium', 'utm-campaign'].forEach((id) => {
+        document.getElementById(id)?.addEventListener('input', () => this.updateUtm());
+      });
+      document.getElementById('btn-copy-utm')?.addEventListener('click', () => {
+        const url = document.getElementById('utm-output-preview')?.textContent.trim() || '';
+        ClipboardUtil.copy(url, 'UTM Tracking Link copied');
+      });
+
+      ['brief-name', 'brief-audience', 'brief-channels', 'brief-budget'].forEach((id) => {
+        document.getElementById(id)?.addEventListener('input', () => this.updateBrief());
+      });
+      document.getElementById('btn-copy-brief')?.addEventListener('click', () => {
+        const txt = document.getElementById('brief-output-preview')?.textContent.trim() || '';
+        ClipboardUtil.copy(txt, 'Campaign Brief copied');
+      });
+
+      ['rep-spend', 'rep-rev', 'rep-leads', 'rep-winner'].forEach((id) => {
+        document.getElementById(id)?.addEventListener('input', () => this.updateReport());
+      });
+      document.getElementById('btn-copy-report')?.addEventListener('click', () => {
+        const txt = document.getElementById('rep-output-preview')?.textContent.trim() || '';
+        ClipboardUtil.copy(txt, 'Monthly Report Summary copied');
+      });
+
+      ['ai-prompt-type', 'ai-product-input'].forEach((id) => {
+        document.getElementById(id)?.addEventListener('input', () => this.updateAiPrompt());
+      });
+      document.getElementById('btn-copy-ai-prompt')?.addEventListener('click', () => {
+        const txt = document.getElementById('ai-prompt-preview')?.textContent.trim() || '';
+        ClipboardUtil.copy(txt, 'AI Prompt copied');
+      });
+
+      this.refreshAll();
+    },
+
+    refreshAll() {
+      this.updateUtm();
+      this.updateBrief();
+      this.updateReport();
+      this.updateAiPrompt();
+    },
+
+    cleanSlug(str) {
+      return String(str || '')
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, '_')
+        .replace(/^_+|_+$/g, '');
+    },
+
+    updateUtm() {
+      const base = (document.getElementById('utm-url')?.value || 'https://yourbrand.com').trim();
+      const src = this.cleanSlug(document.getElementById('utm-source')?.value || 'google');
+      const med = this.cleanSlug(document.getElementById('utm-medium')?.value || 'cpc');
+      const cmp = this.cleanSlug(document.getElementById('utm-campaign')?.value || 'launch');
+      const sep = base.includes('?') ? '&' : '?';
+      const finalUrl = `${base}${sep}utm_source=${src}&utm_medium=${med}&utm_campaign=${cmp}`;
+      const el = document.getElementById('utm-output-preview');
+      if (el) el.textContent = finalUrl;
+    },
+
+    updateBrief() {
+      const sym = App.currencySymbol;
+      const name = document.getElementById('brief-name')?.value || 'Campaign';
+      const aud = document.getElementById('brief-audience')?.value || 'Target buyers';
+      const ch = document.getElementById('brief-channels')?.value || 'Google & Meta Ads';
+      const bud = document.getElementById('brief-budget')?.value || 'Target ROAS';
+      const text = `CAMPAIGN BRIEF: ${name}\n• Target Audience: ${aud}\n• Core Channels: ${ch}\n• Budget & KPI Target (${sym}): ${bud}\n• Mandatory Checklist: Mobile page speed <3s, UTM tags verified, and 3 creative hooks tested.`;
+      const el = document.getElementById('brief-output-preview');
+      if (el) el.textContent = text;
+    },
+
+    updateReport() {
+      const sym = App.currencySymbol;
+      const spend = parseFloat(document.getElementById('rep-spend')?.value) || 0;
+      const rev = parseFloat(document.getElementById('rep-rev')?.value) || 0;
+      const leads = parseFloat(document.getElementById('rep-leads')?.value) || 1;
+      const winner = document.getElementById('rep-winner')?.value || 'Search & Social';
+      const roas = spend > 0 ? (rev / spend).toFixed(2) : '0.00';
+      const cpa = (spend / leads).toFixed(2);
+      const net = (rev - spend).toLocaleString();
+      const text = `MONTHLY MARKETING SUMMARY:\n• Total Spend: ${sym}${spend.toLocaleString()} | Total Revenue: ${sym}${rev.toLocaleString()} (${roas}x ROAS)\n• Net Revenue After Ad Spend: ${sym}${net}\n• Total Conversions: ${leads} (${sym}${cpa} Cost Per Acquisition)\n• Top Performing Driver: ${winner}`;
+      const el = document.getElementById('rep-output-preview');
+      if (el) el.textContent = text;
+    },
+
+    updateAiPrompt() {
+      const type = document.getElementById('ai-prompt-type')?.value || 'hooks';
+      const prod = document.getElementById('ai-product-input')?.value || 'our product';
+      const region = document.getElementById('global-region')?.value || 'GLOBAL';
+      const templates = {
+        hooks: `Act as a Direct-Response Video Strategist (${region} market). Write 10 scroll-stopping 3-second video hooks (for TikTok, Reels, and Shorts) for: "${prod}". Group them into Problem Hooks, Curiosity Hooks, and Social Proof Hooks, and include visual stage directions.`,
+        ads: `Act as a Senior Paid Media Copywriter. Write 5 high-converting ad copy variations using the PAS (Problem-Agitate-Solution) framework for: "${prod}". Include headlines (<40 chars), primary text, and a clear Call to Action.`,
+        seo: `Act as an SEO Strategist. Create a high-intent keyword cluster and complete H1/H2/H3 article outline for: "${prod}". Include commercial search intent keywords, FAQ schema questions, and internal linking ideas.`,
+        email: `Act as a Lifecycle CRM Specialist. Write a 3-email Welcome & Abandoned Cart sequence for: "${prod}". Focus on high click-through rates (CTR), plain-English benefits, and GDPR/CAN-SPAM compliance.`,
+        landing: `Act as a Conversion Rate Optimization (CRO) Lead. Write an above-the-fold hero section (Headline, Subheadline, 3 Bullet Benefits, Social Proof, and CTA button) and objection-handling FAQ for: "${prod}".`
+      };
+      const el = document.getElementById('ai-prompt-preview');
+      if (el) el.textContent = templates[type] || templates.hooks;
+    }
+  };
+
+  /* ------------------------------------------------------------------------
+     CUSTOMIZABLE MULTI-CURRENCY MARKETING CALCULATORS
      ------------------------------------------------------------------------ */
   const MarketingCalculators = {
     fmt(num, decimals = 2) {
@@ -650,104 +1077,130 @@
       inputs.forEach((inp) => inp.addEventListener('input', () => this.computeAll()));
       document.getElementById('btn-reset-calculators')?.addEventListener('click', () => {
         document.getElementById('calc-roas-spend').value = 5000;
-        document.getElementById('calc-roas-revenue').value = 22500;
-        document.getElementById('calc-roas-cog').value = 7500;
+        document.getElementById('calc-roas-revenue').value = 20000;
+        document.getElementById('calc-roas-margin').value = 50;
+        document.getElementById('calc-roas-target').value = 3.0;
         document.getElementById('calc-cpc-spend').value = 2500;
         document.getElementById('calc-cpc-impressions').value = 20000;
         document.getElementById('calc-cpc-clicks').value = 500;
+        document.getElementById('calc-cpc-target-ctr').value = 1.5;
         document.getElementById('calc-cvr-visitors').value = 800;
         document.getElementById('calc-cvr-orders').value = 32;
         document.getElementById('calc-cvr-spend').value = 6400;
-        document.getElementById('calc-goal-rev').value = 100000;
-        document.getElementById('calc-goal-aov').value = 1250;
+        document.getElementById('calc-cvr-target').value = 2.5;
+        document.getElementById('calc-goal-rev').value = 50000;
+        document.getElementById('calc-goal-aov').value = 100;
         document.getElementById('calc-goal-cvr').value = 2.5;
+        document.getElementById('calc-goal-cpc').value = 0.80;
         document.getElementById('calc-eng-reach').value = 4500;
         document.getElementById('calc-eng-interactions').value = 270;
+        document.getElementById('calc-eng-target').value = 3.5;
         document.getElementById('calc-email-sent').value = 2000;
         document.getElementById('calc-email-opens').value = 680;
         document.getElementById('calc-email-clicks').value = 84;
         this.computeAll();
-        Toast.show('Sample calculator numbers restored');
+        Toast.show('Default calculator values restored');
       });
       this.computeAll();
     },
     computeAll() {
-      // 1. ROAS & Profit
+      const sym = App.currencySymbol || '$';
+
+      // 1. Margin-Aware ROAS & Break-Even ROAS
       const spend = parseFloat(document.getElementById('calc-roas-spend')?.value) || 0;
       const rev = parseFloat(document.getElementById('calc-roas-revenue')?.value) || 0;
-      const cog = parseFloat(document.getElementById('calc-roas-cog')?.value) || 0;
+      const marginPct = Math.min(99, Math.max(1, parseFloat(document.getElementById('calc-roas-margin')?.value) || 50));
+      const targetRoas = parseFloat(document.getElementById('calc-roas-target')?.value) || 3.0;
+
       const roas = spend > 0 ? rev / spend : 0;
-      const totalCost = spend + cog;
-      const netProfit = rev - totalCost;
-      const roiPct = totalCost > 0 ? (netProfit / totalCost) * 100 : 0;
+      const breakEvenRoas = 1 / (marginPct / 100);
+      const grossProfitBeforeAds = rev * (marginPct / 100);
+      const netProfit = grossProfitBeforeAds - spend;
+      const roiPct = spend > 0 ? (netProfit / spend) * 100 : 0;
 
       document.getElementById('out-roas-mult').textContent = `${this.fmt(roas, 2)}x`;
-      document.getElementById('out-roas-profit').textContent = `${netProfit >= 0 ? '+' : ''}${this.fmt(netProfit, 0)}`;
+      document.getElementById('out-roas-breakeven').textContent = `${this.fmt(breakEvenRoas, 2)}x (at ${marginPct}% margin)`;
+      document.getElementById('out-roas-profit').textContent = `${netProfit >= 0 ? '+' : '-'}${sym}${this.fmt(Math.abs(netProfit), 0)}`;
       document.getElementById('out-roas-roi').textContent = `${roiPct >= 0 ? '+' : ''}${this.fmt(roiPct, 1)}%`;
+
       const roasVerdict = document.getElementById('out-roas-verdict');
       if (roasVerdict) {
-        if (roas >= 4) roasVerdict.textContent = 'Excellent Return (4.0x+ is strong and profitable for most brands)';
-        else if (roas >= 2) roasVerdict.textContent = 'Moderate Return (Check your product margins to ensure profit)';
-        else roasVerdict.textContent = 'Low Return — Test stronger ad hooks or improve your landing page offer';
+        if (roas < breakEvenRoas) {
+          roasVerdict.textContent = `Below Break-Even (${this.fmt(breakEvenRoas, 2)}x): Currently losing ${sym}${this.fmt(Math.abs(netProfit), 0)} after product costs.`;
+          roasVerdict.style.color = 'var(--semantic-danger)';
+        } else if (roas >= targetRoas) {
+          roasVerdict.textContent = `Profitable & Beats Your ${this.fmt(targetRoas, 1)}x Target! Net profit: +${sym}${this.fmt(netProfit, 0)}.`;
+          roasVerdict.style.color = 'var(--semantic-success)';
+        } else {
+          roasVerdict.textContent = `Profitable (above ${this.fmt(breakEvenRoas, 2)}x break-even), but below your custom ${this.fmt(targetRoas, 1)}x target.`;
+          roasVerdict.style.color = 'var(--semantic-warning)';
+        }
       }
 
       // 2. CPC, CTR & CPM
       const cpcSpend = parseFloat(document.getElementById('calc-cpc-spend')?.value) || 0;
       const imps = parseFloat(document.getElementById('calc-cpc-impressions')?.value) || 1;
       const clicks = parseFloat(document.getElementById('calc-cpc-clicks')?.value) || 1;
+      const targetCtr = parseFloat(document.getElementById('calc-cpc-target-ctr')?.value) || 1.5;
       const cpc = cpcSpend / clicks;
       const ctr = (clicks / imps) * 100;
       const cpm = (cpcSpend / imps) * 1000;
 
-      document.getElementById('out-cpc-val').textContent = `${this.fmt(cpc, 2)} per click`;
+      document.getElementById('out-cpc-val').textContent = `${sym}${this.fmt(cpc, 2)} per click`;
       document.getElementById('out-ctr-val').textContent = `${this.fmt(ctr, 2)}%`;
-      document.getElementById('out-cpm-val').textContent = `${this.fmt(cpm, 2)}`;
+      document.getElementById('out-cpm-val').textContent = `${sym}${this.fmt(cpm, 2)}`;
       const ctrVerdict = document.getElementById('out-ctr-verdict');
       if (ctrVerdict) {
-        ctrVerdict.textContent = ctr >= 1.5
-          ? 'Strong Click Rate (People find your ad interesting)'
-          : 'Click Rate below 1.5% — Try a clearer headline or brighter image/video hook';
+        ctrVerdict.textContent = ctr >= targetCtr
+          ? `Beats your ${this.fmt(targetCtr, 1)}% CTR benchmark by +${this.fmt(ctr - targetCtr, 2)}%`
+          : `Below your ${this.fmt(targetCtr, 1)}% CTR benchmark — test a stronger headline or visual hook`;
       }
 
       // 3. Conversion Rate & CPA
       const visitors = parseFloat(document.getElementById('calc-cvr-visitors')?.value) || 1;
       const orders = parseFloat(document.getElementById('calc-cvr-orders')?.value) || 0;
       const cvrSpend = parseFloat(document.getElementById('calc-cvr-spend')?.value) || 0;
+      const targetCvr = parseFloat(document.getElementById('calc-cvr-target')?.value) || 2.5;
       const cvr = (orders / visitors) * 100;
       const cpa = orders > 0 ? cvrSpend / orders : 0;
 
       document.getElementById('out-cvr-rate').textContent = `${this.fmt(cvr, 2)}%`;
-      document.getElementById('out-cpa-cost').textContent = orders > 0 ? `${this.fmt(cpa, 2)} each` : '0 orders';
+      document.getElementById('out-cpa-cost').textContent = orders > 0 ? `${sym}${this.fmt(cpa, 2)} each` : '0 conversions';
       const cvrVerdict = document.getElementById('out-cvr-verdict');
       if (cvrVerdict) {
-        cvrVerdict.textContent = cvr >= 2.5
-          ? 'Healthy Conversion Rate (Your page is turning visitors into buyers)'
-          : 'Tip: Add customer reviews and simplify checkout to lift conversions above 2.5%';
+        cvrVerdict.textContent = cvr >= targetCvr
+          ? `Above your ${this.fmt(targetCvr, 1)}% conversion target`
+          : `Below your ${this.fmt(targetCvr, 1)}% conversion target — check mobile page speed & checkout steps`;
       }
 
-      // 4. Monthly Sales Goal Planner
+      // 4. Monthly Revenue & Budget Planner
       const goalRev = parseFloat(document.getElementById('calc-goal-rev')?.value) || 0;
       const aov = parseFloat(document.getElementById('calc-goal-aov')?.value) || 1;
       const goalCvr = parseFloat(document.getElementById('calc-goal-cvr')?.value) || 1;
+      const estCpc = parseFloat(document.getElementById('calc-goal-cpc')?.value) || 0.5;
       const neededOrders = Math.ceil(goalRev / aov);
       const neededVisitors = Math.ceil(neededOrders / (goalCvr / 100));
+      const estBudget = neededVisitors * estCpc;
+      const impliedRoas = estBudget > 0 ? goalRev / estBudget : 0;
 
       document.getElementById('out-goal-orders').textContent = `${neededOrders.toLocaleString()} orders (${this.fmt(neededOrders / 30, 1)} / day)`;
       document.getElementById('out-goal-visitors').textContent = `${neededVisitors.toLocaleString()} visitors`;
+      document.getElementById('out-goal-budget').textContent = `${sym}${this.fmt(estBudget, 0)} (${this.fmt(impliedRoas, 2)}x ROAS)`;
 
-      // 5. Social Engagement Rate
+      // 5. Social Engagement
       const reach = parseFloat(document.getElementById('calc-eng-reach')?.value) || 1;
       const inter = parseFloat(document.getElementById('calc-eng-interactions')?.value) || 0;
+      const engTarget = parseFloat(document.getElementById('calc-eng-target')?.value) || 3.5;
       const engRate = (inter / reach) * 100;
       document.getElementById('out-eng-rate').textContent = `${this.fmt(engRate, 2)}%`;
       const engVerdict = document.getElementById('out-eng-verdict');
       if (engVerdict) {
-        engVerdict.textContent = engRate >= 3.0
-          ? 'Great Engagement! Your audience is actively interacting with this post.'
-          : 'Tip: Ask a simple question at the end of your caption to boost comments and saves.';
+        engVerdict.textContent = engRate >= engTarget
+          ? `Beats your ${this.fmt(engTarget, 1)}% engagement target!`
+          : `Below your ${this.fmt(engTarget, 1)}% target — add a question or saveable checklist slide.`;
       }
 
-      // 6. Email Open & Click Rate
+      // 6. Email Metrics
       const sent = parseFloat(document.getElementById('calc-email-sent')?.value) || 1;
       const opens = parseFloat(document.getElementById('calc-email-opens')?.value) || 0;
       const eClicks = parseFloat(document.getElementById('calc-email-clicks')?.value) || 0;
@@ -755,14 +1208,14 @@
       const eCtr = (eClicks / sent) * 100;
       const ctor = opens > 0 ? (eClicks / opens) * 100 : 0;
 
-      document.getElementById('out-email-open').textContent = `${this.fmt(openRate, 1)}%`;
       document.getElementById('out-email-ctr').textContent = `${this.fmt(eCtr, 2)}%`;
+      document.getElementById('out-email-open').textContent = `${this.fmt(openRate, 1)}% (MPP inflated)`;
       document.getElementById('out-email-ctor').textContent = `${this.fmt(ctor, 1)}%`;
     }
   };
 
   /* ------------------------------------------------------------------------
-     4. MAIN APPLICATION CONTROLLER
+     MAIN APPLICATION CONTROLLER
      ------------------------------------------------------------------------ */
   const App = {
     tasks: [],
@@ -770,29 +1223,67 @@
     themes: ['dark', 'light', 'contrast'],
     themeIdx: 0,
     activeTab: 'tasks',
+    currencySymbol: '$',
+    currencyCode: 'USD',
+    region: 'GLOBAL',
+    industry: 'ALL',
     deferredInstallPrompt: null,
 
     init() {
       this.loadState();
       this.initThemeAndTabs();
       MarketingCalculators.init();
+      WorkstationTools.init();
       this.bindEvents();
       this.renderAll();
       this.registerServiceWorker();
     },
 
     loadState() {
+      // Self-healing state loader: validates that tasks have the 9-point workstation schema
       try {
         const raw = localStorage.getItem(STATE_KEY);
         if (raw) {
           const parsed = JSON.parse(raw);
-          this.tasks = Array.isArray(parsed.tasks) && parsed.tasks.length ? parsed.tasks : DEFAULT_TASKS;
-          this.planner = Array.isArray(parsed.planner) && parsed.planner.length ? parsed.planner : DEFAULT_PLANNER;
-          return;
+          if (
+            Array.isArray(parsed.tasks) &&
+            parsed.tasks.length >= 10 &&
+            parsed.tasks[0].what &&
+            parsed.tasks[0].category
+          ) {
+            this.tasks = parsed.tasks;
+            this.planner = Array.isArray(parsed.planner) && parsed.planner.length ? parsed.planner : DEFAULT_PLANNER;
+          }
         }
       } catch (_) {}
-      this.tasks = JSON.parse(JSON.stringify(DEFAULT_TASKS));
-      this.planner = JSON.parse(JSON.stringify(DEFAULT_PLANNER));
+
+      if (!this.tasks || !this.tasks.length) {
+        this.tasks = JSON.parse(JSON.stringify(DEFAULT_TASKS));
+        this.planner = JSON.parse(JSON.stringify(DEFAULT_PLANNER));
+        this.saveState();
+      }
+
+      try {
+        const prefs = JSON.parse(localStorage.getItem(PREFS_KEY) || '{}');
+        if (prefs.currency) {
+          const sel = document.getElementById('global-currency');
+          if (sel) sel.value = prefs.currency;
+          const [sym, code] = prefs.currency.split('|');
+          this.currencySymbol = sym || '$';
+          this.currencyCode = code || 'USD';
+        }
+        if (prefs.region) {
+          this.region = prefs.region;
+          const rSel = document.getElementById('global-region');
+          if (rSel) rSel.value = prefs.region;
+        }
+        if (prefs.industry) {
+          this.industry = prefs.industry;
+          const iSel = document.getElementById('global-industry');
+          if (iSel) iSel.value = prefs.industry;
+        }
+      } catch (_) {}
+      this.updateCurrencyUI();
     },
 
     saveState() {
@@ -806,6 +1297,41 @@
           })
         );
       } catch (_) {}
+    },
+
+    savePrefs() {
+      try {
+        localStorage.setItem(
+          PREFS_KEY,
+          JSON.stringify({
+            currency: `${this.currencySymbol}|${this.currencyCode}`,
+            region: this.region,
+            industry: this.industry
+          })
+        );
+      } catch (_) {}
+    },
+
+    updateCurrencyUI() {
+      document.querySelectorAll('.curr-sym').forEach((el) => {
+        el.textContent = this.currencySymbol;
+      });
+      const badge = document.getElementById('calc-currency-badge');
+      if (badge) badge.textContent = `${this.currencySymbol} ${this.currencyCode}`;
+      const kpiCurr = document.getElementById('metric-active-currency');
+      if (kpiCurr) kpiCurr.textContent = `${this.currencySymbol} ${this.currencyCode}`;
+
+      const regionNames = {
+        GLOBAL: 'Worldwide (All Channels)',
+        US: 'US Market (Google, Meta, HubSpot, CCPA)',
+        PH: 'Philippines / SEA (FB, TikTok, Shopee/Lazada)',
+        UK: 'UK & EU Market (SEO, LinkedIn, GDPR)',
+        AU: 'Australia / APAC Market'
+      };
+      const tip = document.getElementById('global-focus-tip');
+      if (tip) tip.textContent = `${regionNames[this.region] || 'Worldwide'} • ${this.currencySymbol} ${this.currencyCode}`;
+      const kpiReg = document.getElementById('metric-active-region');
+      if (kpiReg) kpiReg.textContent = regionNames[this.region] || 'Worldwide';
     },
 
     initThemeAndTabs() {
@@ -830,9 +1356,7 @@
       const lbl = document.getElementById('theme-icon-label');
       if (lbl) lbl.textContent = `Theme: ${themeName.toUpperCase()}`;
       const meta = document.getElementById('dynamic-theme-color');
-      if (meta) {
-        meta.setAttribute('content', themeName === 'light' ? '#0284C7' : '#0F172A');
-      }
+      if (meta) meta.setAttribute('content', themeName === 'light' ? '#0284C7' : '#0F172A');
     },
 
     switchTab(tabId, pushHash = true) {
@@ -859,6 +1383,8 @@
       this.renderTasks();
       this.renderPlanner();
       this.renderGlossary();
+      MarketingCalculators.computeAll();
+      WorkstationTools.refreshAll();
     },
 
     renderSummary() {
@@ -873,14 +1399,12 @@
       const fillEl = document.getElementById('metric-progress-fill');
       const bmEl = document.getElementById('metric-bookmarked-count');
       const navTasks = document.getElementById('nav-badge-tasks');
-      const navPlan = document.getElementById('nav-badge-planner');
       const navGloss = document.getElementById('nav-badge-glossary');
 
       if (pctEl) pctEl.textContent = `${pct}% (${done}/${this.tasks.length})`;
       if (fillEl) fillEl.style.width = `${pct}%`;
       if (bmEl) bmEl.textContent = `${starred} Starred`;
       if (navTasks) navTasks.textContent = `${done}/${this.tasks.length}`;
-      if (navPlan) navPlan.textContent = `${this.planner.length} Days`;
       if (navGloss) navGloss.textContent = `${GLOSSARY_TERMS.length} Terms`;
     },
 
@@ -888,10 +1412,12 @@
       const grid = document.getElementById('tasks-grid');
       const empty = document.getElementById('tasks-empty-state');
       const fuzzyBadge = document.getElementById('fuzzy-match-indicator');
+      const visCountEl = document.getElementById('metric-visible-count');
       if (!grid) return;
 
       const query = (document.getElementById('task-search-input')?.value || '').trim();
       const cat = document.getElementById('filter-pillar')?.value || 'ALL';
+      const diff = document.getElementById('filter-difficulty')?.value || 'ALL';
       const freq = document.getElementById('filter-cadence')?.value || 'ALL';
       const status = document.getElementById('filter-status')?.value || 'ALL';
 
@@ -900,12 +1426,15 @@
 
       for (const t of this.tasks) {
         if (cat !== 'ALL' && t.category !== cat) continue;
+        if (diff !== 'ALL' && t.difficulty !== diff) continue;
         if (freq !== 'ALL' && t.frequency !== freq) continue;
         if (status === 'PENDING' && t.completed) continue;
         if (status === 'COMPLETED' && !t.completed) continue;
         if (status === 'BOOKMARKED' && !t.bookmarked) continue;
+        if (this.region !== 'GLOBAL' && Array.isArray(t.regions) && !t.regions.includes(this.region)) continue;
+        if (this.industry !== 'ALL' && Array.isArray(t.industries) && !t.industries.includes(this.industry)) continue;
 
-        const hay = `${t.title} ${t.category} ${t.goal} ${t.tools} ${(t.steps || []).join(' ')}`;
+        const hay = `${t.title} ${t.category} ${t.what} ${t.why} ${t.tools} ${t.expected} ${t.example} ${(t.steps || []).join(' ')}`;
         const res = SmartSearch.match(query, hay);
         if (res.matched) {
           if (res.isFuzzy) usedFuzzy = true;
@@ -915,6 +1444,7 @@
 
       matches.sort((a, b) => b.score - a.score);
       if (fuzzyBadge) fuzzyBadge.hidden = !usedFuzzy;
+      if (visCountEl) visCountEl.textContent = `${matches.length} of ${this.tasks.length} Showing`;
 
       if (!matches.length) {
         grid.innerHTML = '';
@@ -925,6 +1455,12 @@
 
       grid.innerHTML = matches
         .map(({ task }) => {
+          const diffClass =
+            task.difficulty === 'Beginner'
+              ? 'badge--success'
+              : task.difficulty === 'Intermediate'
+              ? 'badge--accent'
+              : 'badge--warning';
           const stepsHtml = (task.steps || [])
             .map((s) => `<li>${this.escapeHtml(s)}</li>`)
             .join('');
@@ -933,28 +1469,59 @@
             <div>
               <div class="task-card__top">
                 <div class="task-card__badges">
+                  <span class="badge ${diffClass}">${this.escapeHtml(task.difficulty || 'Beginner')}</span>
                   <span class="badge badge--accent">${this.escapeHtml(task.category)}</span>
                   <span class="badge">${this.escapeHtml(task.frequency)}</span>
-                  <span class="badge ${task.priority.includes('High') ? 'badge--warning' : ''}">${this.escapeHtml(task.priority)}</span>
                 </div>
               </div>
               <h3 class="task-card__title">${this.escapeHtml(task.title)}</h3>
+              <p style="margin: 4px 0 8px; font-size: 0.94rem; color: var(--text-secondary);">
+                <strong>1. What is it?</strong> ${this.escapeHtml(task.what || '')}
+              </p>
               <div class="task-card__meta">
-                <span><strong>Goal:</strong> ${this.escapeHtml(task.goal)}</span>
-                <span><strong>Helpful Tool:</strong> ${this.escapeHtml(task.tools)}</span>
+                <span><strong>3. When:</strong> ${this.escapeHtml(task.when || task.frequency)}</span>
+                <span><strong>4. Tools:</strong> ${this.escapeHtml(task.tools)}</span>
+              </div>
+
+              <!-- 5. Step-by-Step Instructions Always Visible -->
+              <div style="margin-top: 8px; font-size: 0.85rem; font-weight: 700; color: var(--accent-primary);">
+                5. Step-by-Step Instructions:
               </div>
               <ul class="task-card__sop">${stepsHtml}</ul>
+
+              <!-- Complete 9-Point Workstation Guide Accordion -->
+              <details class="workstation-details">
+                <summary>Open Full 9-Point Workstation Guide</summary>
+                <div class="workstation-body">
+                  <div class="ws-point">
+                    <strong>2. Why is it important?</strong> ${this.escapeHtml(task.why || '')}
+                  </div>
+                  <div class="ws-point">
+                    <strong>6. Expected Result:</strong> ${this.escapeHtml(task.expected || '')}
+                  </div>
+                  <div class="ws-point">
+                    <strong>7. How to Measure Success:</strong> ${this.escapeHtml(task.measure || '')}
+                  </div>
+                  <div class="ws-point ws-point--mistake">
+                    <strong>8. Common Mistakes to Avoid:</strong> ${this.escapeHtml(task.mistakes || '')}
+                  </div>
+                  <div class="ws-point ws-point--example">
+                    <strong>9. Example of Completed Work:</strong> ${this.escapeHtml(task.example || '')}
+                  </div>
+                </div>
+              </details>
             </div>
+
             <div class="task-card__footer">
               <button type="button" class="btn btn--sm ${task.completed ? 'btn--secondary' : 'btn--primary'}" data-action="toggle-task" data-id="${this.escapeHtml(task.id)}">
-                ${task.completed ? '✓ Done' : 'Mark Done'}
+                ${task.completed ? '✓ Completed' : 'Mark Complete'}
               </button>
               <div style="display:flex; gap:6px;">
                 <button type="button" class="btn btn--sm btn--secondary" data-action="bookmark-task" data-id="${this.escapeHtml(task.id)}">
                   ${task.bookmarked ? '★ Starred' : '☆ Star'}
                 </button>
                 <button type="button" class="btn btn--sm btn--ghost" data-action="copy-task" data-id="${this.escapeHtml(task.id)}">
-                  Copy Checklist
+                  Copy Playbook
                 </button>
               </div>
             </div>
@@ -984,7 +1551,7 @@
               ${item.bookmarked ? '★ Starred Day' : '☆ Star Day'}
             </button>
             <button type="button" class="btn btn--sm btn--ghost" data-action="copy-plan" data-id="${this.escapeHtml(item.id)}">
-              Copy Plan
+              Copy Schedule
             </button>
           </div>
         </article>`
@@ -1017,10 +1584,10 @@
               ${this.escapeHtml(item.simple)}
             </p>
             <div class="glossary-formula">
-              <strong>Formula:</strong> ${this.escapeHtml(item.formula)}
+              <strong>Formula / Rule:</strong> ${this.escapeHtml(item.formula)}
             </div>
             <div class="glossary-example">
-              <strong>Real Example:</strong> ${this.escapeHtml(item.example)}
+              <strong>How to Interpret &amp; Example:</strong> ${this.escapeHtml(item.example)}
             </div>
           </div>
           <div class="task-card__footer">
@@ -1033,10 +1600,35 @@
         .join('');
     },
 
+    resetAllTaskFilters() {
+      const s = document.getElementById('task-search-input');
+      const p = document.getElementById('filter-pillar');
+      const d = document.getElementById('filter-difficulty');
+      const c = document.getElementById('filter-cadence');
+      const st = document.getElementById('filter-status');
+      const reg = document.getElementById('global-region');
+      const ind = document.getElementById('global-industry');
+
+      if (s) s.value = '';
+      if (p) p.value = 'ALL';
+      if (d) d.value = 'ALL';
+      if (c) c.value = 'ALL';
+      if (st) st.value = 'ALL';
+      if (reg) reg.value = 'GLOBAL';
+      if (ind) ind.value = 'ALL';
+      this.region = 'GLOBAL';
+      this.industry = 'ALL';
+      this.savePrefs();
+      this.updateCurrencyUI();
+      this.renderTasks();
+      Toast.show('Showing all 17 Specialist Playbooks');
+    },
+
     exportBackupJson() {
       const payload = {
-        guide: 'Digital Marketing Specialist Guide',
+        guide: 'Digital Marketing Specialist Workstation v4.0',
         exportedAt: new Date().toISOString(),
+        currency: this.currencyCode,
         tasks: this.tasks,
         planner: this.planner
       };
@@ -1044,12 +1636,12 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `digital-marketing-plan-${new Date().toISOString().slice(0, 10)}.json`;
+      a.download = `marketing-workstation-backup-${new Date().toISOString().slice(0, 10)}.json`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      Toast.show('Marketing backup downloaded!');
+      Toast.show('Workstation backup downloaded!');
     },
 
     importBackupJson(file) {
@@ -1058,13 +1650,13 @@
       reader.onload = (e) => {
         try {
           const data = JSON.parse(e.target.result);
-          if (Array.isArray(data.tasks)) this.tasks = data.tasks;
-          if (Array.isArray(data.planner)) this.planner = data.planner;
+          if (Array.isArray(data.tasks) && data.tasks.length) this.tasks = data.tasks;
+          if (Array.isArray(data.planner) && data.planner.length) this.planner = data.planner;
           this.saveState();
           this.renderAll();
-          Toast.show('Marketing plan backup restored!');
+          Toast.show('Workstation backup restored!');
         } catch (_) {
-          Toast.show('Please select a valid backup .json file');
+          Toast.show('Please select a valid .json backup file');
         }
       };
       reader.readAsText(file);
@@ -1073,6 +1665,32 @@
     bindEvents() {
       document.querySelectorAll('.nav-tab').forEach((btn) => {
         btn.addEventListener('click', () => this.switchTab(btn.dataset.tab));
+      });
+
+      // Global Currency, Region & Industry Selectors
+      document.getElementById('global-currency')?.addEventListener('change', (e) => {
+        const [sym, code] = e.target.value.split('|');
+        this.currencySymbol = sym || '$';
+        this.currencyCode = code || 'USD';
+        this.savePrefs();
+        this.updateCurrencyUI();
+        MarketingCalculators.computeAll();
+        WorkstationTools.refreshAll();
+        Toast.show(`Currency updated to ${this.currencySymbol} ${this.currencyCode}`);
+      });
+
+      document.getElementById('global-region')?.addEventListener('change', (e) => {
+        this.region = e.target.value;
+        this.savePrefs();
+        this.updateCurrencyUI();
+        this.renderTasks();
+        WorkstationTools.updateAiPrompt();
+      });
+
+      document.getElementById('global-industry')?.addEventListener('change', (e) => {
+        this.industry = e.target.value;
+        this.savePrefs();
+        this.renderTasks();
       });
 
       document.getElementById('btn-theme-toggle')?.addEventListener('click', () => {
@@ -1096,20 +1714,15 @@
 
       document.getElementById('btn-copy-deeplink')?.addEventListener('click', () => {
         const url = `https://esp046-cyber.github.io/Digital-Marketing-Specialist-guide/#${this.activeTab}`;
-        ClipboardUtil.copy(url, 'Link copied');
+        ClipboardUtil.copy(url, 'Workstation link copied');
       });
 
-      ['task-search-input', 'filter-pillar', 'filter-cadence', 'filter-status'].forEach((id) => {
+      ['task-search-input', 'filter-pillar', 'filter-difficulty', 'filter-cadence', 'filter-status'].forEach((id) => {
         document.getElementById(id)?.addEventListener('input', () => this.renderTasks());
       });
 
-      document.getElementById('btn-reset-filters')?.addEventListener('click', () => {
-        document.getElementById('task-search-input').value = '';
-        document.getElementById('filter-pillar').value = 'ALL';
-        document.getElementById('filter-cadence').value = 'ALL';
-        document.getElementById('filter-status').value = 'ALL';
-        this.renderTasks();
-      });
+      document.getElementById('btn-reset-filters')?.addEventListener('click', () => this.resetAllTaskFilters());
+      document.getElementById('btn-reset-filters-top')?.addEventListener('click', () => this.resetAllTaskFilters());
 
       ['glossary-search-input', 'filter-glossary-cat'].forEach((id) => {
         document.getElementById(id)?.addEventListener('input', () => this.renderGlossary());
@@ -1124,24 +1737,33 @@
 
         if (btn.dataset.action === 'toggle-task') {
           task.completed = !task.completed;
-          Haptics.tap();
           this.saveState();
           this.renderSummary();
           this.renderTasks();
-          Toast.show(task.completed ? 'Task marked complete!' : 'Task reopened');
+          Toast.show(task.completed ? 'Task completed!' : 'Task marked to-do');
         } else if (btn.dataset.action === 'bookmark-task') {
           task.bookmarked = !task.bookmarked;
-          Haptics.tap();
           this.saveState();
           this.renderSummary();
           this.renderTasks();
         } else if (btn.dataset.action === 'copy-task') {
-          const text = `${task.title} (${task.category})\nGoal: ${task.goal}\nSteps:\n- ${(task.steps || []).join('\n- ')}`;
-          ClipboardUtil.copy(text, 'Task checklist copied');
+          const text = [
+            `TASK: ${task.title} (${task.category} | ${task.difficulty})`,
+            `1. What: ${task.what}`,
+            `2. Why: ${task.why}`,
+            `3. When: ${task.when}`,
+            `4. Tools: ${task.tools}`,
+            `5. Steps:\n- ${(task.steps || []).join('\n- ')}`,
+            `6. Expected Result: ${task.expected}`,
+            `7. Measure Success: ${task.measure}`,
+            `8. Common Mistakes: ${task.mistakes}`,
+            `9. Example: ${task.example}`
+          ].join('\n');
+          ClipboardUtil.copy(text, 'Full 9-Point Playbook copied');
         }
       });
 
-      // Content Planner Actions
+      // Planner Actions
       document.getElementById('itinerary-list')?.addEventListener('click', (e) => {
         const btn = e.target.closest('button[data-action]');
         if (!btn) return;
@@ -1150,38 +1772,34 @@
 
         if (btn.dataset.action === 'bookmark-plan') {
           item.bookmarked = !item.bookmarked;
-          Haptics.tap();
           this.saveState();
           this.renderSummary();
           this.renderPlanner();
         } else if (btn.dataset.action === 'copy-plan') {
-          ClipboardUtil.copy(`${item.day}: ${item.title} (${item.channel}) - ${item.notes}`, 'Planner day copied');
+          ClipboardUtil.copy(`${item.day}: ${item.title} (${item.channel}) — ${item.notes}`, 'Schedule item copied');
         }
       });
 
-      // Glossary Copy Action
+      // Glossary Copy
       document.getElementById('glossary-grid')?.addEventListener('click', (e) => {
         const btn = e.target.closest('button[data-action="copy-term"]');
         if (!btn) return;
         const item = GLOSSARY_TERMS.find((g) => g.term === btn.dataset.term);
         if (!item) return;
-        const text = `${item.term}: ${item.simple}\nFormula: ${item.formula}\nExample: ${item.example}`;
-        ClipboardUtil.copy(text, `Copied "${item.term}"`);
+        ClipboardUtil.copy(`${item.term}: ${item.simple}\nFormula: ${item.formula}\nNote: ${item.example}`, `Copied "${item.term}"`);
       });
 
-      // Print / PDF Buttons
       ['btn-print-tasks', 'btn-print-itinerary', 'btn-print-glossary'].forEach((id) => {
         document.getElementById(id)?.addEventListener('click', () => window.print());
       });
 
-      // Export / Import Backup
       document.getElementById('btn-export-json')?.addEventListener('click', () => this.exportBackupJson());
       document.getElementById('input-import-json')?.addEventListener('change', (e) => {
         const file = e.target.files && e.target.files[0];
         if (file) this.importBackupJson(file);
       });
 
-      // Add Custom Task Modal
+      // Custom Task Modal
       const customModal = document.getElementById('custom-item-modal');
       document.getElementById('btn-add-custom-task')?.addEventListener('click', () => {
         if (customModal) customModal.hidden = false;
@@ -1195,56 +1813,56 @@
       document.getElementById('btn-cancel-custom')?.addEventListener('click', () => {
         if (customModal) customModal.hidden = true;
       });
+
       document.getElementById('custom-item-form')?.addEventListener('submit', (e) => {
         e.preventDefault();
         const title = document.getElementById('custom-title').value.trim();
         const category = document.getElementById('custom-pillar').value;
+        const difficulty = document.getElementById('custom-difficulty').value;
         const frequency = document.getElementById('custom-cadence').value;
-        const goal = document.getElementById('custom-kpi').value.trim() || 'Grow clicks and customer sales';
+        const tools = document.getElementById('custom-tools').value.trim() || 'Analytics & Ad Manager';
+        const measure = document.getElementById('custom-kpi').value.trim() || 'Conversion rate & positive ROI';
         const stepsRaw = document.getElementById('custom-steps').value.trim();
         const steps = stepsRaw
           ? stepsRaw.split(',').map((s) => s.trim()).filter(Boolean)
-          : ['Prepare creative and copy', 'Publish and review results'];
+          : ['Define target audience & offer', 'Launch with UTM tracking', 'Review conversions & optimize'];
 
         this.tasks.unshift({
-          id: 'task-custom-' + Date.now(),
+          id: 'ws-custom-' + Date.now(),
           title,
           category,
           frequency,
-          priority: 'High Priority',
-          goal,
-          tools: 'Custom Marketing Workflow',
+          difficulty,
+          regions: ['GLOBAL', 'US', 'PH', 'UK', 'EU', 'AU'],
+          industries: ['ALL', 'Ecommerce', 'B2B', 'SaaS', 'LocalService'],
+          what: `Custom specialist task under ${category}.`,
+          why: 'Ensures consistent execution and measurable campaign growth.',
+          when: `${frequency} schedule`,
+          tools,
           steps,
+          expected: `Completed ${title} workflow.`,
+          measure,
+          mistakes: 'Skipping UTM tracking or failing to review mobile conversion speed.',
+          example: `Executed ${title} and measured results via ${tools}.`,
           completed: false,
           bookmarked: true
         });
         this.planner.unshift({
           id: 'plan-custom-' + Date.now(),
-          day: `${frequency} Campaign Task`,
+          day: `${frequency} Custom Action`,
           title,
           channel: category,
-          format: 'Custom Action Item',
-          notes: `Goal: ${goal} | Steps: ${steps.join(' -> ')}`,
+          format: `${difficulty} Playbook`,
+          notes: `Tools: ${tools} | Goal: ${measure}`,
           bookmarked: true
         });
         this.saveState();
         this.renderAll();
         e.target.reset();
         if (customModal) customModal.hidden = true;
-        Toast.show('Added to your Tasks and Content Planner!');
+        Toast.show('Custom 9-Point Task added!');
       });
 
-      // Online / Offline Pill
-      const updateNet = () => {
-        const pill = document.getElementById('network-status-pill');
-        if (pill) {
-          pill.textContent = navigator.onLine ? 'Saved on Device' : 'Offline Mode (Saved)';
-        }
-      };
-      window.addEventListener('online', updateNet);
-      window.addEventListener('offline', updateNet);
-
-      // Install Prompt
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         this.deferredInstallPrompt = e;

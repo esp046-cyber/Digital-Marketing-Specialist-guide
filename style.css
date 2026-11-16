@@ -1215,3 +1215,120 @@ body[data-active-tab="glossary"] .kpi-ribbon,
 body[data-active-tab="calculators"] .kpi-ribbon {
   display: none;
 }
+
+
+/* Worldwide Context Bar (Currency, Region & Industry) */
+.global-context-bar {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.context-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.context-select {
+  background: transparent;
+  color: var(--text-primary);
+  border: none;
+  font-family: inherit;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  cursor: pointer;
+}
+.context-select option {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.context-tip {
+  font-size: var(--text-xs);
+  color: var(--accent-primary);
+  font-weight: 600;
+  margin-left: auto;
+}
+
+/* 9-Point Workstation Collapsible Guide inside Task Cards */
+.workstation-details {
+  margin-top: var(--space-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  overflow: hidden;
+}
+
+.workstation-details summary {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--accent-primary);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.workstation-details summary::-webkit-details-marker {
+  display: none;
+}
+.workstation-details summary::after {
+  content: "+ Expand 9-Point Guide";
+  font-size: 0.72rem;
+  opacity: 0.85;
+}
+.workstation-details[open] summary::after {
+  content: "− Hide Guide";
+}
+
+.workstation-body {
+  padding: var(--space-3);
+  border-top: 1px solid var(--border-subtle);
+  font-size: var(--text-sm);
+  display: grid;
+  gap: var(--space-2);
+}
+
+.ws-point {
+  line-height: 1.45;
+}
+.ws-point strong {
+  color: var(--accent-primary);
+}
+.ws-point--mistake strong {
+  color: var(--semantic-danger);
+}
+.ws-point--example {
+  padding: var(--space-2);
+  border-left: 3px solid var(--semantic-success);
+  background: rgba(52, 211, 153, 0.08);
+  border-radius: 4px;
+}
+
+@media (max-width: 767px) {
+  .context-tip {
+    display: none;
+  }
+  .global-context-bar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .context-chip {
+    justify-content: space-between;
+  }
+}

@@ -3,34 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Digital Marketing Specialist Guide — Tasks, Planner, Glossary &amp; Calculators</title>
-  <meta name="description" content="Complete Digital Marketing Specialist Guide with daily checklists, content calendar planner, plain-English marketing dictionary, and instant ROI/ROAS calculators." />
+  <title>Digital Marketing Specialist Workstation — Global Guide, Playbooks &amp; Calculators</title>
+  <meta name="description" content="Worldwide Digital Marketing Specialist Workstation: 9-point step-by-step task playbooks across 6 pillars, UTM &amp; Brief Generators, Global Privacy &amp; Dictionary, and Margin-Aware ROAS/ROI Calculators." />
   <meta name="theme-color" id="dynamic-theme-color" content="#0F172A" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Marketing Guide" />
-  <meta name="application-name" content="Digital Marketing Specialist Guide" />
+  <meta name="application-name" content="Digital Marketing Specialist Workstation" />
   <meta name="msapplication-config" content="./browserconfig.xml" />
 
   <!-- Canonical & OpenGraph Social Media Metadata -->
   <link rel="canonical" href="https://esp046-cyber.github.io/Digital-Marketing-Specialist-guide/" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Digital Marketing Specialist Guide" />
-  <meta property="og:title" content="Digital Marketing Specialist Guide — Checklists, Glossary &amp; ROI Calculators" />
-  <meta property="og:description" content="Practical step-by-step digital marketing task checklists, weekly content planner, easy-to-understand marketing terms, and ad budget calculators." />
+  <meta property="og:site_name" content="Digital Marketing Specialist Workstation" />
+  <meta property="og:title" content="Digital Marketing Specialist Workstation — Global Playbooks, Tools &amp; Calculators" />
+  <meta property="og:description" content="Complete worldwide toolkit for Digital Marketing Specialists: 9-point task instructions, UTM Builder, Brief &amp; Report Generators, Dictionary, and Multi-Currency ROAS/ROI Calculators." />
   <meta property="og:url" content="https://esp046-cyber.github.io/Digital-Marketing-Specialist-guide/" />
   <meta property="og:image" content="https://esp046-cyber.github.io/Digital-Marketing-Specialist-guide/assets/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Digital Marketing Specialist Guide Preview" />
+  <meta property="og:image:alt" content="Digital Marketing Specialist Workstation Preview" />
 
   <!-- Twitter Card Metadata -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Digital Marketing Specialist Guide" />
-  <meta name="twitter:description" content="Step-by-step digital marketing tasks, content planner, plain-English glossary, and ROAS/ROI calculators." />
+  <meta name="twitter:title" content="Digital Marketing Specialist Workstation" />
+  <meta name="twitter:description" content="Step-by-step global digital marketing workstation with 9-point playbooks, UTM &amp; Brief generators, glossary, and multi-currency calculators." />
   <meta name="twitter:image" content="https://esp046-cyber.github.io/Digital-Marketing-Specialist-guide/assets/og-image.png" />
 
-  <!-- Icons & Manifest -->
   <link rel="icon" href="./favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
   <link rel="apple-touch-icon" href="./icon-192.png" />
@@ -41,54 +40,88 @@
 <body data-active-tab="tasks">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- App Header -->
+  <!-- App Header + Worldwide Currency & Market Selector Bar -->
   <header class="app-header" role="banner">
     <div class="app-header__brand">
-      <img src="./icon-192.png" alt="Marketing Guide logo" class="app-header__logo" width="40" height="40" />
+      <img src="./icon-192.png" alt="Marketing Workstation logo" class="app-header__logo" width="40" height="40" />
       <div>
         <div class="app-header__eyebrow">
-          <span>DIGITAL MARKETING PLAYBOOK</span>
-          <span id="network-status-pill" class="status-pill status-pill--online" aria-live="polite">Saved on Device</span>
+          <span>WORLDWIDE SPECIALIST WORKSTATION v4.0</span>
+          <span id="network-status-pill" class="status-pill status-pill--online" aria-live="polite">Saved Offline</span>
         </div>
         <h1 class="app-header__title">Digital Marketing Specialist Guide</h1>
       </div>
     </div>
 
     <div class="app-header__controls">
-      <button type="button" id="btn-install-pwa" class="btn btn--primary btn--sm" hidden>
-        + Install App
-      </button>
-      <button type="button" id="btn-open-onboarding" class="btn btn--secondary btn--sm">
-        Quick Start Guide
-      </button>
-      <button type="button" id="btn-copy-deeplink" class="btn btn--secondary btn--sm">
-        Share Link
-      </button>
+      <button type="button" id="btn-install-pwa" class="btn btn--primary btn--sm" hidden>+ Install App</button>
+      <button type="button" id="btn-open-onboarding" class="btn btn--secondary btn--sm">How to Use</button>
+      <button type="button" id="btn-copy-deeplink" class="btn btn--secondary btn--sm">Share Link</button>
       <button type="button" id="btn-theme-toggle" class="btn btn--secondary btn--sm" aria-label="Switch color theme">
         <span id="theme-icon-label">Theme: DARK</span>
       </button>
     </div>
+
+    <!-- Global Settings Bar: Currency, Market Region & Business Type -->
+    <div class="global-context-bar" aria-label="Worldwide Currency, Region, and Industry Settings">
+      <label class="context-chip">
+        <span>Currency:</span>
+        <select id="global-currency" class="context-select" aria-label="Select Currency">
+          <option value="$|USD">$ USD (US Dollar)</option>
+          <option value="₱|PHP">₱ PHP (Philippine Peso)</option>
+          <option value="£|GBP">£ GBP (British Pound)</option>
+          <option value="€|EUR">€ EUR (Euro)</option>
+          <option value="A$|AUD">A$ AUD (Australian Dollar)</option>
+          <option value="C$|CAD">C$ CAD (Canadian Dollar)</option>
+          <option value="S$|SGD">S$ SGD (Singapore Dollar)</option>
+        </select>
+      </label>
+
+      <label class="context-chip">
+        <span>Market Region:</span>
+        <select id="global-region" class="context-select" aria-label="Select Market Region">
+          <option value="GLOBAL">Worldwide (All Channels)</option>
+          <option value="US">United States (Google, Meta, HubSpot, CCPA)</option>
+          <option value="PH">Philippines / SEA (Facebook, TikTok, Shopee/Lazada, DPA)</option>
+          <option value="UK">United Kingdom &amp; EU (SEO, Email, LinkedIn, GDPR)</option>
+          <option value="AU">Australia / APAC (Google, Meta, Service Leads)</option>
+        </select>
+      </label>
+
+      <label class="context-chip">
+        <span>Business Focus:</span>
+        <select id="global-industry" class="context-select" aria-label="Select Business Focus">
+          <option value="ALL">All Business Types</option>
+          <option value="Ecommerce">E-Commerce &amp; Online Stores</option>
+          <option value="B2B">B2B &amp; Lead Generation</option>
+          <option value="SaaS">SaaS &amp; Tech Apps</option>
+          <option value="LocalService">Local Business, Clinics &amp; Agencies</option>
+        </select>
+      </label>
+
+      <span class="context-tip" id="global-focus-tip">Showing tasks &amp; benchmarks for Worldwide Marketers</span>
+    </div>
   </header>
 
   <div class="app-layout">
-    <!-- 4 Pure Digital Marketing Navigation Tabs -->
-    <nav class="app-nav" role="navigation" aria-label="Marketing Guide Navigation">
+    <!-- 4 Primary Navigation Tabs -->
+    <nav class="app-nav" role="navigation" aria-label="Primary Workstation Navigation">
       <button type="button" class="nav-tab is-active" data-tab="tasks" role="tab" aria-selected="true" aria-controls="panel-tasks" id="tab-btn-tasks">
         <span class="nav-tab__icon" aria-hidden="true">01</span>
-        <span class="nav-tab__label">Daily Tasks</span>
-        <span class="nav-tab__badge" id="nav-badge-tasks">5/18</span>
+        <span class="nav-tab__label">Tasks &amp; Playbooks</span>
+        <span class="nav-tab__badge" id="nav-badge-tasks">6/17</span>
       </button>
 
       <button type="button" class="nav-tab" data-tab="planner" role="tab" aria-selected="false" aria-controls="panel-planner" id="tab-btn-planner">
         <span class="nav-tab__icon" aria-hidden="true">02</span>
-        <span class="nav-tab__label">Content Planner</span>
-        <span class="nav-tab__badge" id="nav-badge-planner">6 Days</span>
+        <span class="nav-tab__label">Planner &amp; Tools</span>
+        <span class="nav-tab__badge" id="nav-badge-planner">6 Tools</span>
       </button>
 
       <button type="button" class="nav-tab" data-tab="glossary" role="tab" aria-selected="false" aria-controls="panel-glossary" id="tab-btn-glossary">
         <span class="nav-tab__icon" aria-hidden="true">03</span>
-        <span class="nav-tab__label">Marketing Terms</span>
-        <span class="nav-tab__badge" id="nav-badge-glossary">24 Terms</span>
+        <span class="nav-tab__label">Terms &amp; Privacy</span>
+        <span class="nav-tab__badge" id="nav-badge-glossary">16 Terms</span>
       </button>
 
       <button type="button" class="nav-tab" data-tab="calculators" role="tab" aria-selected="false" aria-controls="panel-calculators" id="tab-btn-calculators">
@@ -98,52 +131,53 @@
       </button>
     </nav>
 
-    <!-- Main Workspace -->
+    <!-- Main Content Container -->
     <main id="main-content" class="app-main" role="main">
-      <!-- Top Summary Bar (Shown on Tab 01 Tasks) -->
-      <section class="kpi-ribbon" id="summary-ribbon" aria-label="Marketing Progress Summary">
+      <!-- Executive KPI Dashboard Ribbon (Tab 01) -->
+      <section class="kpi-ribbon" id="summary-ribbon" aria-label="Specialist Progress & KPI Dashboard">
         <article class="kpi-card">
-          <span class="kpi-card__label">Checklist Progress</span>
-          <strong class="kpi-card__value" id="metric-completion-pct">28% (5/18)</strong>
-          <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="28" id="metric-progressbar">
-            <div class="progress-bar__fill" id="metric-progress-fill" style="width: 28%"></div>
+          <span class="kpi-card__label">Task Playbook Progress</span>
+          <strong class="kpi-card__value" id="metric-completion-pct">35% (6/17)</strong>
+          <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="35" id="metric-progressbar">
+            <div class="progress-bar__fill" id="metric-progress-fill" style="width: 35%"></div>
           </div>
         </article>
         <article class="kpi-card">
-          <span class="kpi-card__label">Saved Favorites</span>
-          <strong class="kpi-card__value" id="metric-bookmarked-count">11 Saved</strong>
-          <span class="kpi-card__sub">Starred tasks &amp; campaign days</span>
+          <span class="kpi-card__label">6 Core Pillars Covered</span>
+          <strong class="kpi-card__value" id="metric-visible-count">17 Showing</strong>
+          <span class="kpi-card__sub">Strategy, Ads, SEO, Analytics, CRM, Content</span>
         </article>
         <article class="kpi-card">
-          <span class="kpi-card__label">Marketing Dictionary</span>
-          <strong class="kpi-card__value">24 Easy Terms</strong>
-          <span class="kpi-card__sub">Plain-English definitions &amp; examples</span>
+          <span class="kpi-card__label">Saved Priority Items</span>
+          <strong class="kpi-card__value" id="metric-bookmarked-count">9 Starred</strong>
+          <span class="kpi-card__sub">Each task includes a 9-point workstation guide</span>
         </article>
         <article class="kpi-card">
-          <span class="kpi-card__label">Instant Calculators</span>
-          <strong class="kpi-card__value">ROAS, CPC &amp; ROI</strong>
-          <span class="kpi-card__sub">Tap Tab 04 to calculate numbers</span>
+          <span class="kpi-card__label">Active Currency &amp; Market</span>
+          <strong class="kpi-card__value" id="metric-active-currency">$ USD</strong>
+          <span class="kpi-card__sub" id="metric-active-region">Change currency anytime at the top bar</span>
         </article>
       </section>
 
       <!-- =================================================================
-           TAB 01: DIGITAL MARKETING SPECIALIST DAILY & WEEKLY TASKS
+           TAB 01: 9-POINT DIGITAL MARKETING SPECIALIST TASKS & PLAYBOOKS
            ================================================================= -->
       <section id="panel-tasks" class="tab-panel is-active" role="tabpanel" aria-labelledby="tab-btn-tasks">
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">01. Digital Marketing Specialist Task Checklist</h2>
+            <h2 class="panel-title">01. Complete Digital Marketing Specialist Workstation Tasks</h2>
             <p class="panel-subtitle">
-              Step-by-step daily, weekly, and monthly marketing tasks written in plain, easy-to-follow language. Check off completed tasks or add your own custom checklist items.
+              Organized across the 6 global marketing pillars with <strong>Beginner, Intermediate, and Advanced</strong> skill levels. Tap <strong>"Open Full 9-Point Workstation Guide"</strong> on any task to see Why It Matters, Required Tools, Step-by-Step Instructions, How to Measure Success, Common Mistakes, and a Real Example.
             </p>
           </div>
           <div class="panel-actions">
-            <button type="button" id="btn-add-custom-task" class="btn btn--primary">+ Add New Task</button>
+            <button type="button" id="btn-add-custom-task" class="btn btn--primary">+ Add Custom Task</button>
+            <button type="button" id="btn-reset-filters-top" class="btn btn--secondary">Show All Tasks</button>
             <button type="button" id="btn-print-tasks" class="btn btn--secondary">Print / Save PDF</button>
           </div>
         </div>
 
-        <!-- Search & Filter Bar -->
+        <!-- Search, Pillar, Difficulty, Schedule & Status Filters -->
         <div class="filter-bar" role="search">
           <div class="search-input-wrap">
             <label for="task-search-input" class="sr-only">Search marketing tasks</label>
@@ -151,39 +185,47 @@
               type="search"
               id="task-search-input"
               class="input-control"
-              placeholder="Search tasks (e.g., 'Google Ads', 'Reels', 'email', 'page speed')..."
+              placeholder="Search tasks, tools, or channels (e.g., 'Google Ads', 'SEO', 'LinkedIn', 'TikTok', 'GA4')..."
               autocomplete="off"
             />
             <span id="fuzzy-match-indicator" class="fuzzy-badge" hidden>Typo-Smart Match</span>
           </div>
 
           <div class="filter-selects">
-            <label for="filter-pillar" class="sr-only">Filter by Marketing Area</label>
+            <label for="filter-pillar" class="sr-only">Filter by Marketing Pillar</label>
             <select id="filter-pillar" class="select-control">
-              <option value="ALL">All Marketing Areas (6)</option>
-              <option value="Website & SEO">Website &amp; SEO</option>
-              <option value="Paid Ads">Paid Ads (Google, Meta, TikTok)</option>
-              <option value="Social Media & Content">Social Media &amp; Content</option>
-              <option value="Email & Customer Follow-Up">Email &amp; Customer Follow-Up</option>
-              <option value="Sales Page & Conversion">Sales Page &amp; Conversion</option>
-              <option value="Tracking & Results">Tracking &amp; Results</option>
+              <option value="ALL">All 6 Specialist Pillars</option>
+              <option value="Marketing Strategy & Research">01. Marketing Strategy &amp; Research</option>
+              <option value="Advertising & Campaign Management">02. Advertising &amp; Campaign Management</option>
+              <option value="SEO & Website Optimization">03. SEO &amp; Website Optimization</option>
+              <option value="Analytics & Reporting">04. Analytics &amp; Reporting</option>
+              <option value="CRM & Marketing Automation">05. CRM &amp; Marketing Automation</option>
+              <option value="Content Production">06. Content Production</option>
+            </select>
+
+            <label for="filter-difficulty" class="sr-only">Filter by Skill Level</label>
+            <select id="filter-difficulty" class="select-control">
+              <option value="ALL">All Skill Levels</option>
+              <option value="Beginner">Beginner Friendly</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced / Specialist</option>
             </select>
 
             <label for="filter-cadence" class="sr-only">Filter by Schedule</label>
             <select id="filter-cadence" class="select-control">
               <option value="ALL">All Schedules</option>
-              <option value="Daily">Daily Tasks</option>
-              <option value="Weekly">Weekly Tasks</option>
-              <option value="Monthly">Monthly Tasks</option>
-              <option value="Campaign Launch">Campaign Launch</option>
+              <option value="Daily">Daily</option>
+              <option value="Weekly">Weekly</option>
+              <option value="Monthly">Monthly</option>
+              <option value="Quarterly">Quarterly</option>
             </select>
 
-            <label for="filter-status" class="sr-only">Filter by Status</label>
+            <label for="filter-status" class="sr-only">Filter by Completion Status</label>
             <select id="filter-status" class="select-control">
-              <option value="ALL">Show All Tasks</option>
+              <option value="ALL">All Statuses</option>
               <option value="PENDING">To-Do Only</option>
               <option value="COMPLETED">Completed Only</option>
-              <option value="BOOKMARKED">Starred Favorites</option>
+              <option value="BOOKMARKED">Starred Only</option>
             </select>
           </div>
         </div>
@@ -191,26 +233,25 @@
         <div id="tasks-grid" class="cards-grid" aria-live="polite"></div>
 
         <div id="tasks-empty-state" class="empty-state" hidden>
-          <h3>No matching marketing tasks found</h3>
-          <p>Try clearing your search box or switching the category dropdown back to "All Marketing Areas".</p>
-          <button type="button" id="btn-reset-filters" class="btn btn--primary">Show All Tasks</button>
+          <h3>No tasks match that specific filter combination</h3>
+          <p>Tap the button below to reset all filters and display all 17 Digital Marketing Specialist playbooks immediately.</p>
+          <button type="button" id="btn-reset-filters" class="btn btn--primary">Reset All Filters &amp; Show All Tasks</button>
         </div>
       </section>
 
       <!-- =================================================================
-           TAB 02: WEEKLY CONTENT & CAMPAIGN PLANNER
+           TAB 02: CAMPAIGN PLANNER, UTM BUILDER, BRIEF & REPORT GENERATORS
            ================================================================= -->
       <section id="panel-planner" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-planner" hidden>
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">02. Weekly Content &amp; Campaign Planner</h2>
+            <h2 class="panel-title">02. Campaign Planner &amp; Specialist Workstation Tools</h2>
             <p class="panel-subtitle">
-              A clear Monday-through-Friday routine for running ads, posting videos, sending emails, and reviewing results. You can also save a backup file of your plan or print it as a clean PDF handout.
+              Manage your weekly publishing calendar, build clean <strong>UTM Tracking Links</strong>, generate ready-to-share <strong>Marketing Briefs</strong> and <strong>Monthly Performance Reports</strong>, log <strong>A/B Tests &amp; Competitors</strong>, and copy ready-made <strong>AI Marketing Prompts</strong>.
             </p>
           </div>
           <div class="panel-actions">
-            <button type="button" id="btn-add-itinerary" class="btn btn--primary">+ Add Planner Item</button>
-            <button type="button" id="btn-export-json" class="btn btn--secondary">Download Backup</button>
+            <button type="button" id="btn-export-json" class="btn btn--secondary">Download Backup (.json)</button>
             <label for="input-import-json" class="btn btn--secondary file-label-btn" tabindex="0">
               Restore Backup
               <input type="file" id="input-import-json" accept="application/json,.json" class="sr-only" />
@@ -219,22 +260,165 @@
           </div>
         </div>
 
+        <!-- Workstation Interactive Tool Grid (UTM Builder, Brief Generator, Monthly Report Generator, AI Prompt Assistant) -->
+        <div class="cards-grid" style="margin-bottom: var(--space-6);">
+          <!-- Tool A: UTM Campaign Tracking Link Builder -->
+          <article class="task-card">
+            <div>
+              <span class="badge badge--accent">Tool 1 • UTM Link Builder</span>
+              <h3 class="task-card__title">Campaign UTM Tracking URL Builder</h3>
+              <p class="calc-desc">Create clean, lowercase tracking links so Google Analytics 4 shows exactly which post, email, or ad drove each sale.</p>
+              <div class="form-stack">
+                <label class="form-field">
+                  <span>Website Landing Page URL</span>
+                  <input type="url" id="utm-url" class="input-control" value="https://yourbrand.com/offer" placeholder="https://yourbrand.com/offer" />
+                </label>
+                <div class="form-row">
+                  <label class="form-field">
+                    <span>Source (Where traffic comes from)</span>
+                    <input type="text" id="utm-source" class="input-control" value="instagram" placeholder="google, instagram, newsletter" />
+                  </label>
+                  <label class="form-field">
+                    <span>Medium (Channel type)</span>
+                    <input type="text" id="utm-medium" class="input-control" value="paid_social" placeholder="cpc, email, bio_link, reel" />
+                  </label>
+                </div>
+                <label class="form-field">
+                  <span>Campaign Name (Promo or theme)</span>
+                  <input type="text" id="utm-campaign" class="input-control" value="q4_holiday_launch" placeholder="summer_sale, free_guide" />
+                </label>
+              </div>
+              <div class="glossary-formula" id="utm-output-preview" style="word-break: break-all; margin-top: 12px;">
+                https://yourbrand.com/offer?utm_source=instagram&amp;utm_medium=paid_social&amp;utm_campaign=q4_holiday_launch
+              </div>
+            </div>
+            <div class="task-card__footer">
+              <button type="button" id="btn-copy-utm" class="btn btn--sm btn--primary">Copy UTM Tracking Link</button>
+            </div>
+          </article>
+
+          <!-- Tool B: Marketing Campaign Brief Generator -->
+          <article class="task-card">
+            <div>
+              <span class="badge badge--accent">Tool 2 • Campaign Brief Generator</span>
+              <h3 class="task-card__title">One-Click Marketing Brief Builder</h3>
+              <p class="calc-desc">Prepare clear campaign instructions for yourself, your designer, video editor, or client in seconds.</p>
+              <div class="form-stack">
+                <label class="form-field">
+                  <span>Campaign Name &amp; Offer</span>
+                  <input type="text" id="brief-name" class="input-control" value="New Customer 15% Welcome Bundle" />
+                </label>
+                <label class="form-field">
+                  <span>Target Audience &amp; Core Problem</span>
+                  <input type="text" id="brief-audience" class="input-control" value="Busy professionals looking for a fast, reliable daily solution" />
+                </label>
+                <div class="form-row">
+                  <label class="form-field">
+                    <span>Primary Channels</span>
+                    <input type="text" id="brief-channels" class="input-control" value="Meta Ads, TikTok Reels, Google Search, Email" />
+                  </label>
+                  <label class="form-field">
+                    <span>Budget &amp; Target KPI</span>
+                    <input type="text" id="brief-budget" class="input-control" value="2,500 budget | Target 3.2x ROAS" />
+                  </label>
+                </div>
+              </div>
+              <div class="glossary-example" id="brief-output-preview" style="white-space: pre-line; margin-top: 12px;"></div>
+            </div>
+            <div class="task-card__footer">
+              <button type="button" id="btn-copy-brief" class="btn btn--sm btn--primary">Copy Campaign Brief</button>
+            </div>
+          </article>
+
+          <!-- Tool C: Monthly Performance Report Generator -->
+          <article class="task-card">
+            <div>
+              <span class="badge badge--accent">Tool 3 • Monthly Report Generator</span>
+              <h3 class="task-card__title">Executive Monthly Report Summary</h3>
+              <p class="calc-desc">Turn your monthly numbers into a plain-English summary ready to paste into an email or client presentation.</p>
+              <div class="form-stack">
+                <div class="form-row">
+                  <label class="form-field">
+                    <span>Total Marketing Spend</span>
+                    <input type="number" id="rep-spend" class="input-control" value="4000" min="0" />
+                  </label>
+                  <label class="form-field">
+                    <span>Total Revenue Generated</span>
+                    <input type="number" id="rep-rev" class="input-control" value="16800" min="0" />
+                  </label>
+                </div>
+                <div class="form-row">
+                  <label class="form-field">
+                    <span>Total New Customers / Leads</span>
+                    <input type="number" id="rep-leads" class="input-control" value="120" min="1" />
+                  </label>
+                  <label class="form-field">
+                    <span>Top Winning Channel</span>
+                    <input type="text" id="rep-winner" class="input-control" value="Google High-Intent Search + Retargeting Reels" />
+                  </label>
+                </div>
+              </div>
+              <div class="glossary-example" id="rep-output-preview" style="white-space: pre-line; margin-top: 12px;"></div>
+            </div>
+            <div class="task-card__footer">
+              <button type="button" id="btn-copy-report" class="btn btn--sm btn--primary">Copy Monthly Summary</button>
+            </div>
+          </article>
+
+          <!-- Tool D: AI Marketing Prompt Assistant -->
+          <article class="task-card">
+            <div>
+              <span class="badge badge--accent">Tool 4 • AI Marketing Assistant</span>
+              <h3 class="task-card__title">Ready-to-Copy AI Marketing Prompts</h3>
+              <p class="calc-desc">Select a marketing task, enter your product/service, and copy a structured prompt for ChatGPT, Claude, or Gemini.</p>
+              <div class="form-stack">
+                <label class="form-field">
+                  <span>Choose Marketing Task</span>
+                  <select id="ai-prompt-type" class="select-control">
+                    <option value="hooks">Write 10 Scroll-Stopping TikTok / Reel Video Hooks</option>
+                    <option value="ads">Write 5 Google &amp; Meta Ad Variations (PAS Framework)</option>
+                    <option value="seo">Create an SEO Blog Outline &amp; Keyword Strategy</option>
+                    <option value="email">Write a 3-Part Welcome &amp; Abandoned Cart Email Sequence</option>
+                    <option value="landing">Audit &amp; Rewrite a Landing Page for Higher Conversions</option>
+                  </select>
+                </label>
+                <label class="form-field">
+                  <span>Your Product, Service &amp; Target Customer</span>
+                  <input type="text" id="ai-product-input" class="input-control" value="Organic skincare starter kit for sensitive skin" />
+                </label>
+              </div>
+              <div class="glossary-formula" id="ai-prompt-preview" style="white-space: pre-line; margin-top: 12px;"></div>
+            </div>
+            <div class="task-card__footer">
+              <button type="button" id="btn-copy-ai-prompt" class="btn btn--sm btn--primary">Copy AI Prompt</button>
+            </div>
+          </article>
+        </div>
+
+        <!-- Weekly Content & Campaign Schedule -->
+        <div class="panel-header" style="margin-top: var(--space-4);">
+          <div>
+            <h3 class="panel-title" style="font-size: 1.25rem;">Weekly Content &amp; Campaign Schedule</h3>
+            <p class="panel-subtitle">Your structured Monday-to-Friday execution schedule.</p>
+          </div>
+          <button type="button" id="btn-add-itinerary" class="btn btn--primary btn--sm">+ Add Schedule Item</button>
+        </div>
         <div id="itinerary-list" class="itinerary-timeline" aria-live="polite"></div>
       </section>
 
       <!-- =================================================================
-           TAB 03: PLAIN-ENGLISH MARKETING TERMS & DEFINITIONS (GLOSSARY)
+           TAB 03: GLOBAL MARKETING DICTIONARY & PRIVACY COMPLIANCE
            ================================================================= -->
       <section id="panel-glossary" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-glossary" hidden>
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">03. Easy Digital Marketing Dictionary (No Confusing Jargon)</h2>
+            <h2 class="panel-title">03. Plain-English Marketing Dictionary &amp; Global Privacy Guide</h2>
             <p class="panel-subtitle">
-              Every important digital marketing word explained in plain, everyday English — with simple formulas and real-world examples you can copy or share with clients and teammates.
+              Clear definitions, exact formulas, and honest interpretation notes (including why a 4x ROAS depends on your profit margins, how Apple Mail Privacy affects email open rates, and worldwide GDPR / CCPA / DPA compliance).
             </p>
           </div>
           <div class="panel-actions">
-            <button type="button" id="btn-print-glossary" class="btn btn--secondary">Print Glossary PDF</button>
+            <button type="button" id="btn-print-glossary" class="btn btn--secondary">Print Dictionary PDF</button>
           </div>
         </div>
 
@@ -245,18 +429,18 @@
               type="search"
               id="glossary-search-input"
               class="input-control"
-              placeholder="Search any term (e.g., 'ROAS', 'CPC', 'funnel', 'SEO', 'conversion', 'retargeting')..."
+              placeholder="Search any term (e.g., 'Break-Even ROAS', 'MER', 'GDPR', 'CPC', 'GA4', 'Open Rate')..."
               autocomplete="off"
             />
           </div>
           <div class="filter-selects">
             <label for="filter-glossary-cat" class="sr-only">Filter by Topic</label>
             <select id="filter-glossary-cat" class="select-control">
-              <option value="ALL">All Topics (24 Terms)</option>
-              <option value="Paid Ads & Budget">Paid Ads &amp; Budget</option>
-              <option value="Website & Sales">Website &amp; Sales</option>
-              <option value="Search & Content">Search &amp; Content</option>
-              <option value="Email & Social">Email &amp; Social Media</option>
+              <option value="ALL">All Topics (16 Core Entries)</option>
+              <option value="Paid Ads & Profit">Paid Ads &amp; Profit Margins</option>
+              <option value="Website & SEO">Website, SEO &amp; Conversions</option>
+              <option value="Email, CRM & Privacy">Email, CRM &amp; Global Privacy (GDPR/MPP)</option>
+              <option value="Analytics & Tracking">Analytics, GA4 &amp; A/B Testing</option>
             </select>
           </div>
         </div>
@@ -265,14 +449,14 @@
       </section>
 
       <!-- =================================================================
-           TAB 04: INTERACTIVE MARKETING BUDGET, ROAS & ROI CALCULATORS
+           TAB 04: CUSTOMIZABLE MULTI-CURRENCY MARKETING CALCULATORS
            ================================================================= -->
       <section id="panel-calculators" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-calculators" hidden>
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">04. Instant Digital Marketing Calculators</h2>
+            <h2 class="panel-title">04. Margin-Aware &amp; Customizable Marketing Calculators</h2>
             <p class="panel-subtitle">
-              Type in your numbers below to immediately calculate your Return on Ad Spend (ROAS), Net Profit ROI, Cost Per Click (CPC), Cost Per Customer (CPA), Website Conversion Rate, and Social Engagement Rate.
+              Every business has different profit margins and industry benchmarks. Set your own <strong>Gross Margin %</strong> and <strong>Target Benchmarks</strong> below—all monetary results automatically use your selected currency (<strong id="calc-currency-badge">$ USD</strong>).
             </p>
           </div>
           <div class="panel-actions">
@@ -281,69 +465,89 @@
         </div>
 
         <div class="cards-grid">
-          <!-- Calculator 1: ROAS & Net Profit Calculator -->
+          <!-- Calculator 1: Margin-Aware ROAS, Break-Even ROAS & True Net Profit -->
           <article class="task-card calc-card">
             <div>
-              <span class="badge badge--accent">Calculator 1</span>
-              <h3 class="task-card__title">Ad Spend Return (ROAS) &amp; Profit</h3>
-              <p class="calc-desc">See how much sales revenue you earn back for every $1 or ₱1 spent on ads.</p>
+              <span class="badge badge--accent">Calculator 1 • Profit &amp; Break-Even ROAS</span>
+              <h3 class="task-card__title">ROAS, Break-Even Target &amp; True Net Profit</h3>
+              <p class="calc-desc">Unlike generic calculators that call 4.0x ROAS "good" for everyone, this calculates your exact <strong>Break-Even ROAS</strong> from your product profit margin.</p>
               <div class="form-stack">
-                <label class="form-field">
-                  <span>Total Ad Spend (Cost of Ads)</span>
-                  <input type="number" id="calc-roas-spend" class="input-control" value="5000" min="0" step="100" />
-                </label>
-                <label class="form-field">
-                  <span>Total Sales Revenue from Ads</span>
-                  <input type="number" id="calc-roas-revenue" class="input-control" value="22500" min="0" step="100" />
-                </label>
-                <label class="form-field">
-                  <span>Product / Fulfillment Cost (Optional)</span>
-                  <input type="number" id="calc-roas-cog" class="input-control" value="7500" min="0" step="100" />
-                </label>
+                <div class="form-row">
+                  <label class="form-field">
+                    <span>Ad Spend (<span class="curr-sym">$</span>)</span>
+                    <input type="number" id="calc-roas-spend" class="input-control" value="5000" min="0" step="100" />
+                  </label>
+                  <label class="form-field">
+                    <span>Revenue from Ads (<span class="curr-sym">$</span>)</span>
+                    <input type="number" id="calc-roas-revenue" class="input-control" value="20000" min="0" step="100" />
+                  </label>
+                </div>
+                <div class="form-row">
+                  <label class="form-field">
+                    <span>Your Gross Profit Margin (%)</span>
+                    <input type="number" id="calc-roas-margin" class="input-control" value="50" min="5" max="99" step="1" />
+                  </label>
+                  <label class="form-field">
+                    <span>Your Custom Target ROAS (x)</span>
+                    <input type="number" id="calc-roas-target" class="input-control" value="3.0" min="0.5" step="0.1" />
+                  </label>
+                </div>
               </div>
             </div>
-            <div class="calc-result-box" id="res-roas-box">
+            <div class="calc-result-box">
               <div class="calc-result-row">
-                <span>Return on Ad Spend (ROAS):</span>
-                <strong id="out-roas-mult">4.50x</strong>
+                <span>Actual ROAS:</span>
+                <strong id="out-roas-mult">4.00x</strong>
               </div>
               <div class="calc-result-row">
-                <span>Net Profit After Costs:</span>
-                <strong id="out-roas-profit">+10,000</strong>
+                <span>Your Break-Even ROAS:</span>
+                <strong id="out-roas-breakeven">2.00x (at 50% margin)</strong>
               </div>
               <div class="calc-result-row">
-                <span>Net ROI Percentage:</span>
-                <strong id="out-roas-roi">+80.0%</strong>
+                <span>True Net Profit After Ad + Product Cost:</span>
+                <strong id="out-roas-profit">+$5,000</strong>
               </div>
-              <p class="calc-verdict" id="out-roas-verdict">Healthy Return (4.0x+ is strong for most stores)</p>
+              <div class="calc-result-row">
+                <span>Net Return on Ad Spend (ROI %):</span>
+                <strong id="out-roas-roi">+100.0%</strong>
+              </div>
+              <p class="calc-verdict" id="out-roas-verdict"></p>
             </div>
           </article>
 
-          <!-- Calculator 2: CPC, CTR & CPM Ad Efficiency Calculator -->
+          <!-- Calculator 2: CPC, CTR & CPM with Custom CTR Benchmark -->
           <article class="task-card calc-card">
             <div>
-              <span class="badge badge--accent">Calculator 2</span>
-              <h3 class="task-card__title">Click Cost (CPC) &amp; Click Rate (CTR)</h3>
-              <p class="calc-desc">Check how much each click costs and how many viewers tap your ad.</p>
+              <span class="badge badge--accent">Calculator 2 • Ad Clicks &amp; Reach</span>
+              <h3 class="task-card__title">CPC, CTR &amp; CPM Calculator</h3>
+              <p class="calc-desc">Formula: <code>CPC = Spend ÷ Clicks</code> | <code>CTR = (Clicks ÷ Impressions) × 100</code>. Set your own target CTR benchmark for your channel.</p>
               <div class="form-stack">
-                <label class="form-field">
-                  <span>Amount Spent on Ad</span>
-                  <input type="number" id="calc-cpc-spend" class="input-control" value="2500" min="0" step="50" />
-                </label>
-                <label class="form-field">
-                  <span>Total Ad Views (Impressions)</span>
-                  <input type="number" id="calc-cpc-impressions" class="input-control" value="20000" min="1" step="500" />
-                </label>
-                <label class="form-field">
-                  <span>Total Link Clicks</span>
-                  <input type="number" id="calc-cpc-clicks" class="input-control" value="500" min="1" step="10" />
-                </label>
+                <div class="form-row">
+                  <label class="form-field">
+                    <span>Ad Spend (<span class="curr-sym">$</span>)</span>
+                    <input type="number" id="calc-cpc-spend" class="input-control" value="2500" min="0" step="50" />
+                  </label>
+                  <label class="form-field">
+                    <span>Total Views (Impressions)</span>
+                    <input type="number" id="calc-cpc-impressions" class="input-control" value="20000" min="1" step="500" />
+                  </label>
+                </div>
+                <div class="form-row">
+                  <label class="form-field">
+                    <span>Total Link Clicks</span>
+                    <input type="number" id="calc-cpc-clicks" class="input-control" value="500" min="1" step="10" />
+                  </label>
+                  <label class="form-field">
+                    <span>Your Target CTR Benchmark (%)</span>
+                    <input type="number" id="calc-cpc-target-ctr" class="input-control" value="1.5" min="0.1" step="0.1" />
+                  </label>
+                </div>
               </div>
             </div>
             <div class="calc-result-box">
               <div class="calc-result-row">
                 <span>Cost Per Click (CPC):</span>
-                <strong id="out-cpc-val">5.00 per click</strong>
+                <strong id="out-cpc-val">$5.00 per click</strong>
               </div>
               <div class="calc-result-row">
                 <span>Click-Through Rate (CTR):</span>
@@ -351,31 +555,39 @@
               </div>
               <div class="calc-result-row">
                 <span>Cost Per 1,000 Views (CPM):</span>
-                <strong id="out-cpm-val">125.00</strong>
+                <strong id="out-cpm-val">$125.00</strong>
               </div>
-              <p class="calc-verdict" id="out-ctr-verdict">Strong Click Rate (Above 1.5% average)</p>
+              <p class="calc-verdict" id="out-ctr-verdict"></p>
             </div>
           </article>
 
-          <!-- Calculator 3: Website Conversion Rate & Cost Per Customer (CPA) -->
+          <!-- Calculator 3: Conversion Rate & Max Affordable CPA -->
           <article class="task-card calc-card">
             <div>
-              <span class="badge badge--accent">Calculator 3</span>
-              <h3 class="task-card__title">Conversion Rate &amp; Cost Per Sale</h3>
-              <p class="calc-desc">Find out what % of visitors buy and how much you pay to win 1 customer.</p>
+              <span class="badge badge--accent">Calculator 3 • Conversions &amp; CPA</span>
+              <h3 class="task-card__title">Conversion Rate &amp; Cost Per Customer (CPA)</h3>
+              <p class="calc-desc">Formula: <code>CVR = (Conversions ÷ Visitors) × 100</code> | <code>CPA = Spend ÷ Conversions</code>. Compare against your target CVR.</p>
               <div class="form-stack">
-                <label class="form-field">
-                  <span>Total Website Visitors (Clicks)</span>
-                  <input type="number" id="calc-cvr-visitors" class="input-control" value="800" min="1" step="20" />
-                </label>
-                <label class="form-field">
-                  <span>Total Buyers or Leads (Conversions)</span>
-                  <input type="number" id="calc-cvr-orders" class="input-control" value="32" min="0" step="1" />
-                </label>
-                <label class="form-field">
-                  <span>Total Marketing Spend</span>
-                  <input type="number" id="calc-cvr-spend" class="input-control" value="6400" min="0" step="100" />
-                </label>
+                <div class="form-row">
+                  <label class="form-field">
+                    <span>Website Visitors (Clicks)</span>
+                    <input type="number" id="calc-cvr-visitors" class="input-control" value="800" min="1" step="20" />
+                  </label>
+                  <label class="form-field">
+                    <span>Total Conversions (Orders/Leads)</span>
+                    <input type="number" id="calc-cvr-orders" class="input-control" value="32" min="0" step="1" />
+                  </label>
+                </div>
+                <div class="form-row">
+                  <label class="form-field">
+                    <span>Marketing Spend (<span class="curr-sym">$</span>)</span>
+                    <input type="number" id="calc-cvr-spend" class="input-control" value="6400" min="0" step="100" />
+                  </label>
+                  <label class="form-field">
+                    <span>Your Target CVR Benchmark (%)</span>
+                    <input type="number" id="calc-cvr-target" class="input-control" value="2.5" min="0.1" step="0.1" />
+                  </label>
+                </div>
               </div>
             </div>
             <div class="calc-result-box">
@@ -384,62 +596,80 @@
                 <strong id="out-cvr-rate">4.00%</strong>
               </div>
               <div class="calc-result-row">
-                <span>Cost Per Customer / Lead (CPA):</span>
-                <strong id="out-cpa-cost">200.00 each</strong>
+                <span>Cost Per Acquisition (CPA):</span>
+                <strong id="out-cpa-cost">$200.00 each</strong>
               </div>
-              <p class="calc-verdict" id="out-cvr-verdict">Great Landing Page Conversion (3%+ is solid)</p>
+              <p class="calc-verdict" id="out-cvr-verdict"></p>
             </div>
           </article>
 
-          <!-- Calculator 4: Monthly Sales Goal & Budget Planner -->
+          <!-- Calculator 4: Monthly Revenue & Traffic Reverse Planner -->
           <article class="task-card calc-card">
             <div>
-              <span class="badge badge--accent">Calculator 4</span>
-              <h3 class="task-card__title">Monthly Sales Goal Reverse Planner</h3>
-              <p class="calc-desc">Enter your monthly sales goal to see how many orders and visitors you need.</p>
+              <span class="badge badge--accent">Calculator 4 • Budget &amp; Traffic Planner</span>
+              <h3 class="task-card__title">Monthly Revenue &amp; Ad Budget Planner</h3>
+              <p class="calc-desc">Reverse-engineer how many orders, website visitors, and how much ad budget you need to hit your monthly revenue goal.</p>
               <div class="form-stack">
-                <label class="form-field">
-                  <span>Monthly Revenue Goal</span>
-                  <input type="number" id="calc-goal-rev" class="input-control" value="100000" min="100" step="1000" />
-                </label>
-                <label class="form-field">
-                  <span>Average Order Price (AOV)</span>
-                  <input type="number" id="calc-goal-aov" class="input-control" value="1250" min="1" step="50" />
-                </label>
-                <label class="form-field">
-                  <span>Expected Page Conversion Rate (%)</span>
-                  <input type="number" id="calc-goal-cvr" class="input-control" value="2.5" min="0.1" step="0.1" />
-                </label>
+                <div class="form-row">
+                  <label class="form-field">
+                    <span>Monthly Revenue Goal (<span class="curr-sym">$</span>)</span>
+                    <input type="number" id="calc-goal-rev" class="input-control" value="50000" min="100" step="1000" />
+                  </label>
+                  <label class="form-field">
+                    <span>Average Order Value (<span class="curr-sym">$</span>)</span>
+                    <input type="number" id="calc-goal-aov" class="input-control" value="100" min="1" step="10" />
+                  </label>
+                </div>
+                <div class="form-row">
+                  <label class="form-field">
+                    <span>Page Conversion Rate (%)</span>
+                    <input type="number" id="calc-goal-cvr" class="input-control" value="2.5" min="0.1" step="0.1" />
+                  </label>
+                  <label class="form-field">
+                    <span>Expected Cost Per Click (<span class="curr-sym">$</span>)</span>
+                    <input type="number" id="calc-goal-cpc" class="input-control" value="0.80" min="0.01" step="0.05" />
+                  </label>
+                </div>
               </div>
             </div>
             <div class="calc-result-box">
               <div class="calc-result-row">
-                <span>Orders Needed This Month:</span>
-                <strong id="out-goal-orders">80 orders (2.7 / day)</strong>
+                <span>Orders Needed:</span>
+                <strong id="out-goal-orders">500 orders (16.7 / day)</strong>
               </div>
               <div class="calc-result-row">
-                <span>Website Visitors Needed:</span>
-                <strong id="out-goal-visitors">3,200 visitors</strong>
+                <span>Visitors Needed:</span>
+                <strong id="out-goal-visitors">20,000 visitors</strong>
               </div>
-              <p class="calc-verdict">Tip: Raise your Average Order Price with bundles to hit your goal with fewer orders.</p>
+              <div class="calc-result-row">
+                <span>Estimated Traffic Budget:</span>
+                <strong id="out-goal-budget">$16,000 (3.13x ROAS)</strong>
+              </div>
+              <p class="calc-verdict">Formula: Visitors = Orders ÷ CVR | Budget = Visitors × CPC</p>
             </div>
           </article>
 
-          <!-- Calculator 5: Social Media Engagement Rate Calculator -->
+          <!-- Calculator 5: Social Media Engagement Rate -->
           <article class="task-card calc-card">
             <div>
-              <span class="badge badge--accent">Calculator 5</span>
+              <span class="badge badge--accent">Calculator 5 • Social Engagement</span>
               <h3 class="task-card__title">Social Post Engagement Rate</h3>
-              <p class="calc-desc">Measure how well your Instagram, TikTok, or LinkedIn audience interacts with a post.</p>
+              <p class="calc-desc">Formula: <code>((Likes + Comments + Shares + Saves) ÷ Reach) × 100</code>. Set your target benchmark below.</p>
               <div class="form-stack">
                 <label class="form-field">
                   <span>Total Post Views / Reach</span>
                   <input type="number" id="calc-eng-reach" class="input-control" value="4500" min="1" step="100" />
                 </label>
-                <label class="form-field">
-                  <span>Likes + Comments + Shares + Saves</span>
-                  <input type="number" id="calc-eng-interactions" class="input-control" value="270" min="0" step="10" />
-                </label>
+                <div class="form-row">
+                  <label class="form-field">
+                    <span>Total Interactions (Likes+Comments+Saves)</span>
+                    <input type="number" id="calc-eng-interactions" class="input-control" value="270" min="0" step="10" />
+                  </label>
+                  <label class="form-field">
+                    <span>Your Target Benchmark (%)</span>
+                    <input type="number" id="calc-eng-target" class="input-control" value="3.5" min="0.1" step="0.1" />
+                  </label>
+                </div>
               </div>
             </div>
             <div class="calc-result-box">
@@ -447,45 +677,47 @@
                 <span>Engagement Rate:</span>
                 <strong id="out-eng-rate">6.00%</strong>
               </div>
-              <p class="calc-verdict" id="out-eng-verdict">High Engagement (Over 3.5% beats average benchmarks)</p>
+              <p class="calc-verdict" id="out-eng-verdict"></p>
             </div>
           </article>
 
-          <!-- Calculator 6: Email Campaign Open & Click Calculator -->
+          <!-- Calculator 6: Email Open Rate, CTR & Apple MPP Privacy Guidance -->
           <article class="task-card calc-card">
             <div>
-              <span class="badge badge--accent">Calculator 6</span>
-              <h3 class="task-card__title">Email Newsletter Open &amp; Click Rate</h3>
-              <p class="calc-desc">Check the health of your email subject lines and call-to-action buttons.</p>
+              <span class="badge badge--accent">Calculator 6 • Email &amp; CRM</span>
+              <h3 class="task-card__title">Email CTR, Open Rate &amp; Privacy Note</h3>
+              <p class="calc-desc">Note: Apple Mail Privacy Protection (MPP) pre-loads email pixels and inflates Open Rates. Prioritize <strong>Click-Through Rate (CTR)</strong> and conversions.</p>
               <div class="form-stack">
                 <label class="form-field">
-                  <span>Total Emails Delivered</span>
+                  <span>Total Delivered Emails</span>
                   <input type="number" id="calc-email-sent" class="input-control" value="2000" min="1" step="100" />
                 </label>
-                <label class="form-field">
-                  <span>Unique Email Opens</span>
-                  <input type="number" id="calc-email-opens" class="input-control" value="680" min="0" step="10" />
-                </label>
-                <label class="form-field">
-                  <span>Unique Link Clicks</span>
-                  <input type="number" id="calc-email-clicks" class="input-control" value="84" min="0" step="5" />
-                </label>
+                <div class="form-row">
+                  <label class="form-field">
+                    <span>Unique Opens (MPP Inflated)</span>
+                    <input type="number" id="calc-email-opens" class="input-control" value="680" min="0" step="10" />
+                  </label>
+                  <label class="form-field">
+                    <span>Unique Link Clicks (Reliable)</span>
+                    <input type="number" id="calc-email-clicks" class="input-control" value="84" min="0" step="5" />
+                  </label>
+                </div>
               </div>
             </div>
             <div class="calc-result-box">
               <div class="calc-result-row">
-                <span>Email Open Rate:</span>
-                <strong id="out-email-open">34.0%</strong>
+                <span>Primary Metric — Click Rate (CTR):</span>
+                <strong id="out-email-ctr">4.20%</strong>
               </div>
               <div class="calc-result-row">
-                <span>Email Click Rate (CTR):</span>
-                <strong id="out-email-ctr">4.20%</strong>
+                <span>Reported Open Rate:</span>
+                <strong id="out-email-open">34.0% (includes Apple MPP)</strong>
               </div>
               <div class="calc-result-row">
                 <span>Click-to-Open Rate (CTOR):</span>
                 <strong id="out-email-ctor">12.4%</strong>
               </div>
-              <p class="calc-verdict" id="out-email-verdict">Great Email Performance (30%+ Open Rate is strong)</p>
+              <p class="calc-verdict" id="out-email-verdict">2.5%+ Click Rate (CTR) indicates strong subscriber engagement.</p>
             </div>
           </article>
         </div>
@@ -493,80 +725,93 @@
     </main>
   </div>
 
-  <!-- Quick Start Guide Modal (Pure Marketing Guide) -->
+  <!-- How to Use Modal -->
   <div id="onboarding-overlay" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="onboarding-title" hidden>
     <div class="modal-card">
       <div class="modal-card__header">
-        <span class="badge badge--accent" id="onboarding-step-indicator">Quick Guide</span>
+        <span class="badge badge--accent">Worldwide Specialist Workstation</span>
         <button type="button" id="btn-close-onboarding" class="btn btn--icon" aria-label="Close guide">✕</button>
       </div>
-      <h2 id="onboarding-title" class="modal-card__title">Welcome to Your Digital Marketing Specialist Guide</h2>
-      <p id="onboarding-body" class="modal-card__body">
-        Everything in this guide is built for practical everyday marketing — written in plain, easy-to-understand English with zero confusing jargon:
+      <h2 id="onboarding-title" class="modal-card__title">How to Use Your Digital Marketing Workstation</h2>
+      <p class="modal-card__body">
+        Built for digital marketing specialists worldwide (US, Philippines, UK/EU, Australia &amp; global remote teams):
       </p>
       <ul class="onboarding-highlights">
-        <li><strong>01. Daily Tasks:</strong> Step-by-step checklists for SEO, Paid Ads, Social Media Videos, Email Marketing, and Sales Pages.</li>
-        <li><strong>02. Content Planner:</strong> A Monday-to-Friday campaign schedule you can customize, print as a PDF, or back up anytime.</li>
-        <li><strong>03. Marketing Terms:</strong> 24 essential digital marketing words explained simply with real-world examples and formulas.</li>
-        <li><strong>04. Calculators:</strong> Instant calculators for Return on Ad Spend (ROAS), Cost Per Click (CPC), Conversion Rate, and Monthly Sales Goals.</li>
+        <li><strong>Top Bar (Currency, Region &amp; Business Focus):</strong> Switch between <code>$ USD</code>, <code>₱ PHP</code>, <code>£ GBP</code>, <code>€ EUR</code>, <code>A$ AUD</code>, and filter guidance for E-Commerce, B2B, SaaS, or Local Services.</li>
+        <li><strong>01. Tasks &amp; Playbooks:</strong> 6 core pillars with Beginner, Intermediate, and Advanced tags. Every task includes a <strong>9-Point Workstation Guide</strong> (What, Why, When, Tools, Steps, Expected Result, Measurement, Common Mistakes, and Real Example).</li>
+        <li><strong>02. Planner &amp; Tools:</strong> Includes a UTM Link Builder, Campaign Brief Generator, Monthly Report Generator, AI Prompt Assistant, and Weekly Content Calendar.</li>
+        <li><strong>03. Terms &amp; Privacy + 04. Calculators:</strong> Plain-English formulas, GDPR/CCPA/DPA privacy rules, and margin-aware Break-Even ROAS calculators.</li>
       </ul>
       <div class="modal-card__footer">
-        <button type="button" id="btn-onboarding-next" class="btn btn--primary" style="width:100%;">Start Using the Guide</button>
+        <button type="button" id="btn-onboarding-next" class="btn btn--primary" style="width:100%;">Start Working</button>
       </div>
     </div>
   </div>
 
-  <!-- Add New Marketing Task Modal -->
+  <!-- Add Custom Task Modal -->
   <div id="custom-item-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="custom-modal-title" hidden>
     <div class="modal-card">
       <div class="modal-card__header">
-        <h2 id="custom-modal-title" class="modal-card__title">Add Custom Marketing Task</h2>
+        <h2 id="custom-modal-title" class="modal-card__title">Add Custom Workstation Task</h2>
         <button type="button" id="btn-close-custom-modal" class="btn btn--icon" aria-label="Close modal">✕</button>
       </div>
       <form id="custom-item-form" class="form-stack">
         <label class="form-field">
-          <span>Task Name *</span>
-          <input type="text" id="custom-title" class="input-control" required placeholder="e.g., Film 3 TikTok product demo videos for weekend promo" />
+          <span>Task Title *</span>
+          <input type="text" id="custom-title" class="input-control" required placeholder="e.g., Launch TikTok Shop & Reels Retargeting Campaign" />
         </label>
         <div class="form-row">
           <label class="form-field">
-            <span>Marketing Area</span>
+            <span>Marketing Pillar</span>
             <select id="custom-pillar" class="select-control">
-              <option value="Website & SEO">Website &amp; SEO</option>
-              <option value="Paid Ads">Paid Ads</option>
-              <option value="Social Media & Content">Social Media &amp; Content</option>
-              <option value="Email & Customer Follow-Up">Email &amp; Customer Follow-Up</option>
-              <option value="Sales Page & Conversion">Sales Page &amp; Conversion</option>
-              <option value="Tracking & Results">Tracking &amp; Results</option>
+              <option value="Marketing Strategy & Research">01. Marketing Strategy &amp; Research</option>
+              <option value="Advertising & Campaign Management">02. Advertising &amp; Campaign Management</option>
+              <option value="SEO & Website Optimization">03. SEO &amp; Website Optimization</option>
+              <option value="Analytics & Reporting">04. Analytics &amp; Reporting</option>
+              <option value="CRM & Marketing Automation">05. CRM &amp; Marketing Automation</option>
+              <option value="Content Production">06. Content Production</option>
             </select>
           </label>
+          <label class="form-field">
+            <span>Skill Level</span>
+            <select id="custom-difficulty" class="select-control">
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+          </label>
+        </div>
+        <div class="form-row">
           <label class="form-field">
             <span>Schedule</span>
             <select id="custom-cadence" class="select-control">
               <option value="Daily">Daily</option>
               <option value="Weekly">Weekly</option>
               <option value="Monthly">Monthly</option>
-              <option value="Campaign Launch">Campaign Launch</option>
+              <option value="Quarterly">Quarterly</option>
             </select>
+          </label>
+          <label class="form-field">
+            <span>Required Tools</span>
+            <input type="text" id="custom-tools" class="input-control" placeholder="e.g., Meta Ads Manager, GA4, Canva" />
           </label>
         </div>
         <label class="form-field">
-          <span>Target Goal / Result</span>
-          <input type="text" id="custom-kpi" class="input-control" placeholder="e.g., Get 50+ clicks to the promo page" />
+          <span>Expected Result &amp; How to Measure Success</span>
+          <input type="text" id="custom-kpi" class="input-control" placeholder="e.g., 2.5%+ CTR and CPA below target margin" />
         </label>
         <label class="form-field">
-          <span>Action Steps (separate steps with commas)</span>
-          <textarea id="custom-steps" class="input-control" rows="3" placeholder="Write script hook, Record 30-second video, Add captions and link in bio"></textarea>
+          <span>Step-by-Step Instructions (separate steps with commas)</span>
+          <textarea id="custom-steps" class="input-control" rows="3" placeholder="Step 1: Research audience, Step 2: Build creative hooks, Step 3: Verify UTM tracking"></textarea>
         </label>
         <div class="modal-card__footer">
           <button type="button" id="btn-cancel-custom" class="btn btn--secondary">Cancel</button>
-          <button type="submit" class="btn btn--primary">Save Marketing Task</button>
+          <button type="submit" class="btn btn--primary">Save Workstation Task</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Toast Notification -->
   <div id="toast-container" class="toast-container" role="status" aria-live="polite"></div>
 
   <script src="./script.js" defer></script>
