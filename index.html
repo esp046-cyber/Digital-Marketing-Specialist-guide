@@ -449,279 +449,577 @@
       </section>
 
       <!-- =================================================================
-           TAB 04: CUSTOMIZABLE MULTI-CURRENCY MARKETING CALCULATORS
+           TAB 04: BEGINNER-FRIENDLY WORLDWIDE MARKETING CALCULATORS (v5.0)
            ================================================================= -->
       <section id="panel-calculators" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-calculators" hidden>
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">04. Margin-Aware &amp; Customizable Marketing Calculators</h2>
+            <h2 class="panel-title">04. Instant Digital Marketing Calculators</h2>
             <p class="panel-subtitle">
-              Every business has different profit margins and industry benchmarks. Set your own <strong>Gross Margin %</strong> and <strong>Target Benchmarks</strong> below—all monetary results automatically use your selected currency (<strong id="calc-currency-badge">$ USD</strong>).
+              Designed so anyone—from a complete beginner to a senior marketing specialist—can enter numbers effortlessly, see a plain-English explanation of every result, and save or export reports.
             </p>
           </div>
+
+          <!-- Top Action Toolbar: Beginner Mode, Load Example, Clear All, Export CSV, Print/PDF -->
           <div class="panel-actions">
-            <button type="button" id="btn-reset-calculators" class="btn btn--secondary">Reset Sample Numbers</button>
+            <button type="button" id="btn-toggle-beginner" class="btn btn--primary btn--sm" aria-pressed="true">
+              ✓ Beginner Mode: ON
+            </button>
+            <button type="button" id="btn-calc-load-example" class="btn btn--secondary btn--sm">
+              Load Example Numbers
+            </button>
+            <button type="button" id="btn-calc-clear-all" class="btn btn--ghost btn--sm">
+              Clear All Inputs
+            </button>
+            <button type="button" id="btn-calc-export-csv" class="btn btn--secondary btn--sm">
+              Export CSV Report
+            </button>
+            <button type="button" id="btn-calc-print-pdf" class="btn btn--secondary btn--sm">
+              Print / Save PDF
+            </button>
           </div>
         </div>
 
-        <div class="cards-grid">
-          <!-- Calculator 1: Margin-Aware ROAS, Break-Even ROAS & True Net Profit -->
-          <article class="task-card calc-card">
+        <!-- Dedicated Calculator Currency Bar & Quick-Jump Navigation Buttons -->
+        <div class="calc-nav-toolbar" role="region" aria-label="Calculator Currency and Quick Navigation">
+          <div class="calc-currency-row">
+            <label for="section-calc-currency" class="calc-currency-label">
+              <strong>Select Display Currency (Symbol Only — No Exchange Conversion):</strong>
+            </label>
+            <select id="section-calc-currency" class="select-control calc-currency-select" aria-label="Choose calculator currency symbol">
+              <option value="$|USD">USD ($) — US Dollar</option>
+              <option value="₱|PHP">PHP (₱) — Philippine Peso</option>
+              <option value="€|EUR">EUR (€) — Euro</option>
+              <option value="£|GBP">GBP (£) — British Pound</option>
+              <option value="A$|AUD">AUD (A$) — Australian Dollar</option>
+              <option value="C$|CAD">CAD (C$) — Canadian Dollar</option>
+              <option value="S$|SGD">SGD (S$) — Singapore Dollar</option>
+              <option value="¥|JPY">JPY (¥) — Japanese Yen</option>
+              <option value="₹|INR">INR (₹) — Indian Rupee</option>
+            </select>
+          </div>
+
+          <div class="calc-jump-pills" role="navigation" aria-label="Jump to Specific Calculator">
+            <span class="calc-jump-title">Jump to Calculator:</span>
+            <a href="#calc-card-1" class="btn btn--sm btn--secondary">1. ROAS &amp; Profit</a>
+            <a href="#calc-card-2" class="btn btn--sm btn--secondary">2. CPC, CTR &amp; CPM</a>
+            <a href="#calc-card-3" class="btn btn--sm btn--secondary">3. Conversion &amp; CPA</a>
+            <a href="#calc-card-4" class="btn btn--sm btn--secondary">4. Sales Goal Planner</a>
+            <a href="#calc-card-5" class="btn btn--sm btn--secondary">5. Social Engagement</a>
+            <a href="#calc-card-6" class="btn btn--sm btn--secondary">6. Email Performance</a>
+            <a href="#calc-history-section" class="btn btn--sm btn--ghost">Saved History (<span id="calc-history-count">0</span>)</a>
+          </div>
+        </div>
+
+        <div class="cards-grid calc-cards-grid">
+          <!-- ===============================================================
+               CALCULATOR 1: ROAS & PROFIT CALCULATOR
+               =============================================================== -->
+          <article id="calc-card-1" class="task-card calc-card">
             <div>
-              <span class="badge badge--accent">Calculator 1 • Profit &amp; Break-Even ROAS</span>
-              <h3 class="task-card__title">ROAS, Break-Even Target &amp; True Net Profit</h3>
-              <p class="calc-desc">Unlike generic calculators that call 4.0x ROAS "good" for everyone, this calculates your exact <strong>Break-Even ROAS</strong> from your product profit margin.</p>
+              <div class="task-card__top">
+                <span class="badge badge--accent">Calculator 1 • Advertising Profit</span>
+                <select id="calc-roas-scenario" class="select-control calc-mini-select" aria-label="Load Sample ROAS Scenario">
+                  <option value="custom">Scenario: Custom Numbers</option>
+                  <option value="ecom">Scenario: Online Store (1,000 Spend -> 4,500 Sales)</option>
+                  <option value="local">Scenario: Local Clinic / Service (500 Spend -> 2,500 Sales)</option>
+                  <option value="lowmargin">Scenario: Low-Margin Retail (2,000 Spend -> 5,000 Sales)</option>
+                </select>
+              </div>
+              <h3 class="task-card__title">1. ROAS (Return on Ad Spend) &amp; Net Profit Calculator</h3>
+              <p class="calc-desc">
+                Calculate how much sales revenue you generate for every <strong class="curr-sym">$</strong><strong>1</strong> spent on ads—and see the exact difference between <strong>Sales Revenue</strong> (money coming in) and <strong>Net Profit</strong> (what you keep after ad + product costs).
+              </p>
+
               <div class="form-stack">
-                <div class="form-row">
-                  <label class="form-field">
-                    <span>Ad Spend (<span class="curr-sym">$</span>)</span>
-                    <input type="number" id="calc-roas-spend" class="input-control" value="5000" min="0" step="100" />
-                  </label>
-                  <label class="form-field">
-                    <span>Revenue from Ads (<span class="curr-sym">$</span>)</span>
-                    <input type="number" id="calc-roas-revenue" class="input-control" value="20000" min="0" step="100" />
-                  </label>
-                </div>
-                <div class="form-row">
-                  <label class="form-field">
-                    <span>Your Gross Profit Margin (%)</span>
-                    <input type="number" id="calc-roas-margin" class="input-control" value="50" min="5" max="99" step="1" />
-                  </label>
-                  <label class="form-field">
-                    <span>Your Custom Target ROAS (x)</span>
-                    <input type="number" id="calc-roas-target" class="input-control" value="3.0" min="0.5" step="0.1" />
-                  </label>
-                </div>
+                <label class="form-field">
+                  <span>Advertising Spend (<span class="curr-sym">$</span>)</span>
+                  <input type="number" id="calc-roas-spend" class="input-control" value="1000" min="0" step="50" />
+                  <small class="field-helper">Example: <code>1,000</code> — Total money spent on Facebook, Google, or TikTok ads.</small>
+                </label>
+
+                <label class="form-field">
+                  <span>Sales Revenue from Ads (<span class="curr-sym">$</span>)</span>
+                  <input type="number" id="calc-roas-revenue" class="input-control" value="4500" min="0" step="100" />
+                  <small class="field-helper">Example: <code>4,500</code> — Total sales revenue directly generated by those ads.</small>
+                </label>
+
+                <label class="form-field">
+                  <span>Product &amp; Fulfillment Costs (<span class="curr-sym">$</span>)</span>
+                  <input type="number" id="calc-roas-cog" class="input-control" value="1000" min="0" step="50" />
+                  <small class="field-helper">Example: <code>1,000</code> — Cost to manufacture, source, package, and ship the sold items.</small>
+                </label>
+
+                <label class="form-field">
+                  <span>Your Target ROAS Goal (Optional Benchmark)</span>
+                  <input type="number" id="calc-roas-target" class="input-control" value="3.0" min="0.5" step="0.1" />
+                  <small class="field-helper">Example: <code>3.0</code> means you aim to earn <span class="curr-sym">$</span>3.00 in sales for every <span class="curr-sym">$</span>1.00 in ad spend.</small>
+                </label>
               </div>
+
+              <div id="warn-roas" class="calc-warning-box" hidden></div>
             </div>
+
+            <!-- Structured Results Breakdown -->
             <div class="calc-result-box">
+              <div class="calc-result-header">Your Results</div>
               <div class="calc-result-row">
-                <span>Actual ROAS:</span>
-                <strong id="out-roas-mult">4.00x</strong>
+                <span>Return on Ad Spend (ROAS):</span>
+                <strong id="out-roas-mult">4.50x</strong>
               </div>
               <div class="calc-result-row">
-                <span>Your Break-Even ROAS:</span>
-                <strong id="out-roas-breakeven">2.00x (at 50% margin)</strong>
+                <span>Gross Sales Revenue:</span>
+                <strong id="out-roas-rev-line">$4,500.00</strong>
               </div>
               <div class="calc-result-row">
-                <span>True Net Profit After Ad + Product Cost:</span>
-                <strong id="out-roas-profit">+$5,000</strong>
+                <span>Less Advertising Cost:</span>
+                <strong id="out-roas-adcost-line">−$1,000.00</strong>
               </div>
               <div class="calc-result-row">
-                <span>Net Return on Ad Spend (ROI %):</span>
-                <strong id="out-roas-roi">+100.0%</strong>
+                <span>Less Product &amp; Fulfillment Cost:</span>
+                <strong id="out-roas-cog-line">−$1,000.00</strong>
+              </div>
+              <div class="calc-result-row calc-result-row--highlight">
+                <span>Remaining Net Profit (Before Taxes/Overhead):</span>
+                <strong id="out-roas-profit">+$2,500.00</strong>
+              </div>
+              <div class="calc-result-row">
+                <span>Break-Even ROAS Needed to Not Lose Money:</span>
+                <strong id="out-roas-breakeven">1.29x</strong>
+              </div>
+
+              <!-- AI-Style Plain-English Explanation -->
+              <div class="ai-explanation-box">
+                <strong>What does this mean?</strong>
+                <p id="explain-roas-text"></p>
               </div>
               <p class="calc-verdict" id="out-roas-verdict"></p>
+
+              <div class="calc-card-actions">
+                <button type="button" class="btn btn--sm btn--primary" data-save-calc="1. ROAS & Profit">Save to History</button>
+                <button type="button" class="btn btn--sm btn--secondary" data-clear-calc="roas">Clear</button>
+                <button type="button" class="btn btn--sm btn--ghost" data-copy-calc="roas">Copy Report</button>
+              </div>
             </div>
           </article>
 
-          <!-- Calculator 2: CPC, CTR & CPM with Custom CTR Benchmark -->
-          <article class="task-card calc-card">
+          <!-- ===============================================================
+               CALCULATOR 2: CPC, CTR & CPM CALCULATOR
+               =============================================================== -->
+          <article id="calc-card-2" class="task-card calc-card">
             <div>
-              <span class="badge badge--accent">Calculator 2 • Ad Clicks &amp; Reach</span>
-              <h3 class="task-card__title">CPC, CTR &amp; CPM Calculator</h3>
-              <p class="calc-desc">Formula: <code>CPC = Spend ÷ Clicks</code> | <code>CTR = (Clicks ÷ Impressions) × 100</code>. Set your own target CTR benchmark for your channel.</p>
+              <span class="badge badge--accent">Calculator 2 • Ad Clicks &amp; Cost</span>
+              <h3 class="task-card__title">2. CPC (Cost Per Click), CTR &amp; CPM Calculator</h3>
+              <p class="calc-desc">
+                <strong>Impressions</strong> = how many times your ad was shown on screen. <strong>Clicks</strong> = how many times people tapped your ad. <strong>CPM</strong> = the price to show your ad 1,000 times.
+              </p>
+
               <div class="form-stack">
+                <label class="form-field">
+                  <span>Total Amount Spent on Ad (<span class="curr-sym">$</span>)</span>
+                  <input type="number" id="calc-cpc-spend" class="input-control" value="500" min="0" step="25" />
+                  <small class="field-helper">Example: <code>500</code> — Total budget spent on this campaign.</small>
+                </label>
+
+                <label class="form-field">
+                  <span>Total Ad Views / Impressions</span>
+                  <input type="number" id="calc-cpc-impressions" class="input-control" value="25000" min="1" step="500" />
+                  <small class="field-helper">Example: <code>25,000</code> — Total times your ad appeared on screens.</small>
+                </label>
+
+                <label class="form-field">
+                  <span>Total Link Clicks</span>
+                  <input type="number" id="calc-cpc-clicks" class="input-control" value="500" min="1" step="10" />
+                  <small class="field-helper">Example: <code>500</code> — Number of times people clicked through to your page.</small>
+                </label>
+
                 <div class="form-row">
                   <label class="form-field">
-                    <span>Ad Spend (<span class="curr-sym">$</span>)</span>
-                    <input type="number" id="calc-cpc-spend" class="input-control" value="2500" min="0" step="50" />
+                    <span>Your Target Max CPC (<span class="curr-sym">$</span>)</span>
+                    <input type="number" id="calc-cpc-target-max" class="input-control" value="1.50" min="0.05" step="0.10" />
+                    <small class="field-helper">Benchmark max cost per click.</small>
                   </label>
                   <label class="form-field">
-                    <span>Total Views (Impressions)</span>
-                    <input type="number" id="calc-cpc-impressions" class="input-control" value="20000" min="1" step="500" />
-                  </label>
-                </div>
-                <div class="form-row">
-                  <label class="form-field">
-                    <span>Total Link Clicks</span>
-                    <input type="number" id="calc-cpc-clicks" class="input-control" value="500" min="1" step="10" />
-                  </label>
-                  <label class="form-field">
-                    <span>Your Target CTR Benchmark (%)</span>
+                    <span>Your Target Min CTR (%)</span>
                     <input type="number" id="calc-cpc-target-ctr" class="input-control" value="1.5" min="0.1" step="0.1" />
+                    <small class="field-helper">Benchmark % of viewers who click.</small>
                   </label>
                 </div>
               </div>
+
+              <div id="warn-cpc" class="calc-warning-box" hidden></div>
             </div>
+
             <div class="calc-result-box">
+              <div class="calc-result-header">Your Results</div>
               <div class="calc-result-row">
                 <span>Cost Per Click (CPC):</span>
-                <strong id="out-cpc-val">$5.00 per click</strong>
+                <strong id="out-cpc-val">$1.00 per click</strong>
               </div>
               <div class="calc-result-row">
                 <span>Click-Through Rate (CTR):</span>
-                <strong id="out-ctr-val">2.50%</strong>
+                <strong id="out-ctr-val">2.00%</strong>
               </div>
               <div class="calc-result-row">
                 <span>Cost Per 1,000 Views (CPM):</span>
-                <strong id="out-cpm-val">$125.00</strong>
+                <strong id="out-cpm-val">$20.00 per 1,000 views</strong>
+              </div>
+
+              <div class="ai-explanation-box">
+                <strong>What does this mean?</strong>
+                <p id="explain-cpc-text"></p>
               </div>
               <p class="calc-verdict" id="out-ctr-verdict"></p>
+
+              <div class="calc-card-actions">
+                <button type="button" class="btn btn--sm btn--primary" data-save-calc="2. CPC, CTR & CPM">Save to History</button>
+                <button type="button" class="btn btn--sm btn--secondary" data-clear-calc="cpc">Clear</button>
+                <button type="button" class="btn btn--sm btn--ghost" data-copy-calc="cpc">Copy Report</button>
+              </div>
             </div>
           </article>
 
-          <!-- Calculator 3: Conversion Rate & Max Affordable CPA -->
-          <article class="task-card calc-card">
+          <!-- ===============================================================
+               CALCULATOR 3: CONVERSION RATE, COST PER LEAD & COST PER SALE
+               =============================================================== -->
+          <article id="calc-card-3" class="task-card calc-card">
             <div>
-              <span class="badge badge--accent">Calculator 3 • Conversions &amp; CPA</span>
-              <h3 class="task-card__title">Conversion Rate &amp; Cost Per Customer (CPA)</h3>
-              <p class="calc-desc">Formula: <code>CVR = (Conversions ÷ Visitors) × 100</code> | <code>CPA = Spend ÷ Conversions</code>. Compare against your target CVR.</p>
+              <div class="task-card__top">
+                <span class="badge badge--accent">Calculator 3 • Leads vs. Sales</span>
+                <select id="calc-cvr-mode" class="select-control calc-mini-select" aria-label="Choose Conversion Type">
+                  <option value="sales">Goal: Direct Online Sales (Orders)</option>
+                  <option value="leads">Goal: Leads (Inquiries -> Sales)</option>
+                </select>
+              </div>
+              <h3 class="task-card__title">3. Conversion Rate, Cost Per Lead (CPL) &amp; Cost Per Sale (CPA)</h3>
+              <p class="calc-desc">
+                A <strong>conversion</strong> is when a visitor completes your goal—either buying a product (Direct Sale) or submitting their contact info (Lead). Switch the selector above between <strong>Sales</strong> and <strong>Leads</strong>.
+              </p>
+
               <div class="form-stack">
+                <label class="form-field">
+                  <span>Total Website Visitors (Clicks)</span>
+                  <input type="number" id="calc-cvr-visitors" class="input-control" value="1000" min="1" step="50" />
+                  <small class="field-helper">Example: <code>1,000</code> people visited your landing page.</small>
+                </label>
+
+                <label class="form-field">
+                  <span id="lbl-cvr-conversions">Total Conversions (Orders or Leads)</span>
+                  <input type="number" id="calc-cvr-orders" class="input-control" value="30" min="0" step="1" />
+                  <small class="field-helper">Example: <code>30</code> people bought your product or filled out your inquiry form.</small>
+                </label>
+
+                <label class="form-field">
+                  <span>Total Marketing Spend (<span class="curr-sym">$</span>)</span>
+                  <input type="number" id="calc-cvr-spend" class="input-control" value="600" min="0" step="50" />
+                  <small class="field-helper">Example: <code>600</code> spent to bring those visitors to your page.</small>
+                </label>
+
                 <div class="form-row">
                   <label class="form-field">
-                    <span>Website Visitors (Clicks)</span>
-                    <input type="number" id="calc-cvr-visitors" class="input-control" value="800" min="1" step="20" />
+                    <span>Lead-to-Sale Close Rate (%)</span>
+                    <input type="number" id="calc-cvr-closerate" class="input-control" value="25" min="1" max="100" step="5" />
+                    <small class="field-helper">If tracking Leads: % of leads who become paying customers (100% for direct orders).</small>
                   </label>
                   <label class="form-field">
-                    <span>Total Conversions (Orders/Leads)</span>
-                    <input type="number" id="calc-cvr-orders" class="input-control" value="32" min="0" step="1" />
-                  </label>
-                </div>
-                <div class="form-row">
-                  <label class="form-field">
-                    <span>Marketing Spend (<span class="curr-sym">$</span>)</span>
-                    <input type="number" id="calc-cvr-spend" class="input-control" value="6400" min="0" step="100" />
-                  </label>
-                  <label class="form-field">
-                    <span>Your Target CVR Benchmark (%)</span>
+                    <span>Target Conversion Rate (%)</span>
                     <input type="number" id="calc-cvr-target" class="input-control" value="2.5" min="0.1" step="0.1" />
+                    <small class="field-helper">Your goal conversion benchmark.</small>
                   </label>
                 </div>
               </div>
+
+              <div id="warn-cvr" class="calc-warning-box" hidden></div>
             </div>
+
             <div class="calc-result-box">
+              <div class="calc-result-header">Your Results</div>
               <div class="calc-result-row">
-                <span>Conversion Rate (CVR):</span>
-                <strong id="out-cvr-rate">4.00%</strong>
+                <span>Page Conversion Rate (CVR):</span>
+                <strong id="out-cvr-rate">3.00%</strong>
               </div>
               <div class="calc-result-row">
-                <span>Cost Per Acquisition (CPA):</span>
-                <strong id="out-cpa-cost">$200.00 each</strong>
+                <span>Cost Per Lead / Conversion (CPL):</span>
+                <strong id="out-cpl-cost">$20.00 per conversion</strong>
+              </div>
+              <div class="calc-result-row calc-result-row--highlight">
+                <span>Estimated Cost Per Final Sale (CPA):</span>
+                <strong id="out-cpa-cost">$20.00 per sale</strong>
+              </div>
+
+              <div class="ai-explanation-box">
+                <strong>What does this mean?</strong>
+                <p id="explain-cvr-text"></p>
               </div>
               <p class="calc-verdict" id="out-cvr-verdict"></p>
+
+              <div class="calc-card-actions">
+                <button type="button" class="btn btn--sm btn--primary" data-save-calc="3. Conversion & CPA">Save to History</button>
+                <button type="button" class="btn btn--sm btn--secondary" data-clear-calc="cvr">Clear</button>
+                <button type="button" class="btn btn--sm btn--ghost" data-copy-calc="cvr">Copy Report</button>
+              </div>
             </div>
           </article>
 
-          <!-- Calculator 4: Monthly Revenue & Traffic Reverse Planner -->
-          <article class="task-card calc-card">
+          <!-- ===============================================================
+               CALCULATOR 4: MONTHLY, WEEKLY & DAILY SALES GOAL PLANNER
+               =============================================================== -->
+          <article id="calc-card-4" class="task-card calc-card">
             <div>
-              <span class="badge badge--accent">Calculator 4 • Budget &amp; Traffic Planner</span>
-              <h3 class="task-card__title">Monthly Revenue &amp; Ad Budget Planner</h3>
-              <p class="calc-desc">Reverse-engineer how many orders, website visitors, and how much ad budget you need to hit your monthly revenue goal.</p>
+              <span class="badge badge--accent">Calculator 4 • Goal &amp; Progress Tracker</span>
+              <h3 class="task-card__title">4. Monthly, Weekly &amp; Daily Sales Goal Planner</h3>
+              <p class="calc-desc">
+                Enter your monthly revenue target to break it down into easy-to-track <strong>Weekly</strong> and <strong>Daily</strong> order, traffic, and revenue targets—plus track your live progress so far this month.
+              </p>
+
               <div class="form-stack">
                 <div class="form-row">
                   <label class="form-field">
                     <span>Monthly Revenue Goal (<span class="curr-sym">$</span>)</span>
-                    <input type="number" id="calc-goal-rev" class="input-control" value="50000" min="100" step="1000" />
+                    <input type="number" id="calc-goal-rev" class="input-control" value="30000" min="100" step="500" />
+                    <small class="field-helper">Example: <code>30,000</code> target sales this month.</small>
                   </label>
                   <label class="form-field">
-                    <span>Average Order Value (<span class="curr-sym">$</span>)</span>
-                    <input type="number" id="calc-goal-aov" class="input-control" value="100" min="1" step="10" />
+                    <span>Current Revenue So Far (<span class="curr-sym">$</span>)</span>
+                    <input type="number" id="calc-goal-current" class="input-control" value="12000" min="0" step="500" />
+                    <small class="field-helper">Example: <code>12,000</code> earned so far this month.</small>
                   </label>
                 </div>
+
                 <div class="form-row">
                   <label class="form-field">
-                    <span>Page Conversion Rate (%)</span>
-                    <input type="number" id="calc-goal-cvr" class="input-control" value="2.5" min="0.1" step="0.1" />
+                    <span>Average Order Price (<span class="curr-sym">$</span>)</span>
+                    <input type="number" id="calc-goal-aov" class="input-control" value="100" min="1" step="5" />
+                    <small class="field-helper">Example: <code>100</code> spent by an average buyer.</small>
                   </label>
                   <label class="form-field">
-                    <span>Expected Cost Per Click (<span class="curr-sym">$</span>)</span>
-                    <input type="number" id="calc-goal-cpc" class="input-control" value="0.80" min="0.01" step="0.05" />
+                    <span>Expected Conversion Rate (%)</span>
+                    <input type="number" id="calc-goal-cvr" class="input-control" value="2.5" min="0.1" step="0.1" />
+                    <small class="field-helper">Example: <code>2.5%</code> of visitors buy.</small>
                   </label>
                 </div>
+
+                <label class="form-field">
+                  <span>Estimated Cost Per Click (<span class="curr-sym">$</span>)</span>
+                  <input type="number" id="calc-goal-cpc" class="input-control" value="0.75" min="0.01" step="0.05" />
+                  <small class="field-helper">Example: <code>0.75</code> average cost per visitor click.</small>
+                </label>
               </div>
             </div>
+
             <div class="calc-result-box">
+              <div class="calc-result-header">Your Monthly, Weekly &amp; Daily Roadmap</div>
+              <div style="margin-bottom: 10px;">
+                <div class="calc-result-row">
+                  <span>Monthly Goal Progress:</span>
+                  <strong id="out-goal-progress-label">40% ($12,000 / $30,000)</strong>
+                </div>
+                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="40">
+                  <div class="progress-bar__fill" id="out-goal-progress-bar" style="width: 40%"></div>
+                </div>
+              </div>
+
               <div class="calc-result-row">
-                <span>Orders Needed:</span>
-                <strong id="out-goal-orders">500 orders (16.7 / day)</strong>
+                <span>Monthly Target:</span>
+                <strong id="out-goal-orders">300 orders | 12,000 visitors</strong>
               </div>
               <div class="calc-result-row">
-                <span>Visitors Needed:</span>
-                <strong id="out-goal-visitors">20,000 visitors</strong>
+                <span>Weekly Target (÷ 4.3 weeks):</span>
+                <strong id="out-goal-weekly">$6,977 | 70 orders | 2,791 visitors</strong>
+              </div>
+              <div class="calc-result-row calc-result-row--highlight">
+                <span>Daily Target (÷ 30 days):</span>
+                <strong id="out-goal-daily">$1,000/day | 10 orders/day | 400 visitors/day</strong>
               </div>
               <div class="calc-result-row">
-                <span>Estimated Traffic Budget:</span>
-                <strong id="out-goal-budget">$16,000 (3.13x ROAS)</strong>
+                <span>Estimated Ad Budget Needed:</span>
+                <strong id="out-goal-budget">$9,000/mo ($300/day)</strong>
               </div>
-              <p class="calc-verdict">Formula: Visitors = Orders ÷ CVR | Budget = Visitors × CPC</p>
+
+              <div class="ai-explanation-box">
+                <strong>What does this mean?</strong>
+                <p id="explain-goal-text"></p>
+              </div>
+
+              <div class="calc-card-actions">
+                <button type="button" class="btn btn--sm btn--primary" data-save-calc="4. Sales Goal Planner">Save to History</button>
+                <button type="button" class="btn btn--sm btn--secondary" data-clear-calc="goal">Clear</button>
+                <button type="button" class="btn btn--sm btn--ghost" data-copy-calc="goal">Copy Report</button>
+              </div>
             </div>
           </article>
 
-          <!-- Calculator 5: Social Media Engagement Rate -->
-          <article class="task-card calc-card">
+          <!-- ===============================================================
+               CALCULATOR 5: SOCIAL MEDIA ENGAGEMENT CALCULATOR
+               =============================================================== -->
+          <article id="calc-card-5" class="task-card calc-card">
             <div>
-              <span class="badge badge--accent">Calculator 5 • Social Engagement</span>
-              <h3 class="task-card__title">Social Post Engagement Rate</h3>
-              <p class="calc-desc">Formula: <code>((Likes + Comments + Shares + Saves) ÷ Reach) × 100</code>. Set your target benchmark below.</p>
+              <div class="task-card__top">
+                <span class="badge badge--accent">Calculator 5 • Social Media</span>
+                <select id="calc-eng-platform" class="select-control calc-mini-select" aria-label="Select Social Platform">
+                  <option value="Instagram|3.0">Platform: Instagram (Avg Target ~3.0%)</option>
+                  <option value="TikTok|5.0">Platform: TikTok (Avg Target ~5.0%)</option>
+                  <option value="LinkedIn|2.5">Platform: LinkedIn (Avg Target ~2.5%)</option>
+                  <option value="Facebook|1.8">Platform: Facebook (Avg Target ~1.8%)</option>
+                </select>
+              </div>
+              <h3 class="task-card__title">5. Social Media Engagement Rate Calculator</h3>
+              <p class="calc-desc">
+                Formula: <code>((Likes + Comments + Shares + Saves) ÷ Reach or Impressions) × 100</code>. Choose your platform above and whether to divide by <strong>Reach</strong> (unique people) or <strong>Impressions</strong> (total views).
+              </p>
+
               <div class="form-stack">
-                <label class="form-field">
-                  <span>Total Post Views / Reach</span>
-                  <input type="number" id="calc-eng-reach" class="input-control" value="4500" min="1" step="100" />
-                </label>
                 <div class="form-row">
                   <label class="form-field">
-                    <span>Total Interactions (Likes+Comments+Saves)</span>
-                    <input type="number" id="calc-eng-interactions" class="input-control" value="270" min="0" step="10" />
+                    <span>Divide By (Denominator)</span>
+                    <select id="calc-eng-basis" class="select-control">
+                      <option value="Reach (Unique Viewers)">Reach (Unique People Who Saw Post)</option>
+                      <option value="Impressions (Total Views)">Impressions (Total Views Including Repeats)</option>
+                    </select>
+                  </label>
+                  <label class="form-field">
+                    <span>Total Reach or Impressions</span>
+                    <input type="number" id="calc-eng-reach" class="input-control" value="5000" min="1" step="100" />
+                    <small class="field-helper">Example: <code>5,000</code> people saw your post.</small>
+                  </label>
+                </div>
+
+                <div class="form-row">
+                  <label class="form-field">
+                    <span>Total Interactions (Likes+Comments+Shares+Saves)</span>
+                    <input type="number" id="calc-eng-interactions" class="input-control" value="250" min="0" step="10" />
+                    <small class="field-helper">Example: <code>250</code> combined interactions.</small>
                   </label>
                   <label class="form-field">
                     <span>Your Target Benchmark (%)</span>
-                    <input type="number" id="calc-eng-target" class="input-control" value="3.5" min="0.1" step="0.1" />
+                    <input type="number" id="calc-eng-target" class="input-control" value="3.0" min="0.1" step="0.1" />
+                    <small class="field-helper">Auto-updates when you pick a platform, or set your own.</small>
                   </label>
                 </div>
               </div>
             </div>
+
             <div class="calc-result-box">
-              <div class="calc-result-row">
+              <div class="calc-result-header">Your Results</div>
+              <div class="calc-result-row calc-result-row--highlight">
                 <span>Engagement Rate:</span>
-                <strong id="out-eng-rate">6.00%</strong>
+                <strong id="out-eng-rate">5.00%</strong>
+              </div>
+              <div class="calc-result-row">
+                <span>Calculation Basis:</span>
+                <strong id="out-eng-basis-label">250 interactions ÷ 5,000 Reach</strong>
+              </div>
+
+              <div class="ai-explanation-box">
+                <strong>What does this mean?</strong>
+                <p id="explain-eng-text"></p>
               </div>
               <p class="calc-verdict" id="out-eng-verdict"></p>
+
+              <div class="calc-card-actions">
+                <button type="button" class="btn btn--sm btn--primary" data-save-calc="5. Social Engagement">Save to History</button>
+                <button type="button" class="btn btn--sm btn--secondary" data-clear-calc="eng">Clear</button>
+                <button type="button" class="btn btn--sm btn--ghost" data-copy-calc="eng">Copy Report</button>
+              </div>
             </div>
           </article>
 
-          <!-- Calculator 6: Email Open Rate, CTR & Apple MPP Privacy Guidance -->
-          <article class="task-card calc-card">
+          <!-- ===============================================================
+               CALCULATOR 6: EMAIL PERFORMANCE & BOUNCE RATE CALCULATOR
+               =============================================================== -->
+          <article id="calc-card-6" class="task-card calc-card">
             <div>
-              <span class="badge badge--accent">Calculator 6 • Email &amp; CRM</span>
-              <h3 class="task-card__title">Email CTR, Open Rate &amp; Privacy Note</h3>
-              <p class="calc-desc">Note: Apple Mail Privacy Protection (MPP) pre-loads email pixels and inflates Open Rates. Prioritize <strong>Click-Through Rate (CTR)</strong> and conversions.</p>
+              <span class="badge badge--accent">Calculator 6 • Email &amp; Deliverability</span>
+              <h3 class="task-card__title">6. Email Open Rate, Click Rate (CTR), CTOR &amp; Bounce Rate</h3>
+              <p class="calc-desc">
+                <strong>Sent</strong> = emails you tried to send. <strong>Bounced</strong> = failed addresses. <strong>Delivered</strong> = reached the inbox. <strong>Opens</strong> = opened (often inflated by Apple Mail Privacy). <strong>Clicks</strong> = real people who tapped a link.
+              </p>
+
               <div class="form-stack">
-                <label class="form-field">
-                  <span>Total Delivered Emails</span>
-                  <input type="number" id="calc-email-sent" class="input-control" value="2000" min="1" step="100" />
-                </label>
                 <div class="form-row">
                   <label class="form-field">
-                    <span>Unique Opens (MPP Inflated)</span>
-                    <input type="number" id="calc-email-opens" class="input-control" value="680" min="0" step="10" />
+                    <span>Total Emails Sent</span>
+                    <input type="number" id="calc-email-sent" class="input-control" value="2000" min="1" step="100" />
+                    <small class="field-helper">Example: <code>2,000</code> subscribers on your send list.</small>
                   </label>
                   <label class="form-field">
-                    <span>Unique Link Clicks (Reliable)</span>
-                    <input type="number" id="calc-email-clicks" class="input-control" value="84" min="0" step="5" />
+                    <span>Bounced Emails (Failed Delivery)</span>
+                    <input type="number" id="calc-email-bounced" class="input-control" value="20" min="0" step="5" />
+                    <small class="field-helper">Example: <code>20</code> invalid or full email addresses.</small>
+                  </label>
+                </div>
+
+                <div class="form-row">
+                  <label class="form-field">
+                    <span>Unique Opens (Includes Privacy Auto-Opens)</span>
+                    <input type="number" id="calc-email-opens" class="input-control" value="680" min="0" step="10" />
+                    <small class="field-helper">Example: <code>680</code> reported opens.</small>
+                  </label>
+                  <label class="form-field">
+                    <span>Unique Link Clicks (Most Reliable Metric)</span>
+                    <input type="number" id="calc-email-clicks" class="input-control" value="80" min="0" step="5" />
+                    <small class="field-helper">Example: <code>80</code> subscribers clicked your button/link.</small>
                   </label>
                 </div>
               </div>
+
+              <div id="warn-email" class="calc-warning-box" hidden></div>
             </div>
+
             <div class="calc-result-box">
+              <div class="calc-result-header">Your Results</div>
               <div class="calc-result-row">
-                <span>Primary Metric — Click Rate (CTR):</span>
-                <strong id="out-email-ctr">4.20%</strong>
+                <span>Successfully Delivered Emails:</span>
+                <strong id="out-email-delivered">1,980 (1.00% Bounce Rate)</strong>
+              </div>
+              <div class="calc-result-row calc-result-row--highlight">
+                <span>Click-Through Rate (CTR — Primary Metric):</span>
+                <strong id="out-email-ctr">4.04% of delivered</strong>
               </div>
               <div class="calc-result-row">
-                <span>Reported Open Rate:</span>
-                <strong id="out-email-open">34.0% (includes Apple MPP)</strong>
+                <span>Click-to-Open Rate (CTOR — Clicks ÷ Opens):</span>
+                <strong id="out-email-ctor">11.76% of openers clicked</strong>
               </div>
               <div class="calc-result-row">
-                <span>Click-to-Open Rate (CTOR):</span>
-                <strong id="out-email-ctor">12.4%</strong>
+                <span>Reported Open Rate (Privacy Note):</span>
+                <strong id="out-email-open">34.34% (Apple MPP inflated)</strong>
               </div>
-              <p class="calc-verdict" id="out-email-verdict">2.5%+ Click Rate (CTR) indicates strong subscriber engagement.</p>
+
+              <div class="ai-explanation-box">
+                <strong>What does this mean?</strong>
+                <p id="explain-email-text"></p>
+              </div>
+              <p class="calc-verdict" id="out-email-verdict"></p>
+
+              <div class="calc-card-actions">
+                <button type="button" class="btn btn--sm btn--primary" data-save-calc="6. Email Performance">Save to History</button>
+                <button type="button" class="btn btn--sm btn--secondary" data-clear-calc="email">Clear</button>
+                <button type="button" class="btn btn--sm btn--ghost" data-copy-calc="email">Copy Report</button>
+              </div>
             </div>
           </article>
         </div>
+
+        <!-- ===============================================================
+             SAVED CALCULATION HISTORY & CAMPAIGN COMPARISON TABLE
+             =============================================================== -->
+        <article id="calc-history-section" class="system-card" style="margin-top: var(--space-6);">
+          <div class="system-card__header">
+            <div>
+              <h3>Saved Calculation History &amp; Campaign Comparison</h3>
+              <p class="system-card__desc" style="margin-bottom: 0;">
+                Tap <strong>"Save to History"</strong> on any calculator above to store a snapshot locally on your device so you can compare campaigns side-by-side or export to CSV/PDF.
+              </p>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <button type="button" id="btn-export-history-csv" class="btn btn--sm btn--secondary">Download CSV</button>
+              <button type="button" id="btn-clear-calc-history" class="btn btn--sm btn--ghost">Clear History</button>
+            </div>
+          </div>
+          <div id="calc-history-list" class="queue-list" style="margin-top: var(--space-3);" aria-live="polite"></div>
+        </article>
       </section>
+
     </main>
   </div>
 

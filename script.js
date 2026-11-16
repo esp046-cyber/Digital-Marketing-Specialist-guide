@@ -1062,9 +1062,15 @@
   };
 
   /* ------------------------------------------------------------------------
-     CUSTOMIZABLE MULTI-CURRENCY MARKETING CALCULATORS
+     v5.0 BEGINNER-FRIENDLY WORLDWIDE MARKETING CALCULATORS + HISTORY + CSV EXPORT
      ------------------------------------------------------------------------ */
+  const CALC_HISTORY_KEY = 'dms_calc_history_v5';
+
   const MarketingCalculators = {
+    beginnerMode: true,
+    history: [],
+    lastResults: {},
+
     fmt(num, decimals = 2) {
       if (!isFinite(num)) return '0';
       return Number(num).toLocaleString(undefined, {
@@ -1072,145 +1078,529 @@
         maximumFractionDigits: decimals
       });
     },
+
     init() {
-      const inputs = document.querySelectorAll('#panel-calculators input');
-      inputs.forEach((inp) => inp.addEventListener('input', () => this.computeAll()));
-      document.getElementById('btn-reset-calculators')?.addEventListener('click', () => {
-        document.getElementById('calc-roas-spend').value = 5000;
-        document.getElementById('calc-roas-revenue').value = 20000;
-        document.getElementById('calc-roas-margin').value = 50;
-        document.getElementById('calc-roas-target').value = 3.0;
-        document.getElementById('calc-cpc-spend').value = 2500;
-        document.getElementById('calc-cpc-impressions').value = 20000;
-        document.getElementById('calc-cpc-clicks').value = 500;
-        document.getElementById('calc-cpc-target-ctr').value = 1.5;
-        document.getElementById('calc-cvr-visitors').value = 800;
-        document.getElementById('calc-cvr-orders').value = 32;
-        document.getElementById('calc-cvr-spend').value = 6400;
-        document.getElementById('calc-cvr-target').value = 2.5;
-        document.getElementById('calc-goal-rev').value = 50000;
-        document.getElementById('calc-goal-aov').value = 100;
-        document.getElementById('calc-goal-cvr').value = 2.5;
-        document.getElementById('calc-goal-cpc').value = 0.80;
-        document.getElementById('calc-eng-reach').value = 4500;
-        document.getElementById('calc-eng-interactions').value = 270;
-        document.getElementById('calc-eng-target').value = 3.5;
-        document.getElementById('calc-email-sent').value = 2000;
-        document.getElementById('calc-email-opens').value = 680;
-        document.getElementById('calc-email-clicks').value = 84;
-        this.computeAll();
-        Toast.show('Default calculator values restored');
+      this.loadHistory();
+
+      // Bind live input listeners on all calculator inputs & selects
+      const controls = document.querySelectorAll('#panel-calculators input, #panel-calculators select');
+      controls.forEach((ctrl) => {
+        if (ctrl.id === 'section-calc-currency') return; // Handled below
+        ctrl.addEventListener('input', () => this.computeAll());
+        ctrl.addEventListener('change', () => this.computeAll());
       });
+
+      // Section 04 dedicated currency selector synced with top header currency selector
+      const secCurr = document.getElementById('section-calc-currency');
+      if (secCurr) {
+        secCurr.value = `${App.currencySymbol}|${App.currencyCode}`;
+        secCurr.addEventListener('change', (e) => {
+          const [sym, code] = e.target.value.split('|');
+          App.currencySymbol = sym || '$';
+          App.currencyCode = code || 'USD';
+          const topCurr = document.getElementById('global-currency');
+          if (topCurr) topCurr.value = e.target.value;
+          App.savePrefs();
+          App.updateCurrencyUI();
+          this.computeAll();
+          WorkstationTools.refreshAll();
+          Toast.show(`Currency symbol changed to ${App.currencySymbol} (${App.currencyCode})`);
+        });
+      }
+
+      // ROAS Scenario Selector
+      document.getElementById('calc-roas-scenario')?.addEventListener('change', (e) => {
+        const val = e.target.value;
+        if (val === 'ecom') {
+          document.getElementById('calc-roas-spend').value = 1000;
+          document.getElementById('calc-roas-revenue').value = 4500;
+          document.getElementById('calc-roas-cog').value = 1000;
+          document.getElementById('calc-roas-target').value = 3.0;
+        } else if (val === 'local') {
+          document.getElementById('calc-roas-spend').value = 500;
+          document.getElementById('calc-roas-revenue').value = 2500;
+          document.getElementById('calc-roas-cog').value = 300;
+          document.getElementById('calc-roas-target').value = 3.5;
+        } else if (val === 'lowmargin') {
+          document.getElementById('calc-roas-spend').value = 2000;
+          document.getElementById('calc-roas-revenue').value = 5000;
+          document.getElementById('calc-roas-cog').value = 3500;
+          document.getElementById('calc-roas-target').value = 4.0;
+        }
+        this.computeAll();
+      });
+
+      // Social Platform Preset Selector
+      document.getElementById('calc-eng-platform')?.addEventListener('change', (e) => {
+        const [, bench] = (e.target.value || 'Instagram|3.0').split('|');
+        const targetEl = document.getElementById('calc-eng-target');
+        if (targetEl && bench) targetEl.value = bench;
+        this.computeAll();
+      });
+
+      // Conversion Mode Selector (Sales vs Leads)
+      document.getElementById('calc-cvr-mode')?.addEventListener('change', (e) => {
+        const mode = e.target.value;
+        const closeInput = document.getElementById('calc-cvr-closerate');
+        const lbl = document.getElementById('lbl-cvr-conversions');
+        if (mode === 'sales') {
+          if (closeInput) closeInput.value = 100;
+          if (lbl) lbl.textContent = 'Total Direct Orders (Sales)';
+        } else {
+          if (closeInput && Number(closeInput.value) === 100) closeInput.value = 25;
+          if (lbl) lbl.textContent = 'Total Leads Collected (Inquiries / Signups)';
+        }
+        this.computeAll();
+      });
+
+      // Beginner Mode Toggle
+      document.getElementById('btn-toggle-beginner')?.addEventListener('click', (e) => {
+        this.beginnerMode = !this.beginnerMode;
+        document.body.classList.toggle('beginner-mode-off', !this.beginnerMode);
+        e.currentTarget.textContent = this.beginnerMode ? '✓ Beginner Mode: ON' : 'Beginner Mode: OFF';
+        e.currentTarget.setAttribute('aria-pressed', String(this.beginnerMode));
+        Toast.show(this.beginnerMode ? 'Beginner examples & explanations enabled' : 'Compact view enabled');
+      });
+
+      // Load Example vs Clear All vs Export CSV vs Print PDF
+      document.getElementById('btn-calc-load-example')?.addEventListener('click', () => {
+        this.loadExampleNumbers();
+        Toast.show('Loaded example campaign numbers across all 6 calculators');
+      });
+
+      document.getElementById('btn-calc-clear-all')?.addEventListener('click', () => {
+        this.clearAllInputs();
+        Toast.show('Cleared calculator inputs — enter your own numbers');
+      });
+
+      document.getElementById('btn-calc-export-csv')?.addEventListener('click', () => this.exportCsvReport());
+      document.getElementById('btn-export-history-csv')?.addEventListener('click', () => this.exportCsvReport());
+      document.getElementById('btn-calc-print-pdf')?.addEventListener('click', () => window.print());
+
+      // Per-card Save to History, Clear, and Copy Report buttons
+      document.getElementById('panel-calculators')?.addEventListener('click', (e) => {
+        const saveBtn = e.target.closest('button[data-save-calc]');
+        if (saveBtn) {
+          this.saveSnapshot(saveBtn.dataset.saveCalc);
+          return;
+        }
+        const clearBtn = e.target.closest('button[data-clear-calc]');
+        if (clearBtn) {
+          this.clearSingleCalculator(clearBtn.dataset.clearCalc);
+          return;
+        }
+        const copyBtn = e.target.closest('button[data-copy-calc]');
+        if (copyBtn) {
+          const key = copyBtn.dataset.copyCalc;
+          const summary = this.lastResults[key] || 'Calculation report';
+          ClipboardUtil.copy(summary, 'Calculator report copied');
+        }
+      });
+
+      document.getElementById('btn-clear-calc-history')?.addEventListener('click', () => {
+        this.history = [];
+        this.saveHistory();
+        this.renderHistory();
+        Toast.show('Saved calculation history cleared');
+      });
+
+      this.computeAll();
+      this.renderHistory();
+    },
+
+    loadExampleNumbers() {
+      document.getElementById('calc-roas-spend').value = 1000;
+      document.getElementById('calc-roas-revenue').value = 4500;
+      document.getElementById('calc-roas-cog').value = 1000;
+      document.getElementById('calc-roas-target').value = 3.0;
+
+      document.getElementById('calc-cpc-spend').value = 500;
+      document.getElementById('calc-cpc-impressions').value = 25000;
+      document.getElementById('calc-cpc-clicks').value = 500;
+      document.getElementById('calc-cpc-target-max').value = 1.50;
+      document.getElementById('calc-cpc-target-ctr').value = 1.5;
+
+      document.getElementById('calc-cvr-visitors').value = 1000;
+      document.getElementById('calc-cvr-orders').value = 30;
+      document.getElementById('calc-cvr-spend').value = 600;
+      document.getElementById('calc-cvr-closerate').value = 25;
+      document.getElementById('calc-cvr-target').value = 2.5;
+
+      document.getElementById('calc-goal-rev').value = 30000;
+      document.getElementById('calc-goal-current').value = 12000;
+      document.getElementById('calc-goal-aov').value = 100;
+      document.getElementById('calc-goal-cvr').value = 2.5;
+      document.getElementById('calc-goal-cpc').value = 0.75;
+
+      document.getElementById('calc-eng-reach').value = 5000;
+      document.getElementById('calc-eng-interactions').value = 250;
+      document.getElementById('calc-eng-target').value = 3.0;
+
+      document.getElementById('calc-email-sent').value = 2000;
+      document.getElementById('calc-email-bounced').value = 20;
+      document.getElementById('calc-email-opens').value = 680;
+      document.getElementById('calc-email-clicks').value = 80;
+
       this.computeAll();
     },
+
+    clearAllInputs() {
+      ['roas', 'cpc', 'cvr', 'goal', 'eng', 'email'].forEach((k) => this.clearSingleCalculator(k, false));
+      this.computeAll();
+    },
+
+    clearSingleCalculator(key, recompute = true) {
+      const map = {
+        roas: ['calc-roas-spend', 'calc-roas-revenue', 'calc-roas-cog'],
+        cpc: ['calc-cpc-spend', 'calc-cpc-impressions', 'calc-cpc-clicks'],
+        cvr: ['calc-cvr-visitors', 'calc-cvr-orders', 'calc-cvr-spend'],
+        goal: ['calc-goal-rev', 'calc-goal-current', 'calc-goal-aov'],
+        eng: ['calc-eng-reach', 'calc-eng-interactions'],
+        email: ['calc-email-sent', 'calc-email-bounced', 'calc-email-opens', 'calc-email-clicks']
+      };
+      (map[key] || []).forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.value = 0;
+      });
+      if (recompute) this.computeAll();
+    },
+
+    setWarning(id, msg) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (msg) {
+        el.textContent = `⚠ Input Check: ${msg}`;
+        el.hidden = false;
+      } else {
+        el.textContent = '';
+        el.hidden = true;
+      }
+    },
+
     computeAll() {
       const sym = App.currencySymbol || '$';
+      const secCurr = document.getElementById('section-calc-currency');
+      if (secCurr && secCurr.value !== `${App.currencySymbol}|${App.currencyCode}`) {
+        secCurr.value = `${App.currencySymbol}|${App.currencyCode}`;
+      }
 
-      // 1. Margin-Aware ROAS & Break-Even ROAS
-      const spend = parseFloat(document.getElementById('calc-roas-spend')?.value) || 0;
-      const rev = parseFloat(document.getElementById('calc-roas-revenue')?.value) || 0;
-      const marginPct = Math.min(99, Math.max(1, parseFloat(document.getElementById('calc-roas-margin')?.value) || 50));
-      const targetRoas = parseFloat(document.getElementById('calc-roas-target')?.value) || 3.0;
+      /* ------------------------------------------------------------------
+         1. ROAS & Profit Calculator
+         ------------------------------------------------------------------ */
+      const spend = Math.max(0, parseFloat(document.getElementById('calc-roas-spend')?.value) || 0);
+      const rev = Math.max(0, parseFloat(document.getElementById('calc-roas-revenue')?.value) || 0);
+      const cog = Math.max(0, parseFloat(document.getElementById('calc-roas-cog')?.value) || 0);
+      const targetRoas = Math.max(0.1, parseFloat(document.getElementById('calc-roas-target')?.value) || 3.0);
+
+      if (spend === 0 && rev > 0) {
+        this.setWarning('warn-roas', 'Enter an Advertising Spend greater than 0 to calculate your ROAS ratio.');
+      } else {
+        this.setWarning('warn-roas', '');
+      }
 
       const roas = spend > 0 ? rev / spend : 0;
-      const breakEvenRoas = 1 / (marginPct / 100);
-      const grossProfitBeforeAds = rev * (marginPct / 100);
-      const netProfit = grossProfitBeforeAds - spend;
-      const roiPct = spend > 0 ? (netProfit / spend) * 100 : 0;
+      const netProfit = rev - spend - cog;
+      const marginRatio = rev > 0 ? Math.max(0.05, (rev - cog) / rev) : 0.5;
+      const breakEvenRoas = 1 / marginRatio;
 
       document.getElementById('out-roas-mult').textContent = `${this.fmt(roas, 2)}x`;
-      document.getElementById('out-roas-breakeven').textContent = `${this.fmt(breakEvenRoas, 2)}x (at ${marginPct}% margin)`;
-      document.getElementById('out-roas-profit').textContent = `${netProfit >= 0 ? '+' : '-'}${sym}${this.fmt(Math.abs(netProfit), 0)}`;
-      document.getElementById('out-roas-roi').textContent = `${roiPct >= 0 ? '+' : ''}${this.fmt(roiPct, 1)}%`;
+      document.getElementById('out-roas-rev-line').textContent = `${sym}${this.fmt(rev, 2)}`;
+      document.getElementById('out-roas-adcost-line').textContent = `−${sym}${this.fmt(spend, 2)}`;
+      document.getElementById('out-roas-cog-line').textContent = `−${sym}${this.fmt(cog, 2)}`;
+      document.getElementById('out-roas-profit').textContent = `${netProfit >= 0 ? '+' : '−'}${sym}${this.fmt(Math.abs(netProfit), 2)}`;
+      document.getElementById('out-roas-breakeven').textContent = `${this.fmt(breakEvenRoas, 2)}x`;
+
+      const explainRoas = `For every ${sym}1.00 you spent on advertising, you generated ${sym}${this.fmt(roas, 2)} in sales revenue (${this.fmt(roas, 2)}x ROAS). Remember: revenue is not profit. After subtracting ${sym}${this.fmt(spend, 0)} for ads and ${sym}${this.fmt(cog, 0)} for product/fulfillment costs, your actual remaining profit is ${netProfit >= 0 ? '+' : '−'}${sym}${this.fmt(Math.abs(netProfit), 2)} (before taxes or overhead).`;
+      document.getElementById('explain-roas-text').textContent = explainRoas;
 
       const roasVerdict = document.getElementById('out-roas-verdict');
       if (roasVerdict) {
-        if (roas < breakEvenRoas) {
-          roasVerdict.textContent = `Below Break-Even (${this.fmt(breakEvenRoas, 2)}x): Currently losing ${sym}${this.fmt(Math.abs(netProfit), 0)} after product costs.`;
+        if (netProfit < 0) {
+          roasVerdict.textContent = `Action Needed: Even with ${this.fmt(roas, 2)}x ROAS, total costs exceed revenue by ${sym}${this.fmt(Math.abs(netProfit), 0)}. You need at least ${this.fmt(breakEvenRoas, 2)}x ROAS to break even.`;
           roasVerdict.style.color = 'var(--semantic-danger)';
         } else if (roas >= targetRoas) {
-          roasVerdict.textContent = `Profitable & Beats Your ${this.fmt(targetRoas, 1)}x Target! Net profit: +${sym}${this.fmt(netProfit, 0)}.`;
+          roasVerdict.textContent = `Goal Met: Beats your ${this.fmt(targetRoas, 1)}x target and leaves +${sym}${this.fmt(netProfit, 0)} in net profit.`;
           roasVerdict.style.color = 'var(--semantic-success)';
         } else {
-          roasVerdict.textContent = `Profitable (above ${this.fmt(breakEvenRoas, 2)}x break-even), but below your custom ${this.fmt(targetRoas, 1)}x target.`;
+          roasVerdict.textContent = `Profitable (+${sym}${this.fmt(netProfit, 0)} profit), and currently ${this.fmt(targetRoas - roas, 2)}x below your custom ${this.fmt(targetRoas, 1)}x target.`;
           roasVerdict.style.color = 'var(--semantic-warning)';
         }
       }
+      this.lastResults.roas = `ROAS & Profit Report: Spend ${sym}${this.fmt(spend, 0)} | Revenue ${sym}${this.fmt(rev, 0)} | Product Cost ${sym}${this.fmt(cog, 0)} | ROAS: ${this.fmt(roas, 2)}x | Net Profit: ${netProfit >= 0 ? '+' : '-'}${sym}${this.fmt(Math.abs(netProfit), 2)}`;
 
-      // 2. CPC, CTR & CPM
-      const cpcSpend = parseFloat(document.getElementById('calc-cpc-spend')?.value) || 0;
-      const imps = parseFloat(document.getElementById('calc-cpc-impressions')?.value) || 1;
-      const clicks = parseFloat(document.getElementById('calc-cpc-clicks')?.value) || 1;
-      const targetCtr = parseFloat(document.getElementById('calc-cpc-target-ctr')?.value) || 1.5;
-      const cpc = cpcSpend / clicks;
-      const ctr = (clicks / imps) * 100;
-      const cpm = (cpcSpend / imps) * 1000;
+      /* ------------------------------------------------------------------
+         2. CPC, CTR & CPM Calculator
+         ------------------------------------------------------------------ */
+      const cpcSpend = Math.max(0, parseFloat(document.getElementById('calc-cpc-spend')?.value) || 0);
+      const imps = Math.max(0, parseFloat(document.getElementById('calc-cpc-impressions')?.value) || 0);
+      const clicks = Math.max(0, parseFloat(document.getElementById('calc-cpc-clicks')?.value) || 0);
+      const targetMaxCpc = Math.max(0.01, parseFloat(document.getElementById('calc-cpc-target-max')?.value) || 1.5);
+      const targetCtr = Math.max(0.1, parseFloat(document.getElementById('calc-cpc-target-ctr')?.value) || 1.5);
+
+      if (clicks > imps && imps > 0) {
+        this.setWarning('warn-cpc', 'Total Link Clicks cannot be higher than Total Ad Views (Impressions). Please check your numbers.');
+      } else {
+        this.setWarning('warn-cpc', '');
+      }
+
+      const cpc = clicks > 0 ? cpcSpend / clicks : 0;
+      const ctr = imps > 0 ? (clicks / imps) * 100 : 0;
+      const cpm = imps > 0 ? (cpcSpend / imps) * 1000 : 0;
 
       document.getElementById('out-cpc-val').textContent = `${sym}${this.fmt(cpc, 2)} per click`;
       document.getElementById('out-ctr-val').textContent = `${this.fmt(ctr, 2)}%`;
-      document.getElementById('out-cpm-val').textContent = `${sym}${this.fmt(cpm, 2)}`;
+      document.getElementById('out-cpm-val').textContent = `${sym}${this.fmt(cpm, 2)} per 1,000 views`;
+
+      const explainCpc = `Your ad was shown ${imps.toLocaleString()} times and clicked ${clicks.toLocaleString()} times. Out of every 100 views, ${this.fmt(ctr, 2)} people clicked (CTR). Each visitor click cost you ${sym}${this.fmt(cpc, 2)} (CPC), and the ad platform charged ${sym}${this.fmt(cpm, 2)} for every 1,000 times the ad appeared on screen (CPM).`;
+      document.getElementById('explain-cpc-text').textContent = explainCpc;
+
       const ctrVerdict = document.getElementById('out-ctr-verdict');
       if (ctrVerdict) {
-        ctrVerdict.textContent = ctr >= targetCtr
-          ? `Beats your ${this.fmt(targetCtr, 1)}% CTR benchmark by +${this.fmt(ctr - targetCtr, 2)}%`
-          : `Below your ${this.fmt(targetCtr, 1)}% CTR benchmark — test a stronger headline or visual hook`;
+        const cpcOk = cpc <= targetMaxCpc;
+        const ctrOk = ctr >= targetCtr;
+        if (cpcOk && ctrOk) {
+          ctrVerdict.textContent = `Meets Benchmarks: Click cost (${sym}${this.fmt(cpc, 2)}) is within your ${sym}${this.fmt(targetMaxCpc, 2)} cap and CTR (${this.fmt(ctr, 2)}%) beats your ${this.fmt(targetCtr, 1)}% goal.`;
+          ctrVerdict.style.color = 'var(--semantic-success)';
+        } else {
+          ctrVerdict.textContent = `Benchmark Comparison: Your CPC is ${cpcOk ? 'under' : 'above'} your ${sym}${this.fmt(targetMaxCpc, 2)} target and CTR is ${ctrOk ? 'above' : 'below'} your ${this.fmt(targetCtr, 1)}% target.`;
+          ctrVerdict.style.color = 'var(--semantic-warning)';
+        }
+      }
+      this.lastResults.cpc = `CPC & CTR Report: Spend ${sym}${this.fmt(cpcSpend, 0)} | Impressions ${imps.toLocaleString()} | Clicks ${clicks.toLocaleString()} | CPC: ${sym}${this.fmt(cpc, 2)} | CTR: ${this.fmt(ctr, 2)}% | CPM: ${sym}${this.fmt(cpm, 2)}`;
+
+      /* ------------------------------------------------------------------
+         3. Conversion Rate, CPL & CPA Calculator
+         ------------------------------------------------------------------ */
+      const mode = document.getElementById('calc-cvr-mode')?.value || 'sales';
+      const visitors = Math.max(0, parseFloat(document.getElementById('calc-cvr-visitors')?.value) || 0);
+      const convs = Math.max(0, parseFloat(document.getElementById('calc-cvr-orders')?.value) || 0);
+      const cvrSpend = Math.max(0, parseFloat(document.getElementById('calc-cvr-spend')?.value) || 0);
+      const closeRate = Math.min(100, Math.max(1, parseFloat(document.getElementById('calc-cvr-closerate')?.value) || 100));
+      const targetCvr = Math.max(0.1, parseFloat(document.getElementById('calc-cvr-target')?.value) || 2.5);
+
+      if (convs > visitors && visitors > 0) {
+        this.setWarning('warn-cvr', 'Conversions cannot exceed Total Website Visitors.');
+      } else {
+        this.setWarning('warn-cvr', '');
       }
 
-      // 3. Conversion Rate & CPA
-      const visitors = parseFloat(document.getElementById('calc-cvr-visitors')?.value) || 1;
-      const orders = parseFloat(document.getElementById('calc-cvr-orders')?.value) || 0;
-      const cvrSpend = parseFloat(document.getElementById('calc-cvr-spend')?.value) || 0;
-      const targetCvr = parseFloat(document.getElementById('calc-cvr-target')?.value) || 2.5;
-      const cvr = (orders / visitors) * 100;
-      const cpa = orders > 0 ? cvrSpend / orders : 0;
+      const cvr = visitors > 0 ? (convs / visitors) * 100 : 0;
+      const cpl = convs > 0 ? cvrSpend / convs : 0;
+      const effectiveClose = mode === 'sales' ? 1.0 : closeRate / 100;
+      const finalSales = convs * effectiveClose;
+      const cpa = finalSales > 0 ? cvrSpend / finalSales : 0;
 
       document.getElementById('out-cvr-rate').textContent = `${this.fmt(cvr, 2)}%`;
-      document.getElementById('out-cpa-cost').textContent = orders > 0 ? `${sym}${this.fmt(cpa, 2)} each` : '0 conversions';
+      document.getElementById('out-cpl-cost').textContent = `${sym}${this.fmt(cpl, 2)} per ${mode === 'sales' ? 'order' : 'lead'}`;
+      document.getElementById('out-cpa-cost').textContent = `${sym}${this.fmt(cpa, 2)} per paying customer`;
+
+      const explainCvr =
+        mode === 'sales'
+          ? `Out of ${visitors.toLocaleString()} visitors, ${convs.toLocaleString()} placed an order (${this.fmt(cvr, 2)}% Conversion Rate). You spent ${sym}${this.fmt(cpl, 2)} in marketing to acquire each customer.`
+          : `Out of ${visitors.toLocaleString()} visitors, ${convs.toLocaleString()} became leads (${this.fmt(cvr, 2)}% Conversion Rate) at ${sym}${this.fmt(cpl, 2)} per lead (CPL). With a ${closeRate}% sales close rate (~${this.fmt(finalSales, 1)} buyers), your true Cost Per Paying Sale (CPA) is ${sym}${this.fmt(cpa, 2)}.`;
+      document.getElementById('explain-cvr-text').textContent = explainCvr;
+
       const cvrVerdict = document.getElementById('out-cvr-verdict');
       if (cvrVerdict) {
-        cvrVerdict.textContent = cvr >= targetCvr
-          ? `Above your ${this.fmt(targetCvr, 1)}% conversion target`
-          : `Below your ${this.fmt(targetCvr, 1)}% conversion target — check mobile page speed & checkout steps`;
+        cvrVerdict.textContent =
+          cvr >= targetCvr
+            ? `Conversion rate (${this.fmt(cvr, 2)}%) meets or beats your ${this.fmt(targetCvr, 1)}% target.`
+            : `Conversion rate (${this.fmt(cvr, 2)}%) is below your ${this.fmt(targetCvr, 1)}% target — test clearer headlines, reviews, and faster checkout.`;
       }
+      this.lastResults.cvr = `Conversion & CPA Report: ${visitors.toLocaleString()} Visitors -> ${convs.toLocaleString()} Conversions (${this.fmt(cvr, 2)}% CVR) | CPL: ${sym}${this.fmt(cpl, 2)} | Final CPA: ${sym}${this.fmt(cpa, 2)}`;
 
-      // 4. Monthly Revenue & Budget Planner
-      const goalRev = parseFloat(document.getElementById('calc-goal-rev')?.value) || 0;
-      const aov = parseFloat(document.getElementById('calc-goal-aov')?.value) || 1;
-      const goalCvr = parseFloat(document.getElementById('calc-goal-cvr')?.value) || 1;
-      const estCpc = parseFloat(document.getElementById('calc-goal-cpc')?.value) || 0.5;
+      /* ------------------------------------------------------------------
+         4. Monthly, Weekly & Daily Sales Goal Planner
+         ------------------------------------------------------------------ */
+      const goalRev = Math.max(0, parseFloat(document.getElementById('calc-goal-rev')?.value) || 0);
+      const currRev = Math.max(0, parseFloat(document.getElementById('calc-goal-current')?.value) || 0);
+      const aov = Math.max(1, parseFloat(document.getElementById('calc-goal-aov')?.value) || 100);
+      const goalCvr = Math.max(0.1, parseFloat(document.getElementById('calc-goal-cvr')?.value) || 2.5);
+      const estCpc = Math.max(0.01, parseFloat(document.getElementById('calc-goal-cpc')?.value) || 0.75);
+
+      const progPct = goalRev > 0 ? Math.min(100, Math.round((currRev / goalRev) * 100)) : 0;
       const neededOrders = Math.ceil(goalRev / aov);
       const neededVisitors = Math.ceil(neededOrders / (goalCvr / 100));
       const estBudget = neededVisitors * estCpc;
-      const impliedRoas = estBudget > 0 ? goalRev / estBudget : 0;
 
-      document.getElementById('out-goal-orders').textContent = `${neededOrders.toLocaleString()} orders (${this.fmt(neededOrders / 30, 1)} / day)`;
-      document.getElementById('out-goal-visitors').textContent = `${neededVisitors.toLocaleString()} visitors`;
-      document.getElementById('out-goal-budget').textContent = `${sym}${this.fmt(estBudget, 0)} (${this.fmt(impliedRoas, 2)}x ROAS)`;
+      const weeklyRev = goalRev / 4.33;
+      const weeklyOrders = Math.ceil(neededOrders / 4.33);
+      const weeklyVisitors = Math.ceil(neededVisitors / 4.33);
 
-      // 5. Social Engagement
-      const reach = parseFloat(document.getElementById('calc-eng-reach')?.value) || 1;
-      const inter = parseFloat(document.getElementById('calc-eng-interactions')?.value) || 0;
-      const engTarget = parseFloat(document.getElementById('calc-eng-target')?.value) || 3.5;
+      const dailyRev = goalRev / 30;
+      const dailyOrders = neededOrders / 30;
+      const dailyVisitors = Math.ceil(neededVisitors / 30);
+
+      document.getElementById('out-goal-progress-label').textContent = `${progPct}% (${sym}${this.fmt(currRev, 0)} / ${sym}${this.fmt(goalRev, 0)})`;
+      const progBar = document.getElementById('out-goal-progress-bar');
+      if (progBar) progBar.style.width = `${progPct}%`;
+
+      document.getElementById('out-goal-orders').textContent = `${neededOrders.toLocaleString()} orders | ${neededVisitors.toLocaleString()} visitors`;
+      document.getElementById('out-goal-weekly').textContent = `${sym}${this.fmt(weeklyRev, 0)}/wk | ${weeklyOrders} orders | ${weeklyVisitors.toLocaleString()} visitors`;
+      document.getElementById('out-goal-daily').textContent = `${sym}${this.fmt(dailyRev, 0)}/day | ${this.fmt(dailyOrders, 1)} orders | ${dailyVisitors.toLocaleString()} visitors`;
+      document.getElementById('out-goal-budget').textContent = `${sym}${this.fmt(estBudget, 0)}/mo (${sym}${this.fmt(estBudget / 30, 0)}/day)`;
+
+      const remainingRev = Math.max(0, goalRev - currRev);
+      document.getElementById('explain-goal-text').textContent = `To reach ${sym}${this.fmt(goalRev, 0)} at ${sym}${this.fmt(aov, 0)} per order, you need ${neededOrders.toLocaleString()} total orders (${this.fmt(dailyOrders, 1)} orders per day). At a ${this.fmt(goalCvr, 1)}% conversion rate, that requires about ${dailyVisitors.toLocaleString()} website visitors per day. You have ${sym}${this.fmt(remainingRev, 0)} remaining to hit 100% of this month's goal.`;
+      this.lastResults.goal = `Sales Goal Plan: Target ${sym}${this.fmt(goalRev, 0)} (${progPct}% complete) | Daily Target: ${sym}${this.fmt(dailyRev, 0)}/day (${this.fmt(dailyOrders, 1)} orders/day from ${dailyVisitors} visitors/day)`;
+
+      /* ------------------------------------------------------------------
+         5. Social Media Engagement Calculator
+         ------------------------------------------------------------------ */
+      const [platName] = (document.getElementById('calc-eng-platform')?.value || 'Instagram|3.0').split('|');
+      const basis = document.getElementById('calc-eng-basis')?.value || 'Reach (Unique Viewers)';
+      const reach = Math.max(1, parseFloat(document.getElementById('calc-eng-reach')?.value) || 1);
+      const inter = Math.max(0, parseFloat(document.getElementById('calc-eng-interactions')?.value) || 0);
+      const engTarget = Math.max(0.1, parseFloat(document.getElementById('calc-eng-target')?.value) || 3.0);
+
       const engRate = (inter / reach) * 100;
       document.getElementById('out-eng-rate').textContent = `${this.fmt(engRate, 2)}%`;
+      document.getElementById('out-eng-basis-label').textContent = `${inter.toLocaleString()} interactions ÷ ${reach.toLocaleString()} ${basis.split(' ')[0]}`;
+
+      document.getElementById('explain-eng-text').textContent = `On ${platName}, your post received ${inter.toLocaleString()} total interactions (likes, comments, shares, and saves) across ${reach.toLocaleString()} ${basis.toLowerCase()}. That means ${this.fmt(engRate, 2)} out of every 100 viewers interacted with your content.`;
       const engVerdict = document.getElementById('out-eng-verdict');
       if (engVerdict) {
-        engVerdict.textContent = engRate >= engTarget
-          ? `Beats your ${this.fmt(engTarget, 1)}% engagement target!`
-          : `Below your ${this.fmt(engTarget, 1)}% target — add a question or saveable checklist slide.`;
+        engVerdict.textContent =
+          engRate >= engTarget
+            ? `Strong ${platName} performance: ${this.fmt(engRate, 2)}% beats your ${this.fmt(engTarget, 1)}% benchmark!`
+            : `Currently below your ${this.fmt(engTarget, 1)}% ${platName} benchmark — add a saveable tip carousel or question prompt.`;
+      }
+      this.lastResults.eng = `${platName} Engagement Report: ${this.fmt(engRate, 2)}% (${inter.toLocaleString()} interactions / ${reach.toLocaleString()} ${basis.split(' ')[0]})`;
+
+      /* ------------------------------------------------------------------
+         6. Email Performance & Bounce Rate Calculator
+         ------------------------------------------------------------------ */
+      const sent = Math.max(1, parseFloat(document.getElementById('calc-email-sent')?.value) || 1);
+      const bounced = Math.max(0, parseFloat(document.getElementById('calc-email-bounced')?.value) || 0);
+      const delivered = Math.max(1, sent - bounced);
+      const opens = Math.max(0, parseFloat(document.getElementById('calc-email-opens')?.value) || 0);
+      const eClicks = Math.max(0, parseFloat(document.getElementById('calc-email-clicks')?.value) || 0);
+
+      if (bounced >= sent) {
+        this.setWarning('warn-email', 'Bounced emails cannot be equal to or greater than Total Emails Sent.');
+      } else if (eClicks > delivered) {
+        this.setWarning('warn-email', 'Unique Link Clicks cannot exceed Delivered Emails.');
+      } else {
+        this.setWarning('warn-email', '');
       }
 
-      // 6. Email Metrics
-      const sent = parseFloat(document.getElementById('calc-email-sent')?.value) || 1;
-      const opens = parseFloat(document.getElementById('calc-email-opens')?.value) || 0;
-      const eClicks = parseFloat(document.getElementById('calc-email-clicks')?.value) || 0;
-      const openRate = (opens / sent) * 100;
-      const eCtr = (eClicks / sent) * 100;
+      const bounceRate = (bounced / sent) * 100;
+      const openRate = (opens / delivered) * 100;
+      const eCtr = (eClicks / delivered) * 100;
       const ctor = opens > 0 ? (eClicks / opens) * 100 : 0;
 
-      document.getElementById('out-email-ctr').textContent = `${this.fmt(eCtr, 2)}%`;
-      document.getElementById('out-email-open').textContent = `${this.fmt(openRate, 1)}% (MPP inflated)`;
-      document.getElementById('out-email-ctor').textContent = `${this.fmt(ctor, 1)}%`;
+      document.getElementById('out-email-delivered').textContent = `${delivered.toLocaleString()} delivered (${this.fmt(bounceRate, 2)}% Bounce Rate)`;
+      document.getElementById('out-email-ctr').textContent = `${this.fmt(eCtr, 2)}% (${eClicks.toLocaleString()} clicks)`;
+      document.getElementById('out-email-ctor').textContent = `${this.fmt(ctor, 2)}% of openers clicked`;
+      document.getElementById('out-email-open').textContent = `${this.fmt(openRate, 1)}% (Privacy inflated)`;
+
+      document.getElementById('explain-email-text').textContent = `Out of ${sent.toLocaleString()} emails sent, ${delivered.toLocaleString()} reached the inbox (${this.fmt(bounceRate, 2)}% bounced). Because Apple Mail Privacy Protection automatically pre-loads email images, your ${this.fmt(openRate, 1)}% Open Rate is an estimate—focus on your ${this.fmt(eCtr, 2)}% Click-Through Rate (${eClicks.toLocaleString()} real people who tapped your link) and ${this.fmt(ctor, 1)}% Click-to-Open Rate.`;
+
+      const emailVerdict = document.getElementById('out-email-verdict');
+      if (emailVerdict) {
+        if (bounceRate > 2.0) {
+          emailVerdict.textContent = `Deliverability Warning: Bounce rate (${this.fmt(bounceRate, 2)}%) is above 2%. Clean invalid addresses from your email list.`;
+          emailVerdict.style.color = 'var(--semantic-danger)';
+        } else {
+          emailVerdict.textContent = `Healthy Deliverability (${this.fmt(bounceRate, 2)}% bounce rate < 2.0% threshold) and ${this.fmt(eCtr, 2)}% real subscriber click rate.`;
+          emailVerdict.style.color = 'var(--semantic-success)';
+        }
+      }
+      this.lastResults.email = `Email Campaign Report: ${delivered.toLocaleString()} Delivered (${this.fmt(bounceRate, 2)}% Bounce) | CTR: ${this.fmt(eCtr, 2)}% | CTOR: ${this.fmt(ctor, 1)}% | Open Rate: ${this.fmt(openRate, 1)}%`;
+    },
+
+    loadHistory() {
+      try {
+        const raw = localStorage.getItem(CALC_HISTORY_KEY);
+        this.history = raw ? JSON.parse(raw) : [];
+      } catch (_) {
+        this.history = [];
+      }
+    },
+
+    saveHistory() {
+      try {
+        localStorage.setItem(CALC_HISTORY_KEY, JSON.stringify(this.history));
+      } catch (_) {}
+    },
+
+    saveSnapshot(calcTitle) {
+      const mapKey = calcTitle.startsWith('1')
+        ? 'roas'
+        : calcTitle.startsWith('2')
+        ? 'cpc'
+        : calcTitle.startsWith('3')
+        ? 'cvr'
+        : calcTitle.startsWith('4')
+        ? 'goal'
+        : calcTitle.startsWith('5')
+        ? 'eng'
+        : 'email';
+      const summary = this.lastResults[mapKey] || calcTitle;
+      this.history.unshift({
+        id: 'hist-' + Date.now(),
+        calculator: calcTitle,
+        currency: `${App.currencySymbol} ${App.currencyCode}`,
+        summary,
+        savedAt: new Date().toLocaleString()
+      });
+      if (this.history.length > 25) this.history.pop();
+      this.saveHistory();
+      this.renderHistory();
+      Toast.show(`Saved "${calcTitle}" to Calculation History`);
+    },
+
+    renderHistory() {
+      const list = document.getElementById('calc-history-list');
+      const countEl = document.getElementById('calc-history-count');
+      if (countEl) countEl.textContent = String(this.history.length);
+      if (!list) return;
+
+      if (!this.history.length) {
+        list.innerHTML = `<div class="queue-item"><span>No saved calculations yet. Tap <strong>"Save to History"</strong> on any calculator card above to compare campaigns here.</span></div>`;
+        return;
+      }
+
+      list.innerHTML = this.history
+        .map(
+          (item) => `
+        <div class="queue-item">
+          <div>
+            <strong>${item.calculator}</strong> <span class="badge">${item.currency}</span>
+            <div style="margin-top:4px; color:var(--text-secondary);">${item.summary}</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Saved: ${item.savedAt}</div>
+          </div>
+        </div>`
+        )
+        .join('');
+    },
+
+    exportCsvReport() {
+      const rows = [
+        ['Calculator', 'Currency', 'Summary Report', 'Timestamp']
+      ];
+      const now = new Date().toISOString();
+      Object.entries(this.lastResults).forEach(([k, val]) => {
+        rows.push([k.toUpperCase(), `${App.currencySymbol} ${App.currencyCode}`, val, now]);
+      });
+      this.history.forEach((h) => {
+        rows.push([`SAVED: ${h.calculator}`, h.currency, h.summary, h.savedAt]);
+      });
+
+      const csvContent = rows
+        .map((r) => r.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(','))
+        .join('\n');
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `marketing-calculators-report-${now.slice(0, 10)}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      Toast.show('Exported Calculator Report as CSV!');
     }
   };
 
