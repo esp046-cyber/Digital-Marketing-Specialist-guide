@@ -1,0 +1,19 @@
+{
+  "databaseName": "dms_offline_db",
+  "version": 1,
+  "objectStores": [
+    {
+      "name": "sync_queue",
+      "keyPath": "id",
+      "fields": [
+        "id",
+        "actionType",
+        "summary",
+        "payload",
+        "status",
+        "createdAt",
+        "syncedAt"
+      ]
+    }
+  ]
+}
